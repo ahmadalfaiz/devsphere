@@ -1,0 +1,435 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.header{
+  width:100%;
+  background:#0f1117;
+  border-bottom:1px solid #222;
+}
+
+/* TOP NAVBAR */
+
+.topNavbar{
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  background:#111827;
+
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+
+/* LOGO */
+
+.logo h1{
+  color:#00d084;
+  font-size:2rem;
+  font-weight:700;
+  cursor:pointer;
+  min-width:180px;
+}
+
+/* SEARCH */
+
+.searchBox{
+  width:320px;
+  margin-right:40px;
+}
+
+.searchBox input{
+  width:100%;
+  padding:12px 18px;
+  border-radius:30px;
+  border:1px solid #2f855a;
+  background:#161b22;
+  color:white;
+  outline:none;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+
+.searchBox input:focus{
+  border:1px solid #00d084;
+  box-shadow:0 0 10px rgba(0,208,132,0.3);
+}
+
+.searchBox input::placeholder{
+  color:#aaa;
+}
+
+/* NAVIGATION */
+
+.mainNav{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  flex:1;
+}
+
+.mainNav a{
+  text-decoration:none;
+  color:white;
+  font-size:1rem;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.mainNav a:hover{
+  color:#00d084;
+}
+
+/* DROPDOWN */
+
+.dropdown{
+  position:relative;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+}
+
+.dropdownTitle{
+  color:white;
+  font-size:1rem;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.dropdownTitle:hover{
+  color:#00d084;
+}
+
+/* DROPDOWN MENU */
+
+.dropdownMenu{
+  position:absolute;
+  top:45px;
+  left:0;
+  min-width:220px;
+  background:#161b22;
+  border:1px solid #222;
+  border-radius:12px;
+  padding:10px 0;
+  display:flex;
+  flex-direction:column;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:0.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* SHOW DROPDOWN */
+
+.dropdown:hover .dropdownMenu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* DROPDOWN LINKS */
+
+.dropdownMenu a{
+  padding:12px 20px;
+  color:#d1d5db;
+  text-decoration:none;
+  transition:0.3s;
+  font-size:0.95rem;
+}
+
+.dropdownMenu a:hover{
+  background:#1f2937;
+  color:#00d084;
+}
+
+/* RIGHT SECTION */
+
+.rightSection{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+/* THEME BUTTON */
+
+.themeBtn{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:1px solid #2d3748;
+  background:#1a202c;
+  color:#ffffff;
+  font-size:1.1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.themeBtn:hover{
+  background:#00d084;
+  color:#000;
+  transform:rotate(20deg);
+}
+
+/* BUTTONS */
+
+.authButtons{
+  display:flex;
+  gap:15px;
+}
+
+.loginBtn,
+.registerBtn{
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:0.95rem;
+  font-weight:600;
+  transition:0.3s;
+}
+
+/*LOGIN BUTTON*/
+
+.loginBtn{
+  background:transparent;
+  color:white;
+  border:1px solid #333;
+}
+
+.loginBtn:hover{
+  background:#1f2937;
+}
+
+/*REGISTER BUTTON*/
+
+.registerBtn{
+  background:#00d084;
+  color:black;
+}
+
+.registerBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 15px rgba(0,208,132,0.3);
+}
+
+/* LOGIN PROFILE */
+.profileWrapper {
+  position: relative;
+}
+
+.profileBtn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+
+  display: flex;
+  align-items:center;
+  gap:8px;
+  transition:0.3s ease;
+  justify-content: center;
+}
+
+.profileBtn:hover {
+  color: #00d084;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 18px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navAvatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: 2px solid #00d084;
+  background: linear-gradient(
+    135deg,
+    #00d084,
+    #005939
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #08111f;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow:
+    0 0 20px rgba(22,224,160,0.25);
+
+  transition: 0.3s ease;
+}
+
+.navAvatar:hover {
+  transform: scale(1.05);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #00d084,
+    #005939
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 18px;
+
+  color: #08111f;
+}
+
+.profileHeader h4 {
+  margin: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.profileHeader p {
+  margin: 4px 0 0;
+
+  color: #9aa5b5;
+  font-size: 12px;
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  width: 280px;
+  border-radius: 20px;
+  background: rgba(13, 18, 35, 0.95);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(22, 224, 160, 0.25);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.45),
+    0 0 25px rgba(22,224,160,0.08);
+  overflow: hidden;
+  z-index: 1000;
+  animation: dropdownFade 0.25s ease;
+}
+
+.profileDropdown a {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.profileDropdown a:hover {
+  background: rgba(22,224,160,0.08);
+  color:#00d084;
+  padding-left:24px;
+}
+
+.logoutBtn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 14px 18px;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(255,107,107,0.08);
+  padding-left: 24px;
+}
+
+/* BOTTOM NAVBAR */
+
+.bottomNavbar{
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:35px;
+  background:#0b0f14;
+  border-top:1px solid #222;
+  margin-top:80px;
+}
+
+.bottomNavbar a{
+  text-decoration:none;
+  color:#d1d5db;
+  font-size:0.95rem;
+  transition:0.3s;
+  white-space:nowrap;
+}
+
+.bottomNavbar a:hover{
+  color:#00d084;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+  .mainNav{
+    display:none;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .topNavbar{
+    padding:0 20px;
+    gap:15px;
+  }
+
+  .searchBox{
+    display:none;
+  }
+
+  .bottomNavbar{
+    overflow-x:auto;
+    justify-content:flex-start;
+    padding:0 20px;
+  }
+
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,182 @@
+.trendingSection{
+  padding:70px 8%;
+  background:
+  linear-gradient(to bottom, #0b0f14, #111827);
+}
+
+/* TOP CONTENT */
+
+.topContent{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.topContent span{
+  color:#00d084;
+  letter-spacing:2px;
+  font-size:0.95rem;
+  font-weight:600;
+}
+
+.topContent h2{
+  font-size:3rem;
+  color:white;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.topContent p{
+  color:#cbd5e1;
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+  font-size:1.05rem;
+}
+
+/* GRID */
+
+.trendingGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:35px;
+}
+
+/* CARD */
+
+.trendingCard{
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  border-radius:28px;
+
+  overflow:hidden;
+
+  transition:0.4s;
+
+  position:relative;
+
+  backdrop-filter:blur(12px);
+}
+
+/* HOVER */
+
+.trendingCard:hover{
+  transform:translateY(-12px);
+  border:1px solid rgba(0,208,132,0.4);
+  box-shadow:0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* IMAGE SECTION */
+
+.imageContainer{
+  position:relative;
+  height:240px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+  linear-gradient(to bottom right, #111827, #0b0f14);
+}
+
+.imageContainer img{
+  width:130px;
+  z-index:2;
+  transition:0.4s;
+}
+
+.trendingCard:hover img{
+  transform:scale(1.08);
+}
+
+/* GLOW */
+
+.glow{
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  background:#00d084;
+
+  border-radius:50%;
+
+  filter:blur(100px);
+
+  opacity:0.18;
+}
+
+/* CONTENT */
+
+.cardContent{
+  padding:35px 30px;
+}
+
+/* CATEGORY */
+
+.category{
+  display:inline-block;
+
+  padding:8px 16px;
+
+  background:
+  rgba(0,208,132,0.1);
+
+  border:
+  1px solid rgba(0,208,132,0.3);
+
+  border-radius:30px;
+
+  color:#00d084;
+
+  font-size:0.85rem;
+
+  margin-bottom:20px;
+}
+
+/* TITLE */
+
+.cardContent h3{
+  color:white;
+  font-size:1.5rem;
+  margin-bottom:18px;
+  line-height:1.4;
+}
+
+/* DESCRIPTION */
+
+.cardContent p{
+  color:#cbd5e1;
+  line-height:1.8;
+  margin-bottom:28px;
+}
+
+/* BUTTON */
+
+.cardContent button{
+  background:transparent;
+  border:none;
+  color:#00d084;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.cardContent button:hover{
+  transform:translateX(6px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .topContent h2{
+    font-size:2.3rem;
+  }
+
+}

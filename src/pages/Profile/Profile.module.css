@@ -1,0 +1,1875 @@
+/* =========================
+   PAGE
+========================= */
+
+.profilePage {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    linear-gradient(
+      180deg,
+      #0b1120 0%,
+      #111827 100%
+    );
+  color: white;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.heroSection {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =========================
+   COVER BANNER
+========================= */
+
+.coverBanner {
+  position: relative;
+  overflow: hidden;
+
+  height: 320px;
+
+  border-radius: 28px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      -45deg,
+      #00d084,
+      #008a57,
+      #005939,
+      #003d27
+    );
+
+  background-size: 400% 400%;
+
+  animation:
+    gradientFlow 10s ease infinite;
+
+  box-shadow:
+    0 20px 60px rgba(
+      0,
+      0,
+      0,
+      0.35
+    );
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.coverBanner h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  max-width: 850px;
+  z-index: 2;
+}
+
+.coverBanner p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+/* =========================
+   FLOATING TECH WORDS
+========================= */
+
+.floatingTech {
+  position: absolute;
+  inset: 0;
+}
+
+.floatingTech span {
+  position: absolute;
+
+  color: rgba(
+    255,
+    255,
+    255,
+    0.15
+  );
+
+  font-weight: 700;
+  user-select: none;
+}
+
+.floatingTech span:nth-child(1) {
+  top: 20%;
+  left: 8%;
+  font-size: 3rem;
+}
+
+.floatingTech span:nth-child(2) {
+  top: 15%;
+  right: 15%;
+  font-size: 2rem;
+}
+
+.floatingTech span:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+  font-size: 2rem;
+}
+
+.floatingTech span:nth-child(4) {
+  bottom: 15%;
+  right: 25%;
+  font-size: 2rem;
+}
+
+.floatingTech span:nth-child(5) {
+  top: 50%;
+  right: 8%;
+  font-size: 2.5rem;
+}
+
+.floatingTech span:nth-child(6) {
+  top: 55%;
+  left: 12%;
+  font-size: 2rem;
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profileCard {
+  position: relative;
+
+  margin: -70px auto 0;
+
+  width: 90%;
+  max-width: 950px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(20px);
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  border-radius: 28px;
+
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  z-index: 10;
+
+  box-shadow:
+    0 20px 60px rgba(
+      0,
+      0,
+      0,
+      0.25
+    );
+}
+
+/* =========================
+   AVATAR
+========================= */
+
+.avatarWrapper {
+  margin-top: -90px;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 3rem;
+  font-weight: 700;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  border: 6px solid white;
+
+  box-shadow:
+    0 0 30px rgba(59, 246, 190, 0.515);
+
+  transition: 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   USER INFO
+========================= */
+
+.userInfo h1 {
+  margin-top: 1rem;
+  font-size: 2.2rem;
+}
+
+.roleBadge {
+  margin-top: 0.8rem;
+
+  display: inline-block;
+
+  padding:
+    0.6rem 1.2rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 246, 156, 0.15);
+
+  border:
+    1px solid rgba(59, 246, 168, 0.3);
+
+  color: #00d084;
+
+  font-weight: 600;
+}
+
+.metaInfo {
+  margin-top: 1rem;
+
+  display: flex;
+  gap: 1.5rem;
+
+  flex-wrap: wrap;
+  justify-content: center;
+
+  color: #cbd5e1;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+
+  margin-top: 1.8rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border: none;
+  cursor: pointer;
+
+  padding:
+    0.9rem 1.6rem;
+
+  border-radius: 14px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.primaryBtn {
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  color: white;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px);
+}
+
+.secondaryBtn {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  color: white;
+}
+
+.secondaryBtn:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+}
+
+/* =========================
+   STATS GRID
+========================= */
+
+.statsGrid {
+  margin-top: 2.5rem;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap: 1.5rem;
+}
+
+.statCard {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius: 22px;
+
+  padding: 1.8rem;
+
+  text-align: center;
+
+  transition: 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+}
+
+.statIcon {
+  font-size: 2rem;
+}
+
+.statCard h3 {
+  margin-top: 0.8rem;
+  font-size: 2rem;
+}
+
+.statCard p {
+  margin-top: 0.4rem;
+  color: #cbd5e1;
+}
+
+/* =========================
+   LEARNING SECTION
+========================= */
+
+.learningSection {
+  margin-top: 3rem;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+  border-radius: 24px;
+
+  padding: 2rem;
+}
+
+.learningSection h3 {
+  margin-bottom: 1.2rem;
+}
+
+.learningTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tag {
+  padding:
+    0.8rem 1.2rem;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,208,132,.2),
+      rgba(0,89,57,.2)
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  font-weight: 600;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  .coverBanner {
+    height: 280px;
+  }
+
+  .coverBanner h2 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .statsGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .profilePage {
+    padding: 1rem;
+  }
+
+  .coverBanner {
+    height: 250px;
+  }
+
+  .coverBanner h2 {
+    font-size: 1.5rem;
+  }
+
+  .profileCard {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+    font-size: 2.2rem;
+  }
+
+  .userInfo h1 {
+    font-size: 1.7rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .metaInfo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+}
+
+/* Learning Journey CSS Here*/
+/* =========================
+   LEARNING JOURNEY
+========================= */
+
+.learningJourney {
+  margin-top: 5rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTag {
+  display: inline-block;
+
+  padding: 0.6rem 1.2rem;
+
+  border-radius: 999px;
+
+  background: rgba(59, 246, 149, 0.15);
+
+  border: 1px solid rgba(
+    0,
+    208,
+    132,
+    0.3
+  );
+
+  color: #00d084;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sectionHeader h2 {
+  margin-top: 1rem;
+
+  font-size: 2.5rem;
+  font-weight: 800;
+
+  color: white;
+}
+
+.sectionHeader p {
+  margin-top: 1rem;
+
+  color: #94a3b8;
+
+  max-width: 650px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  line-height: 1.7;
+}
+
+/* =========================
+   COURSE GRID
+========================= */
+
+.learningGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(380px, 1fr)
+    );
+
+  gap: 2rem;
+}
+
+/* =========================
+   COURSE CARD
+========================= */
+
+.courseCard {
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  gap: 1.5rem;
+
+  padding: 2rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(16px);
+
+  transition: 0.35s ease;
+
+  box-shadow:
+    0 10px 35px rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+}
+
+.courseCard::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00d084,
+      #008a57,
+      #005939
+    );
+}
+
+.courseCard:hover {
+  transform:
+    translateY(-10px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  box-shadow:
+    0 20px 50px rgba(37, 235, 159, 0.15);
+}
+
+/* =========================
+   ICON
+========================= */
+
+.courseIcon {
+  flex-shrink: 0;
+
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  font-size: 2rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,208,132,.25),
+      rgba(0,89,57,.25)
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.courseContent {
+  flex: 1;
+}
+
+.courseTop {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 1rem;
+}
+
+.courseTop h3 {
+  color: white;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.courseCategory {
+  display: inline-block;
+
+  margin-top: 0.5rem;
+
+  color: #94a3b8;
+
+  font-size: 0.9rem;
+}
+
+/* =========================
+   PROGRESS %
+========================= */
+
+.progressValue {
+  color: #00d084;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+
+  margin-top: 1.3rem;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+.progressFill {
+  height: 100%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00d084,
+      #005939
+    );
+
+  box-shadow:
+    0 0 20px rgba(
+      0,
+      208,
+      132,
+      0.6
+    );
+
+  transition: width 1s ease;
+}
+
+/* =========================
+   COURSE STATS
+========================= */
+
+.courseStats {
+  margin-top: 1rem;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 0.8rem;
+
+  color: #cbd5e1;
+
+  font-size: 0.9rem;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.continueBtn {
+  margin-top: 1.5rem;
+
+  border: none;
+
+  cursor: pointer;
+
+  padding:
+    0.9rem 1.4rem;
+
+  border-radius: 14px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  transition: 0.3s ease;
+}
+
+.continueBtn:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(99, 241, 182, 0.35);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  .learningGrid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .learningJourney {
+    margin-top: 4rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+
+  .courseCard {
+    flex-direction: column;
+  }
+
+  .courseIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .courseTop {
+    flex-direction: column;
+  }
+
+  .progressValue {
+    margin-top: 0.5rem;
+  }
+
+  .courseStats {
+    flex-direction: column;
+  }
+
+  .continueBtn {
+    width: 100%;
+  }
+
+}
+
+/* EMPTY LEARNING STATE */
+
+.emptyLearning {
+  width: 100%;
+  padding: 4rem 2rem;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+}
+
+.emptyLearning::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 162, 0.15),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 255, 162, 0.15),
+      transparent 45%
+    );
+
+  pointer-events: none;
+}
+
+.emptyLearning:hover {
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(0, 255, 162, 0.25);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(
+    0 0 20px rgba(0, 255, 162, 0.4)
+  );
+}
+
+.emptyLearning h3 {
+  position: relative;
+  z-index: 1;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  margin-bottom: 1rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00d084,
+      #005939
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emptyLearning p {
+  position: relative;
+  z-index: 1;
+
+  max-width: 500px;
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Decorative Learning Icon */
+
+.emptyLearning::after {
+  content: "🚀";
+
+  position: absolute;
+
+  top: 25px;
+  right: 30px;
+
+  font-size: 2rem;
+
+  opacity: 0.2;
+
+  animation:
+    floatRocket 3s ease-in-out infinite;
+}
+
+@keyframes floatRocket {
+
+  0% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-10px);
+  }
+
+  100% {
+    transform:
+      translateY(0);
+  }
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .emptyLearning {
+    padding: 3rem 1.5rem;
+  }
+
+  .emptyLearning h3 {
+    font-size: 1.4rem;
+  }
+
+  .emptyLearning p {
+    font-size: 0.95rem;
+  }
+
+}
+
+/* Learning Journey CSS Upto This*/
+
+/* ACHIEVEMENT SHOWCASE CSS Here */
+
+/* =========================
+   ACHIEVEMENT SHOWCASE
+========================= */
+
+.achievementSection {
+  margin-top: 6rem;
+}
+
+/* =========================
+   MILESTONE GRID
+========================= */
+
+.milestoneGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap: 1.5rem;
+
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.milestoneCard {
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  padding: 2rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(16px);
+
+  transition: 0.35s ease;
+}
+
+.milestoneCard::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #00d084,
+      #005939
+    );
+}
+
+.milestoneCard:hover {
+  transform:
+    translateY(-10px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  box-shadow:
+    0 15px 40px rgba(
+      37,
+      235,
+      159,
+      0.15
+    );
+}
+
+.milestoneIcon {
+  font-size: 2.4rem;
+}
+
+.milestoneCard h3 {
+  margin-top: 1rem;
+
+  font-size: 2rem;
+  font-weight: 800;
+
+  color: white;
+}
+
+.milestoneCard p {
+  margin-top: 0.5rem;
+
+  color: #94a3b8;
+}
+
+/* =========================
+   ACHIEVEMENT GRID
+========================= */
+
+.achievementGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(260px, 1fr)
+    );
+
+  gap: 2rem;
+}
+
+/* =========================
+   ACHIEVEMENT CARD
+========================= */
+
+.achievementCard {
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  padding: 2.5rem 2rem;
+
+  border-radius: 28px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(16px);
+
+  transition: 0.4s ease;
+}
+
+.achievementCard:hover {
+  transform:
+    translateY(-12px);
+
+  box-shadow:
+    0 20px 60px rgba(58, 237, 168, 0.18);
+}
+
+/* =========================
+   BADGE GLOW
+========================= */
+
+.badgeGlow {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -90px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      rgba(92, 246, 213, 0.35),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+/* =========================
+   BADGE ICON
+========================= */
+
+.badgeIcon {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 235, 146, 0.25),
+      rgba(92, 246, 210, 0.25)
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  box-shadow:
+    0 0 30px rgba(92, 246, 190, 0.3);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.achievementCard h3 {
+  margin-top: 1.5rem;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+
+  color: white;
+}
+
+.achievementCard p {
+  margin-top: 0.8rem;
+
+  color: #94a3b8;
+
+  line-height: 1.7;
+}
+
+/* =========================
+   RARITY BADGE
+========================= */
+
+.rarityBadge {
+  display: inline-block;
+
+  margin-top: 1.4rem;
+
+  padding:
+    0.55rem 1.1rem;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  color: white;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   FLOATING ANIMATION
+========================= */
+
+.achievementCard:nth-child(1) {
+  animation:
+    floatBadge 5s ease-in-out infinite;
+}
+
+.achievementCard:nth-child(2) {
+  animation:
+    floatBadge 6s ease-in-out infinite;
+}
+
+.achievementCard:nth-child(3) {
+  animation:
+    floatBadge 7s ease-in-out infinite;
+}
+
+.achievementCard:nth-child(4) {
+  animation:
+    floatBadge 8s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+
+  0% {
+    transform:
+      translateY(0px);
+  }
+
+  50% {
+    transform:
+      translateY(-8px);
+  }
+
+  100% {
+    transform:
+      translateY(0px);
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  .milestoneGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .achievementSection {
+    margin-top: 5rem;
+  }
+
+  .milestoneGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievementGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievementCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .badgeIcon {
+    width: 80px;
+    height: 80px;
+
+    font-size: 2.3rem;
+  }
+
+}
+
+/* Achievement Showcase CSS Upto This*/
+
+/* =========================
+   RECENT ACTIVITY
+========================= */
+
+.activitySection {
+  margin-top: 6rem;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline {
+  position: relative;
+
+  max-width: 950px;
+
+  margin: 4rem auto 0;
+}
+
+.timeline::before {
+  content: "";
+
+  position: absolute;
+
+  left: 30px;
+  top: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #00d084,
+      #008a57,
+      #005939
+    );
+
+  border-radius: 999px;
+}
+
+/* =========================
+   TIMELINE ITEM
+========================= */
+
+.timelineItem {
+  position: relative;
+
+  display: flex;
+
+  gap: 2rem;
+
+  margin-bottom: 2.5rem;
+}
+
+/* =========================
+   TIMELINE DOT
+========================= */
+
+.timelineDot {
+  position: relative;
+
+  z-index: 2;
+
+  width: 60px;
+  height: 60px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  color: white;
+
+  box-shadow:
+    0 0 25px rgba(99, 241, 189, 0.4);
+
+  transition: 0.3s ease;
+}
+
+.timelineItem:hover .timelineDot {
+  transform: scale(1.08);
+}
+
+/* =========================
+   ACTIVITY CARD
+========================= */
+
+.activityCard {
+  flex: 1;
+
+  padding: 1.8rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(16px);
+
+  transition: 0.35s ease;
+
+  box-shadow:
+    0 10px 35px rgba(
+      0,
+      0,
+      0,
+      0.15
+    );
+}
+
+.activityCard:hover {
+  transform:
+    translateY(-6px);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  box-shadow:
+    0 15px 40px rgba(37, 235, 149, 0.18);
+}
+
+/* =========================
+   TOP ROW
+========================= */
+
+.activityTop {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 0.8rem;
+}
+
+.activityTop h3 {
+  color: white;
+
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.activityTime {
+  padding:
+    0.4rem 0.9rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 246, 181, 0.15);
+
+  border:
+    1px solid rgba(59, 246, 153, 0.25);
+
+  color: #00d084;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.activityCard p {
+  color: #94a3b8;
+
+  line-height: 1.8;
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.activitySummary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap: 1.5rem;
+
+  margin-top: 4rem;
+}
+
+.summaryCard {
+  text-align: center;
+
+  padding: 2rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  border:
+    1px solid rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  backdrop-filter: blur(16px);
+
+  transition: 0.35s ease;
+}
+
+.summaryCard:hover {
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 15px 40px rgba(58, 237, 162, 0.15);
+}
+
+.summaryCard h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d084,
+      #005939
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 0.8rem;
+}
+
+.summaryCard p {
+  color: #94a3b8;
+
+  font-size: 0.95rem;
+}
+
+/* =========================
+   ENTRY ANIMATION
+========================= */
+
+.timelineItem {
+  animation:
+    slideUpActivity
+    0.6s ease forwards;
+}
+
+.timelineItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.timelineItem:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.timelineItem:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.timelineItem:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideUpActivity {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  .activitySummary {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .activitySection {
+    margin-top: 5rem;
+  }
+
+  .timeline::before {
+    left: 22px;
+  }
+
+  .timelineItem {
+    gap: 1rem;
+  }
+
+  .timelineDot {
+    width: 45px;
+    height: 45px;
+
+    font-size: 1.1rem;
+  }
+
+  .activityTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activitySummary {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryCard h3 {
+    font-size: 2rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .activityCard {
+    padding: 1.4rem;
+  }
+
+  .activityTop h3 {
+    font-size: 1rem;
+  }
+
+}

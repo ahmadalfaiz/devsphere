@@ -1,0 +1,215 @@
+.ctaSection{
+  position:relative;
+
+  padding:70px 8%;
+
+  background:
+  linear-gradient(to bottom, #0b0f14, #111827);
+
+  overflow:hidden;
+}
+
+/* GLOWS */
+
+.glowOne{
+  position:absolute;
+
+  width:350px;
+  height:350px;
+
+  background:#00d084;
+
+  border-radius:50%;
+
+  filter:blur(140px);
+
+  opacity:0.12;
+
+  top:80px;
+  left:-100px;
+}
+
+.glowTwo{
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  background:#2563eb;
+
+  border-radius:50%;
+
+  filter:blur(140px);
+
+  opacity:0.12;
+
+  bottom:0;
+  right:-80px;
+}
+
+/* MAIN CARD */
+
+.ctaCard{
+  position:relative;
+
+  z-index:2;
+
+  max-width:1100px;
+
+  margin:auto;
+
+  text-align:center;
+
+  padding:90px 60px;
+
+  border-radius:40px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(14px);
+
+  overflow:hidden;
+}
+
+/* INNER GLOW */
+
+.ctaCard::before{
+  content:"";
+
+  position:absolute;
+
+  width:250px;
+  height:250px;
+
+  background:#00d084;
+
+  border-radius:50%;
+
+  filter:blur(130px);
+
+  opacity:0.1;
+
+  top:-80px;
+  right:-80px;
+}
+
+/* TOP LABEL */
+
+.ctaCard span{
+  color:#00d084;
+
+  letter-spacing:2px;
+
+  font-size:0.95rem;
+
+  font-weight:600;
+}
+
+/* HEADING */
+
+.ctaCard h2{
+  color:white;
+
+  font-size:4rem;
+
+  line-height:1.2;
+
+  margin-top:25px;
+  margin-bottom:30px;
+}
+
+/* TEXT */
+
+.ctaCard p{
+  color:#cbd5e1;
+
+  max-width:760px;
+
+  margin:auto;
+
+  line-height:1.9;
+
+  font-size:1.1rem;
+
+  margin-bottom:45px;
+}
+
+/* BUTTONS */
+
+.buttonContainer{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:25px;
+
+  flex-wrap:wrap;
+}
+
+/* BUTTON STYLE */
+
+.primaryBtn,
+.secondaryBtn{
+  padding:18px 34px;
+
+  border:none;
+
+  border-radius:14px;
+
+  cursor:pointer;
+
+  font-size:1rem;
+
+  font-weight:600;
+
+  transition:0.35s;
+}
+
+/* PRIMARY */
+
+.primaryBtn{
+  background:#00d084;
+
+  color:black;
+}
+
+.primaryBtn:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 12px 30px rgba(0,208,132,0.35);
+}
+
+/* SECONDARY */
+
+.secondaryBtn{
+  background:transparent;
+
+  border:
+  1px solid rgba(255,255,255,0.15);
+
+  color:white;
+}
+
+.secondaryBtn:hover{
+  background:#1e293b;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .ctaCard{
+    padding:70px 30px;
+  }
+
+  .ctaCard h2{
+    font-size:2.5rem;
+  }
+
+}
