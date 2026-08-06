@@ -1,0 +1,39 @@
+{
+  "name": "DevSphereHQ - Learn Programming & Software Development",
+  "short_name": "DevSphereHQ",
+  "description": "Master programming with comprehensive tutorials, interactive examples, projects, interview preparation, and developer resources. Learn HTML, CSS, JavaScript, React, Node.js, Express.js, Python, REST APIs, databases, cloud computing, and more.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "education",
+    "developer",
+    "programming",
+    "technology"
+  ],
+  "icons": [
+    {
+      "src": "/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -86,9 +86,11 @@
   background:transparent;
   border:1px solid #334155;
   color:white;
+  text-decoration:none;
 }
 
 .secondaryBtn:hover{
+  transform:translateY(-3px);
   background:#1e293b;
 }
 
@@ -130,7 +132,7 @@
 }
 
 .rightContent img{
-  width:500px;
+  width:600px;
   z-index:2;
   animation:float 4s ease-in-out infinite;
 }
@@ -193,7 +195,7 @@
   }
 
   .rightContent img{
-    width:320px;
+    width:400px;
   }
 
 }

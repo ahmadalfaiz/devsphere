@@ -1,0 +1,12 @@
+# ===================================================================
+# DevSphereHQ Robots.txt
+# Website: https://devspherehq.com
+# Purpose: Instructions for search engine crawlers
+# ===================================================================
+
+User-agent: *
+Allow: /
+
+Sitemap: https://devspherehq.com/sitemap.xml
+
+Host: https://devspherehq.com

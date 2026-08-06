@@ -676,6 +676,7 @@
       transparent 30%
     ),
     #050b1a;
+  align-items: start;
 }
 
 .coursePage {
@@ -696,7 +697,7 @@
 .courseSidebar {
   position: sticky;
   top: 100px;
-  height: fit-content;
+  height: fit-content; /*newly removed */
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.08);
@@ -909,7 +910,6 @@
 
 .startBtn:hover {
   transform: translateY(-4px);
-
   box-shadow: 0 0 25px
     rgba(
       0,
@@ -922,24 +922,17 @@
 /* ===========================
    ADS PANEL
 =========================== */
-
 .adsPanel {
   position: sticky;
-
   top: 100px;
-
   height: fit-content;
 }
 
 .adsCard {
   background: rgba(255,255,255,0.04);
-
   border: 1px solid rgba(255,255,255,0.08);
-
   border-radius: 24px;
-
   padding: 30px;
-
   text-align: center;
 }
 
@@ -1033,13 +1026,9 @@
 
 .notFound {
   min-height: 70vh;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
   background:
     radial-gradient(
@@ -1053,9 +1042,7 @@
 
 .notFound h1 {
   font-size: 3rem;
-
   color: #00d084;
-
   margin-bottom: 15px;
 }
 
@@ -1916,6 +1903,453 @@
   transform: translateY(-3px);
 }
 
+/* ==================================================
+   LESSON FOOTER
+================================================== */
+
+.lessonFooter {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.lessonFooterTitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 7px;
+}
+
+.lessonFooterSubtitle {
+  color: #9ca3af;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.lessonFooterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.footerCard {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  transition: all .3s ease;
+}
+
+.footerCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,208,132,.35);
+  box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+.footerCard h3 {
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+.footerCard p {
+  color: #b7bcc7;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.helpfulButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.footerButton,
+.footerButtonSecondary {
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: .25s;
+}
+
+.footerButton {
+  background: #00d084;
+  color: #05120d;
+  border: none;
+}
+
+.footerButton:hover {
+  background: #00b874;
+}
+
+.footerButtonSecondary {
+  background: transparent;
+  color: #d1d5db;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+.footerButtonSecondary:hover {
+  border-color: #00d084;
+  color: #00d084;
+}
+
+/* Helpful grid functional CSS here */
+.feedbackSuccess{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    margin-top:20px;
+    animation:fadeIn .3s ease;
+}
+
+.successIcon{
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:#00d084;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#04130c;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.feedbackSuccess h4{
+    margin-bottom:10px;
+    color:#ffffff;
+}
+
+.feedbackSuccess p{
+    color:#b7bcc8;
+    line-height:1.6;
+}
+
+.feedbackReason{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    animation:fadeIn .3s ease;
+}
+
+.feedbackReason h4{
+    color:white;
+}
+
+.feedbackReason p{
+    color:#b7bcc8;
+}
+
+.radioOption{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    cursor:pointer;
+    transition:.25s;
+}
+
+.radioOption:hover{
+    background:rgba(0,208,132,.08);
+}
+
+.radioOption input{
+    accent-color:#00d084;
+}
+
+.radioOption span{
+    color:#d8dde7;
+    font-size:.95rem;
+}
+
+.submitFeedbackButton{
+    margin-top:8px;
+    align-self:flex-start;
+    padding:10px 22px;
+    border:none;
+    border-radius:10px;
+    background:#00d084;
+    color:#07160d;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.submitFeedbackButton:hover:not(:disabled){
+    transform:translateY(-2px);
+}
+
+.submitFeedbackButton:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* Up to this Helpful grid functional CSS */
+
+.suggestionBox {
+  width: 100%;
+  height: 110px;
+  resize: vertical;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  color: white;
+  padding: 14px;
+  margin-bottom: 18px;
+  font-size: .95rem;
+  outline: none;
+  transition: .25s;
+  line-height: 1.6;
+}
+
+.suggestionBox:focus {
+  border-color: #00d084;
+  outline:none;
+  background:rgba(255,255,255,.07);
+  box-shadow:0 0 0 2px rgba(0,208,132,.25);
+}
+
+.suggestionBox::placeholder{
+    color:#8b93a5;
+}
+
+.suggestionFooter{
+    margin-top:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+}
+
+.characterCount{
+    color:#8b93a5;
+    font-size:.85rem;
+}
+
+.footerButton:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .lessonFooterGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .lessonFooterTitle {
+    font-size: 1.6rem;
+  }
+
+}
+
+/* Report and Modal CSS Strat here */
+.modalOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+    backdrop-filter:blur(6px);
+}
+
+.reportModalHeader {
+  flex-shrink: 1;
+  /*display: flex;*/
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.reportModal{
+    width:min(520px,92vw);
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:28px;
+    position:relative;
+    animation:modalIn .25s ease;
+
+    max-height:90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.reportModal h2, h3{
+    color: #00d084;
+    margin-bottom: 7px;
+}
+
+.reportModal p, small{
+    color:#9ca3af;
+    line-height:1.7;
+}
+
+.reportModalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 7px 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.reportModalBody::-webkit-scrollbar {
+  display: none;
+}
+
+.reportModalFooter {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: #111827;
+}
+
+.closeModal{
+    position:absolute;
+    right:18px;
+    top:18px;
+    border:none;
+    background:none;
+    color:#9ca3af;
+    font-size:28px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.closeModal:hover{
+    color:white;
+}
+
+.reportOptions{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.modalButtons{
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:28px;
+}
+
+.cancelButton{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.12);
+    color:#d1d5db;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.otherIssueContainer{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    animation:fadeIn .25s ease;
+}
+
+.otherIssueLabel{
+    color:#d8dde7;
+    font-size:.92rem;
+    font-weight:600;
+}
+
+.otherIssueBox{
+    width:100%;
+    min-height:100px;
+    resize:vertical;
+    padding:14px 16px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    color:white;
+    line-height:1.6;
+    transition:.25s;
+}
+
+.otherIssueBox:focus{
+    outline:none;
+    background:rgba(255,255,255,.07);
+    box-shadow:0 0 0 2px rgba(0,208,132,.25);
+}
+
+.otherIssueBox::placeholder{
+    color:#8b93a5;
+}
+
+.otherIssueFooter{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.otherIssueFooter span{
+    color:#8b93a5;
+    font-size:.82rem;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(18px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* Share lesson CSS here */
+.feedbackError {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    animation: fadeIn .25s ease;
+}
+
+.feedbackError p {
+    color: #f87171;
+    font-weight: 600;
+}
+
+.feedbackError small {
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
 /* ==========================================
    RIGHT PANEL
 ========================================== */
@@ -2219,6 +2653,142 @@
 }
 
 
+/* CSS for Lesson Meta and recommendations and tags */
+.lessonMeta{
+  display:flex;
+  /*flex-wrap:wrap;*/
+  flex-direction:column;
+  gap:14px;
+  margin-top:18px;
+  color:#94a3b8;
+  font-size:.95rem;
+}
+
+.metaRow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+}
+
+.metaItem{
+  color:#cbd5e1;
+  font-size:.95rem;
+}
+
+.metaDivider{
+  color:rgba(255,255,255,.22);
+  font-weight:700;
+}
+
+.statusBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  border-radius:999px;
+  font-size:.88rem;
+  font-weight:600;
+  border:1px solid transparent;
+}
+
+.statusDot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:currentColor;
+}
+
+.published{
+  color:#00d084;
+  background:rgba(0,208,132,.12);
+  border-color:rgba(0,208,132,.28);
+}
+
+.draft{
+  color:#facc15;
+  background:rgba(250,204,21,.12);
+  border-color:rgba(250,204,21,.28);
+}
+
+.updated{
+  color:#38bdf8;
+  background:
+    rgba(56,189,248,.12);
+  border-color:
+    rgba(56,189,248,.28);
+}
+
+.comingsoon{
+  color:#fb923c;
+  background:
+    rgba(251,146,60,.12);
+  border-color:
+    rgba(251,146,60,.28);
+}
+
+.lessonHeroTags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.heroTag{
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(0,208,132,.12);
+  color:#00d084;
+  font-size:.85rem;
+}
+
+.lessonExtras{
+  margin-top:45px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.extraCard{
+  padding:24px;
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.extraCard h3{
+  color:#fff;
+  margin-bottom:18px;
+}
+
+.tagContainer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  padding:8px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  color:#cbd5e1;
+}
+
+.linkList{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.extraLink{
+  text-decoration:none;
+  color:#00d084;
+  transition:.25s;
+}
+
+.extraLink:hover{
+  transform:translateX(6px);
+}
 
 
 

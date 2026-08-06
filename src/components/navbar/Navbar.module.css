@@ -27,6 +27,51 @@
   z-index:1000;
 }
 
+/* Left Section - keeps hamburger and logo close together */
+.leftSection{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* HAMBURGER (mobile only — hidden on desktop by default) */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:38px;
+  height:38px;
+  background:transparent;
+  border:1px solid #2d3748;
+  border-radius:8px;
+  cursor:pointer;
+  padding:0;
+  flex-shrink:0;
+}
+
+.hamburger span{
+  display:block;
+  height:2px;
+  width:18px;
+  background:white;
+  border-radius:2px;
+  transition:transform 0.25s ease, opacity 0.2s ease;
+}
+ 
+.hamburgerOpen span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+ 
+.hamburgerOpen span:nth-child(2){
+  opacity:0;
+}
+ 
+.hamburgerOpen span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
 /* LOGO */
 
 .logo h1{
@@ -127,7 +172,6 @@
 }
 
 /* SHOW DROPDOWN */
-
 .dropdown:hover .dropdownMenu{
   opacity:1;
   visibility:visible;
@@ -135,7 +179,6 @@
 }
 
 /* DROPDOWN LINKS */
-
 .dropdownMenu a{
   padding:12px 20px;
   color:#d1d5db;
@@ -368,6 +411,119 @@
   padding-left: 24px;
 }
 
+/* MOBILE OVERLAY — invisible click-catcher below the panel */
+.mobileOverlay{
+  position:fixed;
+  top:80px; /* starts right below the fixed topNavbar, same as .mobilePanel */
+  left:0;
+  width:100%;
+  height:calc(100vh - 80px);
+  background:transparent;
+  z-index:998; /* one below .mobilePanel's z-index:999, so panel clicks still work normally */
+}
+
+/* MOBILE SLIDE-DOWN PANEL (hidden on desktop by default) */
+.mobilePanel{
+  display:none;
+  max-height:0;
+  overflow:hidden;
+  background:rgba(13, 18, 35, 0.75);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(22, 224, 160, 0.15);
+  border-bottom:1px solid rgba(22, 224, 160, 0.15);
+  box-shadow:0 15px 40px rgba(0,0,0,0.45);
+  transition:max-height 0.35s ease;
+ 
+  position:fixed;
+  top:80px; /* sits right below the fixed topNavbar */
+  left:0;
+  width:100%;
+  z-index:999;
+}
+ 
+.mobilePanelOpen{
+  max-height:80vh;
+  overflow-y:auto;
+}
+
+.mobileLinkList{
+  list-style:none;
+  padding:8px 20px 20px;
+}
+ 
+.mobileLinkList > li{
+  border-bottom:1px solid #222;
+}
+ 
+.mobileLinkList > li:last-child{
+  border-bottom:none;
+}
+ 
+.mobileLinkList > li > a{
+  display:block;
+  padding:14px 4px;
+  color:white;
+  text-decoration:none;
+  font-size:1rem;
+  font-weight:500;
+}
+
+.mobileLinkList > li > a:active{
+  color:#00d084;
+}
+
+/* MOBILE ACCORDION (Courses / Tutorials / Practice) */
+ 
+.mobileAccordionTrigger{
+  width:100%;
+  background:transparent;
+  border:none;
+  padding:14px 4px;
+  color:white;
+  font-size:1rem;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+}
+ 
+.mobileAccordionArrow{
+  transition:transform 0.25s ease;
+  color:#9aa5b5;
+}
+ 
+.mobileAccordionArrowOpen{
+  transform:rotate(180deg);
+  color:#00d084;
+}
+
+.mobileAccordionPanel{
+  max-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:max-height 0.3s ease;
+  padding-left:12px;
+}
+ 
+.mobileAccordionPanelOpen{
+  max-height:260px;
+  padding-bottom:8px;
+}
+ 
+.mobileAccordionPanel a{
+  padding:10px 4px;
+  color:#d1d5db;
+  text-decoration:none;
+  font-size:0.9rem;
+}
+ 
+.mobileAccordionPanel a:active{
+  color:#00d084;
+}
+
 /* BOTTOM NAVBAR */
 
 .bottomNavbar{
@@ -379,6 +535,14 @@
   background:#0b0f14;
   border-top:1px solid #222;
   margin-top:80px;
+
+  /* hide scrollbar but keep scroll functionality */
+  scrollbar-width:none;        /* Firefox */
+  -ms-overflow-style:none;     /* old Edge / IE */
+}
+
+.bottomNavbar::-webkit-scrollbar{
+  display:none; /* Chrome, Safari, Edge (Chromium) */
 }
 
 .bottomNavbar a{
@@ -396,11 +560,26 @@
 /* RESPONSIVE */
 
 @media(max-width:1200px){
-
   .mainNav{
     display:none;
   }
 
+  .hamburger{
+    display:flex;
+  }
+ 
+  .mobilePanel{
+    display:block;
+  }
+ 
+  /* tighten right section: theme -> login -> register pulled closer */
+  .rightSection{
+    gap:10px;
+  }
+ 
+  .authButtons{
+    gap:8px;
+  }
 }
 
 @media(max-width:768px){
@@ -412,6 +591,23 @@
 
   .searchBox{
     display:none;
+  }
+
+  .loginBtn,
+  .registerBtn{
+    padding:8px 14px;
+    font-size:0.85rem;
+  }
+ 
+  .themeBtn{
+    width:38px;
+    height:38px;
+    font-size:1rem;
+  }
+ 
+  .logo h1{
+    font-size:1.7rem;
+    min-width:auto;
   }
 
   .bottomNavbar{

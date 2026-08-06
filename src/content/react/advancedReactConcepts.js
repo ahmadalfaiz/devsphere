@@ -7562,7 +7562,1289 @@ function App() {
     readingTime: "12 min",
         
     content: [
-
+      {
+        heading: "Introduction",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "As React applications grow larger, they naturally accumulate more components, pages, utilities, third-party libraries, charts, editors, and business logic. While this makes the application powerful, it also increases the size of the JavaScript bundle that users must download before the application becomes interactive."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "A large bundle can significantly slow down:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Initial page load",
+              "Time to Interactive (TTI)",
+              "Rendering performance",
+              "Mobile experience",
+              "Network usage"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "To solve this problem, React applications use a technique called Code Splitting."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Code Splitting allows developers to break a large JavaScript bundle into smaller chunks that can be loaded only when needed, resulting in faster applications and better user experience."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What is Code Splitting?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Code Splitting is the process of dividing a large JavaScript bundle into multiple smaller bundles (chunks) that can be loaded separately."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "main.bundle.js (5 MB)"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "The application becomes:"
+          },
+ 
+          {
+            type: "output",
+            content: [
+              "home.chunk.js",
+              "dashboard.chunk.js",
+              "profile.chunk.js",
+              "settings.chunk.js",
+              "analytics.chunk.js"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Each file is downloaded only when required. This prevents users from downloading unnecessary code."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Why Do We Need Code Splitting?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Imagine an e-commerce application containing:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Home Page",
+              "Product Page",
+              "Cart",
+              "Checkout",
+              "User Dashboard",
+              "Admin Dashboard",
+              "Analytics"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Without Code Splitting:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "User opens Home Page",
+              "→",
+              "Downloads ALL code",
+              "→",
+              "Including Admin Dashboard",
+              "→",
+              "Including Analytics",
+              "→",
+              "Including Checkout"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Even if the user never visits those pages. This wastes:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Bandwidth",
+              "Memory",
+              "CPU resources",
+              "Loading time"
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Problem with Large Bundles",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suppose your application bundle grows to:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "8 MB"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Browser must:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Download (8 MB)",
+              "→",
+              "Parse (JavaScript Processing)",
+              "→",
+              "Execute (Component Initialization)",
+              "→",
+              "Render (User Interface)"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "All before the application becomes usable. This creates slow loading experiences, especially on mobile devices."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "How Code Splitting Solves the Problem",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "With Code Splitting:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Initial Bundle",
+              "→",
+              "Only Home Page Code"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When user visits Dashboard:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Download Dashboard Chunk"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When user visits Analytics:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Download Analytics Chunk"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This dramatically reduces the amount of code loaded initially."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Code Splitting vs Lazy Loading",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Many beginners confuse these concepts."
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Code Splitting",
+            leftItems: [
+              "Breaks code into multiple chunks",
+              "Large Bundle → Smaller Chunks"
+            ],
+ 
+            rightTitle: "Lazy Loading",
+            rightItems: [
+              "Loads those chunks only when needed",
+              "Chunk Exists → Load On Demand"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Think of it this way:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Code Splitting = Creating Chunks",
+              "Lazy Loading = Loading Chunks Later"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Both techniques usually work together."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "How React Supports Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React primarily supports Code Splitting using:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Dynamic Imports",
+              "React.lazy()",
+              "Suspense",
+              "Route-Based Splitting"
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Dynamic Imports",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Normally we import components like:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import Dashboard from "./Dashboard";`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This loads Dashboard immediately."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dynamic Imports allow importing modules only when needed."
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import("./Dashboard");`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This creates a separate chunk automatically."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Example of Dynamic Import",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `button.onclick = async () => {
+  const module = await import("./Dashboard");
+ 
+  console.log(module);
+};`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dashboard code downloads only after the button is clicked."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "React.lazy()",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React provides a built-in helper for component-level code splitting."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Syntax:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Dashboard = React.lazy(() =>
+  import("./Dashboard")
+);`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "React automatically creates a separate chunk."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Example",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dashboard.jsx:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `function Dashboard() {
+  return <h2>Dashboard Loaded</h2>;
+}
+ 
+export default Dashboard;`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "App.jsx:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import React, { lazy } from "react";
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+function App() {
+  return <Dashboard />;
+}
+ 
+export default App;`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dashboard is downloaded only when React renders it."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Why Suspense is Required",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React needs something to display while the chunk downloads. This is handled by Suspense."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import {
+  lazy,
+  Suspense
+} from "react";
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+function App() {
+  return (
+    <Suspense
+      fallback={<h2>Loading...</h2>}
+    >
+      <Dashboard />
+    </Suspense>
+  );
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What Happens Internally?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Step 1: Application starts."
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Home Bundle Loaded"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Step 2: Dashboard chunk is not loaded."
+          },
+ 
+          {
+            type: "output",
+            content: [
+              "dashboard.chunk.js",
+              "(Not Downloaded Yet)"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Step 3: User visits Dashboard."
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Request Dashboard Chunk"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Step 4: Chunk downloads."
+          },
+ 
+          {
+            type: "output",
+            content:
+              "dashboard.chunk.js"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Step 5: Dashboard renders."
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Dashboard Loaded"
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Route-Based Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "This is the most common approach. Each route becomes its own chunk."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Without Code Splitting — everything loads immediately:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import Home from "./Home";
+import Dashboard from "./Dashboard";
+import Profile from "./Profile";`
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "With Code Splitting — only required routes load:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Home = lazy(() =>
+  import("./Home")
+);
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+const Profile = lazy(() =>
+  import("./Profile")
+);`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Example with React Router",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import {
+  Routes,
+  Route
+} from "react-router-dom";
+ 
+import {
+  lazy,
+  Suspense
+} from "react";
+ 
+const Home = lazy(() =>
+  import("./Home")
+);
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+function App() {
+  return (
+    <Suspense
+      fallback={<h2>Loading...</h2>}
+    >
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+ 
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+      </Routes>
+    </Suspense>
+  );
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Component-Based Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Sometimes only specific components are large."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Examples:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Rich Text Editor",
+              "Charts",
+              "Maps",
+              "PDF Viewer",
+              "Video Player"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of loading them immediately:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Chart = lazy(() =>
+  import("./Chart")
+);`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Modal-Based Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Many applications contain modals that are rarely opened."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const LoginModal = lazy(() =>
+  import("./LoginModal")
+);`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Load modal only when user clicks Login."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Library-Based Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Large libraries can increase bundle size significantly."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Examples:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Chart.js",
+              "Monaco Editor",
+              "Moment.js",
+              "Three.js"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of loading them initially:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Editor = lazy(() =>
+  import("./Editor")
+);`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This prevents unnecessary downloads."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Bundle Analysis",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "A commonly overlooked aspect of Code Splitting is understanding what is making your bundle large."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Tools like:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "webpack-bundle-analyzer",
+              "source-map-explorer",
+              "vite-bundle-visualizer"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Can show:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Largest Libraries",
+              "Largest Components",
+              "Unused Dependencies"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This helps identify what should be split."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Preloading Chunks",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "One limitation of Code Splitting is that users may briefly wait while chunks download."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Advanced applications solve this using preloading."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "User hovers Dashboard Link",
+              "→",
+              "Start Downloading Dashboard Chunk",
+              "→",
+              "Instant Navigation Later"
+            ]
+          },
+ 
+          {
+            type: "tip",
+            content:
+              "This creates a faster experience. Many tutorials stop at React.lazy() and never discuss preloading, even though it is heavily used in production applications."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Benefits of Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Faster Initial Load",
+                description: "Less JavaScript downloaded before the application becomes interactive."
+              },
+ 
+              {
+                title: "Better Performance",
+                description: "Browser processes fewer files during initial load."
+              },
+ 
+              {
+                title: "Reduced Memory Usage",
+                description: "Unused code remains unloaded, keeping memory usage lower."
+              },
+ 
+              {
+                title: "Improved Mobile Experience",
+                description: "Smaller downloads work much better for slower mobile networks."
+              },
+ 
+              {
+                title: "Better User Experience",
+                description: "Pages become interactive faster, improving perceived performance."
+              },
+ 
+              {
+                title: "Scalable Architecture",
+                description: "Large applications remain maintainable as they continue to grow."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Drawbacks of Code Splitting",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Additional Network Requests",
+                description: "More chunks mean more network requests to the server."
+              },
+ 
+              {
+                title: "Loading Delays",
+                description: "Users may briefly see loading screens while chunks download."
+              },
+ 
+              {
+                title: "Increased Complexity",
+                description: "Application structure becomes more advanced and requires careful planning."
+              },
+ 
+              {
+                title: "Over-Splitting",
+                description: "Creating too many chunks can hurt performance instead of improving it."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Common Mistakes",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "Splitting Tiny Components",
+                answer:
+                  "Tiny components don't justify the overhead of an extra network request. Code Splitting should be reserved for components large enough that the download cost is worth the saved initial bundle size.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "jsx",
+                    content: `const Button = lazy(() =>
+  import("./Button")
+);`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Forgetting Suspense",
+                answer:
+                  "A lazy-loaded component must be wrapped in a Suspense boundary. Without it, React does not know what to render while the chunk is downloading, and this causes errors.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "jsx",
+                    content: `const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+<Dashboard />;`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Splitting Everything",
+                answer:
+                  "Creating a separate chunk for every single component results in too many network requests. This can reduce performance instead of improving it. Group related features together rather than splitting everything individually.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "text",
+                    content: `100 Tiny Chunks`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Not Handling Loading States",
+                answer:
+                  "Providing a null fallback to Suspense means users see a blank screen while content loads. Always provide a meaningful loading indicator such as a spinner or skeleton screen.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "jsx",
+                    content: `fallback={null}`
+                  }
+                ]
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Best Practices",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Split Routes",
+                description: "Route-based splitting is the most effective and common strategy for reducing initial bundle size."
+              },
+ 
+              {
+                title: "Split Heavy Components",
+                description: "Charts, editors, and maps are prime candidates for lazy loading."
+              },
+ 
+              {
+                title: "Use Meaningful Loading Indicators",
+                description: "Provide fallback={<Spinner />} instead of leaving users staring at a blank screen."
+              },
+ 
+              {
+                title: "Analyze Bundle Size",
+                description: "Measure your bundle before optimizing so you know exactly what needs to be split."
+              },
+ 
+              {
+                title: "Avoid Over-Splitting",
+                description: "Group related features together instead of creating excessive numbers of tiny chunks."
+              },
+ 
+              {
+                title: "Consider Preloading Important Pages",
+                description: "Preloading frequently visited pages improves navigation speed significantly."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Real-World Example",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "A SaaS Dashboard application may use:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Home Chunk",
+              "Dashboard Chunk",
+              "Analytics Chunk",
+              "Settings Chunk",
+              "Admin Chunk"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Most users:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Download Home",
+              "→",
+              "Download Dashboard"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Never download:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Admin",
+              "Analytics"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Unless they actually need them. This can reduce startup bundle size by several megabytes."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Code Splitting vs Lazy Loading (Comparison Table)",
+ 
+        blocks: [
+ 
+          {
+            type: "table",
+            headers: [
+              "Feature",
+              "Code Splitting",
+              "Lazy Loading"
+            ],
+ 
+            rows: [
+              ["Purpose", "Create chunks", "Load chunks later"],
+              ["Uses Dynamic Import", "Yes", "Yes"],
+              ["Improves Initial Load", "Yes", "Yes"],
+              ["Requires Suspense", "Not Always", "Usually"],
+              ["React.lazy()", "Creates chunk", "Loads chunk"]
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Interview Questions",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "What is Code Splitting?",
+                answer:
+                  "Code Splitting is the process of dividing a large JavaScript bundle into smaller chunks that can be loaded independently."
+              },
+ 
+              {
+                question: "Why is Code Splitting important?",
+                answer:
+                  "It reduces bundle size, improves loading speed, and enhances application performance."
+              },
+ 
+              {
+                question: "How does React support Code Splitting?",
+                answer:
+                  "Using React.lazy(), Dynamic Imports, and Suspense.",
+ 
+                examples: [
+                  {
+                    title: "Tools Used",
+                    language: "jsx",
+                    content: `React.lazy()
+Dynamic Imports
+Suspense`
+                  }
+                ]
+              },
+ 
+              {
+                question: "What is the difference between Code Splitting and Lazy Loading?",
+                answer:
+                  "Code Splitting creates separate chunks, while Lazy Loading delays loading those chunks until they are needed."
+              },
+ 
+              {
+                question: "What is the most common use of Code Splitting?",
+                answer:
+                  "Route-based code splitting with React Router."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Summary",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Code Splitting is one of the most important React performance optimization techniques. It breaks large JavaScript bundles into smaller chunks that can be downloaded separately. React achieves this through dynamic imports, React.lazy(), and Suspense."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Code Splitting is commonly applied to routes, dashboards, charts, editors, modals, and other heavy components."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When combined with Lazy Loading, it significantly reduces initial load time, improves user experience, lowers bandwidth consumption, and makes large-scale React applications faster and more scalable."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "A production-grade React application almost always uses some form of Code Splitting to keep bundle sizes manageable and deliver optimal performance."
+          }
+ 
+        ]
+      }
     ]
   },
 
@@ -7577,7 +8859,1233 @@ function App() {
     readingTime: "12 min",
         
     content: [
-
+        {
+        heading: "Introduction",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Modern React applications often need to handle things that take time:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Loading components",
+              "Fetching API data",
+              "Downloading route bundles",
+              "Loading images",
+              "Loading third-party libraries"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Traditionally, developers manually managed loading states using variables like:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const [loading, setLoading] = useState(true);`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "As applications grew larger, managing these loading states became repetitive and complex."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "To solve this problem, React introduced Suspense, a powerful feature that allows developers to declaratively handle asynchronous loading states."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense lets React pause rendering of a component until some required resource becomes available and display fallback content while waiting."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What is Suspense?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense is a React component that allows you to display a fallback UI while React waits for something to finish loading."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Think of Suspense as a \"loading boundary.\""
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of writing:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `if (loading) {
+  return <Spinner />;
+}`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "For every component, Suspense lets React handle loading states automatically."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Simple Definition",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense allows React to:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Pause Rendering",
+              "→",
+              "Show Fallback UI",
+              "→",
+              "Wait for Resource",
+              "→",
+              "Continue Rendering"
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Why Was Suspense Introduced?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Before Suspense, developers handled loading manually."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `function UserProfile() {
+  const [loading, setLoading] = useState(true);
+ 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+ 
+  return <Profile />;
+}`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Problems:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Repeated loading logic",
+              "Difficult to maintain",
+              "Nested loading states become messy",
+              "Poor scalability"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense provides a cleaner approach."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Basic Syntax",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense fallback={<Loading />}>
+  <Component />
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Explanation:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Suspense — Creates a loading boundary.",
+              "fallback — UI displayed while content loads.",
+              "Component — The component React is waiting for."
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "First Example",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import {
+  Suspense,
+  lazy
+} from "react";
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+function App() {
+  return (
+    <Suspense
+      fallback={<h2>Loading...</h2>}
+    >
+      <Dashboard />
+    </Suspense>
+  );
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Output Flow",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Initially:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Loading..."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "After Component Loads:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Dashboard Component"
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "How Suspense Works",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Internally:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "React Starts Rendering",
+              "→",
+              "Component Needs Resource",
+              "→",
+              "Resource Not Ready",
+              "→",
+              "Rendering Pauses",
+              "→",
+              "Fallback Appears",
+              "→",
+              "Resource Loads",
+              "→",
+              "Rendering Continues"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This entire process is handled automatically."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Suspense and Lazy Loading",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "The most common use of Suspense is with React.lazy()."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Profile = lazy(() =>
+  import("./Profile")
+);`
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense fallback={<p>Loading...</p>}>
+  <Profile />
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When Profile is downloading:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Loading..."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When download completes:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Profile Component"
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Why Suspense is Required for React.lazy()",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React.lazy() creates a component that is loaded asynchronously."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Since React does not know how long downloading will take, Suspense provides temporary UI."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Without Suspense:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Dashboard = lazy(() =>
+  import("./Dashboard")
+);
+ 
+<Dashboard />;`
+          },
+ 
+          {
+            type: "warning",
+            content:
+              "React throws an error if a lazy-loaded component is rendered without a Suspense boundary wrapping it."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Real-World Example",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Imagine Netflix. When opening a movie page:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Movie Details",
+              "Reviews",
+              "Recommendations",
+              "Comments"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "May all load separately. Instead of showing a blank screen:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Loading Movie..."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Appears instantly. This is similar to how Suspense works."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Custom Fallback UI",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Fallback doesn't have to be text."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense
+  fallback={<Spinner />}
+>
+  <Dashboard />
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Spinner Component:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `function Spinner() {
+  return (
+    <div>
+      Loading Component...
+    </div>
+  );
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Loading Skeletons",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Professional applications often use skeleton loaders."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense
+  fallback={<UserSkeleton />}
+>
+  <UserProfile />
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of showing:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Loading..."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Users see:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Profile Placeholder"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Which feels faster."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Multiple Components Inside Suspense",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense
+  fallback={<p>Loading...</p>}
+>
+  <Profile />
+  <Settings />
+  <Dashboard />
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "React waits until all required components are ready."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Nested Suspense Boundaries",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Large applications often use multiple Suspense boundaries."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense fallback={<PageLoader />}>
+  <Dashboard>
+ 
+    <Suspense
+      fallback={<ChartLoader />}
+    >
+      <AnalyticsChart />
+    </Suspense>
+ 
+  </Dashboard>
+</Suspense>`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Output Flow (Nested Suspense)",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dashboard Loading:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Loading Dashboard..."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Dashboard Loaded:"
+          },
+ 
+          {
+            type: "output",
+            content: [
+              "Dashboard Visible",
+              "Loading Chart..."
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Chart Loaded:"
+          },
+ 
+          {
+            type: "output",
+            content: [
+              "Dashboard Visible",
+              "Analytics Chart Visible"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This creates smoother user experiences."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Suspense for Route Loading",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "One of the most common use cases."
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `const Home = lazy(() =>
+  import("./Home")
+);
+ 
+const Dashboard = lazy(() =>
+  import("./Dashboard")
+);`
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense fallback={<Loader />}>
+  <Routes>
+    <Route
+      path="/"
+      element={<Home />}
+    />
+ 
+    <Route
+      path="/dashboard"
+      element={<Dashboard />}
+    />
+  </Routes>
+</Suspense>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Routes load only when visited."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Suspense and Data Fetching",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Historically Suspense was primarily used for Lazy Loading."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Modern React increasingly supports Suspense for asynchronous data loading as well."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Conceptually:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Component Needs Data",
+              "→",
+              "Data Not Available",
+              "→",
+              "Suspense Fallback Appears",
+              "→",
+              "Data Arrives",
+              "→",
+              "Component Renders"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This enables React to manage loading states automatically."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Suspense vs Traditional Loading State",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Traditional Approach:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `if (loading) {
+  return <Loading />;
+}`
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense Approach:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<Suspense fallback={<Loading />}>
+  <Profile />
+</Suspense>`
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Traditional Approach",
+            leftItems: [
+              "Simple",
+              "Easy to understand",
+              "Repetitive",
+              "Manual state management"
+            ],
+ 
+            rightTitle: "Suspense Approach",
+            rightItems: [
+              "Cleaner",
+              "Declarative",
+              "Scalable",
+              "Better user experience"
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Suspense vs Error Boundaries",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Developers often confuse these."
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Suspense",
+            leftItems: [
+              "Handles Loading States",
+              "Downloading Component",
+              "Fetching Data",
+              "Loading Chunk"
+            ],
+ 
+            rightTitle: "Error Boundary",
+            rightItems: [
+              "Handles Runtime Errors",
+              "Component Crash",
+              "JavaScript Error",
+              "Render Failure"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Often both are used together."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Example",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <Suspense
+    fallback={<Loader />}
+  >
+    <Dashboard />
+  </Suspense>
+</ErrorBoundary>`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What Happens Under the Hood?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "This is a topic many tutorials skip."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "React internally works differently than most developers expect."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "When a component cannot render because a resource is unavailable:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "React Throws a Promise"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "React catches that Promise. Then:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Promise Pending",
+              "→",
+              "Show Fallback",
+              "→",
+              "Promise Resolved",
+              "→",
+              "Retry Rendering"
+            ]
+          },
+ 
+          {
+            type: "note",
+            content:
+              "This mechanism powers Suspense. Understanding this explains why Suspense feels \"magical.\""
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Benefits of Suspense",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Cleaner Code",
+                description: "Less manual loading logic scattered across components."
+              },
+ 
+              {
+                title: "Better User Experience",
+                description: "Users immediately see feedback while content loads."
+              },
+ 
+              {
+                title: "Easier Maintenance",
+                description: "Loading states become centralized rather than duplicated."
+              },
+ 
+              {
+                title: "Works with Lazy Loading",
+                description: "Perfect companion for React.lazy()."
+              },
+ 
+              {
+                title: "Supports Progressive Rendering",
+                description: "Different parts of the UI can load independently."
+              },
+ 
+              {
+                title: "Improves Scalability",
+                description: "Large applications become easier to manage."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Common Mistakes",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "Forgetting Fallback",
+                answer:
+                  "Always provide fallback UI to your Suspense boundary. Without it, React has nothing meaningful to display while waiting for the resource to load.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "jsx",
+                    content: `<Suspense>
+  <Dashboard />
+</Suspense>`
+                  }
+                ]
+              },
+ 
+              {
+                question: "One Huge Suspense Boundary",
+                answer:
+                  "Wrapping the entire application in a single Suspense boundary means users may wait longer than necessary, since everything is treated as one unit. Use smaller, more focused boundaries when appropriate.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "text",
+                    content: `Entire App → Single Suspense`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Loading Tiny Components",
+                answer:
+                  "Avoid wrapping every small component in Suspense. Use it only where asynchronous loading actually provides value, such as large modules or route-level components."
+              },
+ 
+              {
+                question: "Using Suspense Everywhere",
+                answer:
+                  "Not every component needs Suspense. Reserve it for lazy-loaded components, routes, large modules, and async resources rather than applying it indiscriminately."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Best Practices",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Use Meaningful Fallbacks:"
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Good",
+            leftItems: [
+              "fallback={<Skeleton />}"
+            ],
+ 
+            rightTitle: "Less Ideal",
+            rightItems: [
+              "fallback={<p>Loading...</p>}"
+            ]
+          },
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Split Large Pages",
+                description: "Use multiple Suspense boundaries instead of one large boundary for the entire page."
+              },
+ 
+              {
+                title: "Lazy Load Routes",
+                description: "The most common production strategy for reducing initial bundle size."
+              },
+ 
+              {
+                title: "Combine with Error Boundaries",
+                description: "Protect both loading and error states by pairing Suspense with Error Boundaries."
+              },
+ 
+              {
+                title: "Use Nested Suspense",
+                description: "Allow different sections of the UI to load independently from each other."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Real-World Use Cases",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Route Loading",
+                description: "Dashboard Page, Profile Page, and Admin Page each load only when visited."
+              },
+ 
+              {
+                title: "Charts",
+                description: "Analytics Dashboards, Reports, and Graphs load asynchronously without blocking the rest of the UI."
+              },
+ 
+              {
+                title: "Modals",
+                description: "Login Modal, Settings Modal, and Help Modal load only when opened."
+              },
+ 
+              {
+                title: "Heavy Components",
+                description: "Rich Text Editors, Maps, and Video Players are loaded on demand."
+              },
+ 
+              {
+                title: "API-Based UI",
+                description: "User Profile, Comments, and Notifications can load independently as data arrives."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Interview Questions",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "What is Suspense?",
+                answer:
+                  "Suspense is a React component that allows React to pause rendering while waiting for asynchronous resources and display fallback content during that time."
+              },
+ 
+              {
+                question: "Why is Suspense used?",
+                answer:
+                  "To handle loading states declaratively and improve user experience."
+              },
+ 
+              {
+                question: "What is the fallback prop?",
+                answer:
+                  "The UI displayed while React waits for a component or resource to load.",
+ 
+                examples: [
+                  {
+                    title: "Example",
+                    language: "jsx",
+                    content: `fallback={<Loader />}`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Does React.lazy() require Suspense?",
+                answer:
+                  "Yes. Lazy-loaded components must be wrapped in a Suspense boundary."
+              },
+ 
+              {
+                question: "Can Suspense be nested?",
+                answer:
+                  "Yes. Multiple Suspense boundaries allow different parts of the UI to load independently."
+              },
+ 
+              {
+                question: "What is the difference between Suspense and Error Boundaries?",
+                answer:
+                  "Suspense handles loading states, while Error Boundaries handle runtime errors."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Summary",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suspense is one of React's most powerful features for handling asynchronous rendering. It allows React to pause rendering while waiting for resources such as lazy-loaded components or asynchronous data and display fallback UI during that time."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Combined with React.lazy(), Suspense enables efficient code splitting, faster application loading, better user experiences, and cleaner code."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Modern React applications commonly use Suspense for route loading, dashboards, charts, modals, and data-driven interfaces."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Understanding Suspense is essential because it represents React's future direction for handling asynchronous UI in a declarative and scalable way."
+          }
+ 
+        ]
+      }
     ]
   },
 
@@ -7592,7 +10100,1516 @@ function App() {
     readingTime: "12 min",
         
     content: [
-
+         {
+        heading: "Introduction",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "No matter how carefully an application is built, errors can still occur. A component may fail because of unexpected data, a bug in rendering logic, an invalid API response, or a third-party library issue."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Before React 16, if a component threw an error during rendering, the entire React component tree could become corrupted, often leaving users with a blank or broken interface."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "To solve this problem, React introduced Error Boundaries."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries allow developers to catch JavaScript errors in parts of the UI and display a fallback interface instead of crashing the entire application."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "They act like a safety net that prevents one broken component from bringing down the whole application."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What are Error Boundaries?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "An Error Boundary is a special React component that catches JavaScript errors occurring in its child component tree during rendering and displays an alternative UI instead of crashing the application."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Think of Error Boundaries as:"
+          },
+ 
+          {
+            type: "quote",
+            content:
+              "try-catch for React Components"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "However, they work differently from traditional JavaScript try-catch blocks."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Why Do We Need Error Boundaries?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Consider this component:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `function UserProfile() {
+  const user = null;
+ 
+  return (
+    <h2>{user.name}</h2>
+  );
+}`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This produces:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Cannot read property 'name' of null"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Without Error Boundaries:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Component Crashes",
+              "→",
+              "React Tree Breaks",
+              "→",
+              "User Sees Blank Screen"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "With Error Boundaries:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Component Crashes",
+              "→",
+              "Error Boundary Catches Error",
+              "→",
+              "Fallback UI Appears"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "The application remains functional."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Real-World Example",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Imagine an e-commerce website."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Components:"
+          },
+ 
+          {
+            type: "list",
+            items: [
+              "Navbar",
+              "Product List",
+              "Recommendations",
+              "Shopping Cart",
+              "Footer"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suppose the Recommendations component crashes."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Without Error Boundary:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Entire Website Crashes"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "With Error Boundary:"
+          },
+ 
+          {
+            type: "output",
+            content: [
+              "Navbar Works",
+              "Product List Works",
+              "Recommendations Shows Error Message",
+              "Cart Works",
+              "Footer Works"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Only the problematic section fails."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Basic Concept",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries wrap other components."
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <UserProfile />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "If UserProfile crashes:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Fallback UI"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Is displayed."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Creating an Error Boundary",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Currently, Error Boundaries must be implemented using a Class Component."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Functional components cannot directly become Error Boundaries."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Basic Error Boundary Example",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import React from "react";
+ 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      hasError: false
+    };
+  }
+ 
+  static getDerivedStateFromError() {
+    return {
+      hasError: true
+    };
+  }
+ 
+  render() {
+    if (this.state.hasError) {
+      return <h2>Something went wrong.</h2>;
+    }
+ 
+    return this.props.children;
+  }
+}
+ 
+export default ErrorBoundary;`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Using Error Boundary",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <UserProfile />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "If UserProfile throws an error:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Something went wrong."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Appears instead."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Understanding getDerivedStateFromError()",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "This lifecycle method is triggered when an error occurs."
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `static getDerivedStateFromError(error)`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Purpose:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Catch Error",
+              "→",
+              "Update State",
+              "→",
+              "Render Fallback UI"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `static getDerivedStateFromError(error) {
+  return {
+    hasError: true
+  };
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Understanding componentDidCatch()",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React provides another lifecycle method:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `componentDidCatch(error, errorInfo)`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This method allows logging errors."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `componentDidCatch(error, errorInfo) {
+  console.log(error);
+ 
+  console.log(errorInfo);
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What is errorInfo?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "React provides debugging information."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Component Stack Trace:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "UserProfile",
+              "→",
+              "Dashboard",
+              "→",
+              "App"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This helps developers identify where the error occurred."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Complete Error Boundary Example",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    this.state = {
+      hasError: false
+    };
+  }
+ 
+  static getDerivedStateFromError() {
+    return {
+      hasError: true
+    };
+  }
+ 
+  componentDidCatch(error, errorInfo) {
+    console.error(error);
+ 
+    console.error(errorInfo);
+  }
+ 
+  render() {
+    if (this.state.hasError) {
+      return (
+        <h2>
+          Something went wrong.
+        </h2>
+      );
+    }
+ 
+    return this.props.children;
+  }
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "How Error Boundaries Work",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Suppose:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<UserProfile />`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Throws an error. React performs:"
+          },
+ 
+          {
+            type: "flow",
+            steps: [
+              "Component Throws Error",
+              "→",
+              "Error Boundary Detects Error",
+              "→",
+              "getDerivedStateFromError()",
+              "→",
+              "State Updates",
+              "→",
+              "Fallback UI Renders"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "The application continues running."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Example with Buggy Component",
+ 
+        blocks: [
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `function BuggyComponent() {
+  throw new Error("Crash");
+}`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Usage:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <BuggyComponent />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "output",
+            content:
+              "Something went wrong."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Instead of a crashed application."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Boundary Placement",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries can be placed at different levels."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Entire Application:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <App />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Protects whole app."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Page Level:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <Dashboard />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Protects only Dashboard."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Component Level:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <AnalyticsChart />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Protects specific component."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Recommended Strategy",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Most production applications use multiple Error Boundaries."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "tree",
+            content: `App
+  ├── Navbar
+  ├── Dashboard Boundary
+  │   └── Dashboard
+  ├── Analytics Boundary
+  │   └── Analytics
+  └── Footer`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This isolates failures."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Custom Fallback UI",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Fallback doesn't need to be plain text."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `if (this.state.hasError) {
+  return (
+    <div>
+      <h2>Oops!</h2>
+ 
+      <p>
+        Failed to load this section.
+      </p>
+    </div>
+  );
+}`
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Retry Mechanism",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Many tutorials stop at displaying an error message."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Production applications often allow recovery."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<button
+  onClick={() =>
+    this.setState({
+      hasError: false
+    })
+  }
+>
+  Retry
+</button>`
+          },
+ 
+          {
+            type: "tip",
+            content:
+              "Users can attempt rendering again. This is commonly used in enterprise applications."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Boundaries and Third-Party Libraries",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Third-party libraries can fail unexpectedly."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Charts",
+              "Maps",
+              "Editors",
+              "Video Players"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Wrap them:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <Chart />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "To isolate failures."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What Errors Do Error Boundaries Catch?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries catch errors occurring during:"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Rendering:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `return <h1>{user.name}</h1>;`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Lifecycle Methods:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `componentDidMount()`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Constructors:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `constructor()`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Child Components:"
+          },
+ 
+          {
+            type: "tree",
+            content: `Parent
+  └── Child
+      └── GrandChild`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Errors in children are caught."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "What Errors Do Error Boundaries NOT Catch?",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "This is one of the most important interview questions."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries do NOT catch:"
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Event Handler Errors:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<button
+  onClick={() => {
+    throw new Error();
+  }}
+>
+  Click
+</button>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Reason: Event handlers execute outside rendering. Use try-catch instead."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Async Errors:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `setTimeout(() => {
+  throw new Error();
+});`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Not caught."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Promise Errors:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `fetch(...)
+  .then(...)
+  .catch(...)`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Must be handled manually."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Server-Side Rendering Errors:"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Traditional Error Boundaries do not catch SSR failures."
+          },
+ 
+          {
+            type: "divider"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Errors Inside Error Boundary Itself:"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "If Error Boundary crashes:"
+          },
+ 
+          {
+            type: "output",
+            content:
+              "No Protection"
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "React looks for another Error Boundary higher up."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Boundaries vs try-catch",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Many beginners think they are the same."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "try-catch handles:"
+          },
+ 
+          {
+            type: "code",
+            language: "javascript",
+            content: `try {
+  riskyFunction();
+}
+catch(error) {
+}`
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "try-catch",
+            leftItems: [
+              "Functions",
+              "Async Code",
+              "Events"
+            ],
+ 
+            rightTitle: "Error Boundary",
+            rightItems: [
+              "React Rendering Errors",
+              "Lifecycle Errors",
+              "Component Tree Failures"
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Boundaries and Functional Components",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Currently:"
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Class Components",
+            leftItems: [
+              "Supported ✓"
+            ],
+ 
+            rightTitle: "Functional Components",
+            rightItems: [
+              "Cannot Directly Become Error Boundaries ✗"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "However, functional components can use third-party libraries such as:"
+          },
+ 
+          {
+            type: "code",
+            language: "text",
+            content: `react-error-boundary`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Which provide easier implementations."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "react-error-boundary Library",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Widely used in modern React applications."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `import { ErrorBoundary }
+from "react-error-boundary";`
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary
+  fallback={<h2>Error</h2>}
+>
+  <Dashboard />
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Much simpler than creating a class component."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Logging in Production",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Professional applications rarely just display an error. They send reports to monitoring services."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Examples:"
+          },
+ 
+          {
+            type: "example",
+            items: [
+              "Sentry",
+              "LogRocket",
+              "Datadog",
+              "New Relic",
+              "Bugsnag"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `componentDidCatch(error) {
+  Sentry.captureException(error);
+}`
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "This enables developers to fix bugs quickly."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Error Boundaries + Suspense",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Often used together."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Example:"
+          },
+ 
+          {
+            type: "code",
+            language: "jsx",
+            content: `<ErrorBoundary>
+  <Suspense
+    fallback={<Loader />}
+  >
+    <Dashboard />
+  </Suspense>
+</ErrorBoundary>`
+          },
+ 
+          {
+            type: "comparison",
+            leftTitle: "Suspense Handles",
+            leftItems: [
+              "Loading State"
+            ],
+ 
+            rightTitle: "Error Boundary Handles",
+            rightItems: [
+              "Failure State"
+            ]
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Together they create robust UI."
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Best Practices",
+ 
+        blocks: [
+ 
+          {
+            type: "cards",
+            items: [
+              {
+                title: "Use Multiple Boundaries",
+                description: "Protect independent sections of the application separately so one failure does not affect everything."
+              },
+ 
+              {
+                title: "Provide Helpful Messages",
+                description: "Bad: \"Error\". Better: \"Failed to load profile. Please try again.\""
+              },
+ 
+              {
+                title: "Log Errors",
+                description: "Always monitor production failures using a service like Sentry or LogRocket."
+              },
+ 
+              {
+                title: "Add Retry Options",
+                description: "Allow recovery when possible by letting users attempt rendering again."
+              },
+ 
+              {
+                title: "Protect Third-Party Components",
+                description: "Charts and editors are common failure points and should be wrapped individually."
+              },
+ 
+              {
+                title: "Combine with Suspense",
+                description: "Handle both loading and failure states together for a robust UI."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Common Mistakes",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "One Global Boundary Only",
+                answer:
+                  "Wrapping the entire application in a single Error Boundary means users may lose large sections unnecessarily when only a small part fails. Use multiple boundaries to isolate failures to specific sections.",
+ 
+                examples: [
+                  {
+                    title: "Bad",
+                    language: "text",
+                    content: `Entire App → Single Error Boundary`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Ignoring Error Logging",
+                answer:
+                  "Without logging, a bug happens and nobody knows why. Always send errors to a monitoring service so issues can be tracked and fixed quickly."
+              },
+ 
+              {
+                question: "Using Error Boundaries for Event Errors",
+                answer:
+                  "Error Boundaries don't work for errors thrown inside event handlers. Use try-catch instead for those cases.",
+ 
+                examples: [
+                  {
+                    title: "Use Instead",
+                    language: "javascript",
+                    content: `try-catch`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Showing Technical Errors to Users",
+                answer:
+                  "Displaying raw technical errors like \"TypeError: Cannot read property...\" confuses users. Always use friendly, human-readable messages in fallback UI."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Interview Questions",
+ 
+        blocks: [
+ 
+          {
+            type: "faq",
+            items: [
+              {
+                question: "What is an Error Boundary?",
+                answer:
+                  "A React component that catches rendering errors in its child component tree and displays fallback UI instead of crashing the application."
+              },
+ 
+              {
+                question: "Why were Error Boundaries introduced?",
+                answer:
+                  "To prevent the entire React application from crashing when a component fails."
+              },
+ 
+              {
+                question: "Which lifecycle methods are used?",
+                answer:
+                  "getDerivedStateFromError() and componentDidCatch().",
+ 
+                examples: [
+                  {
+                    title: "Lifecycle Methods",
+                    language: "jsx",
+                    content: `getDerivedStateFromError()
+ 
+componentDidCatch()`
+                  }
+                ]
+              },
+ 
+              {
+                question: "Do Error Boundaries catch event handler errors?",
+                answer:
+                  "No. Use try-catch for event handlers."
+              },
+ 
+              {
+                question: "Can functional components be Error Boundaries?",
+                answer:
+                  "Not directly. Error Boundaries are currently implemented using class components or helper libraries."
+              },
+ 
+              {
+                question: "What is the difference between Suspense and Error Boundary?",
+                answer:
+                  "Suspense handles loading states. Error Boundary handles failure states."
+              }
+            ]
+          }
+ 
+        ]
+      },
+ 
+      {
+        heading: "Summary",
+ 
+        blocks: [
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries are React's mechanism for handling rendering failures gracefully. Instead of allowing an entire application to crash because of one faulty component, Error Boundaries catch errors in their child component tree and display fallback UI."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "They are implemented using class components through getDerivedStateFromError() and componentDidCatch()."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "Error Boundaries catch rendering, lifecycle, and constructor errors but do not catch event handler errors, asynchronous errors, or Promise rejections."
+          },
+ 
+          {
+            type: "paragraph",
+            content:
+              "In production applications, they are commonly combined with logging services like Sentry and paired with Suspense to create resilient, user-friendly interfaces that can handle both loading and failure scenarios effectively."
+          }
+ 
+        ]
+      }
     ]
   },
 };

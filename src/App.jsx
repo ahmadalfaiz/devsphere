@@ -13,6 +13,11 @@ import Tutorials from "./pages/Tutorials/Tutorials";
 import TutorialCourse from "./pages/Tutorials/TutorialCourse";
 import TutorialLesson from "./pages/Tutorials/TutorialLesson";
 
+import Courses from "./pages/Courses/Courses";
+import CourseDetails from "./pages/Courses/CourseDetails";
+
+import NotFound from "./pages/Errors/NotFound";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +33,11 @@ function App() {
           <Route path="tutorials" element={<Tutorials />}/>
           <Route path="tutorials/:slug" element={<TutorialCourse />}/>
           <Route path="tutorials/:slug/:lessonSlug" element={<TutorialLesson />}/>
+
+          <Route path="courses" element={<Courses />}/>
+          <Route path="courses/:slug" element={<CourseDetails />}/>
+
+          <Route path="*" element={<NotFound />} />
 
         </Route>
 

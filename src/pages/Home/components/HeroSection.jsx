@@ -1,5 +1,6 @@
 import styles from "./HeroSection.module.css";
 import { Link } from "react-router-dom";
+import heroImage from "../../../assets/images/hero-image.png";
 
 function HeroSection() {
   return (
@@ -33,9 +34,9 @@ function HeroSection() {
             Start Learning
           </Link>
 
-          <button className={styles.secondaryBtn}>
+          <Link to="/courses" className={styles.secondaryBtn}>
             Explore Courses
-          </button>
+          </Link>
 
         </div>
 
@@ -69,7 +70,7 @@ function HeroSection() {
         <div className={styles.glow}></div>
 
         <img
-          src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png"
+          src={heroImage}
           alt="hero"
         />
 

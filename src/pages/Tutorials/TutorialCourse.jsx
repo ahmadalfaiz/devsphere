@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { tutorials }
-from "../../data/tutorialsData";
+//import { tutorials } from "../../data/tutorialsData";
+import lessonRegistry from "../../registry/lessonRegistry";
 
 import styles from "./Tutorials.module.css";
 
@@ -20,7 +20,7 @@ function TutorialCourse() {
     useState([0]);
 
   const tutorial =
-    tutorials[slug];
+    lessonRegistry?.[slug]; //lessonRegistry[slug]
 
   if (!tutorial) {
 
@@ -138,7 +138,7 @@ function TutorialCourse() {
 
               <div>
                 <h2>
-                  {tutorial.title}
+                  {tutorial.info.title}
                 </h2>
 
                 <p>
@@ -166,11 +166,11 @@ function TutorialCourse() {
           >
 
             {
-              tutorial.lessons.map(
+              tutorial.sections.map(
                 (section, index) => (
 
                   <div
-                    key={section.section}
+                    key={section.id} /*173:key={section.section} 184:{section.section}*/
                   >
 
                     <div
@@ -181,7 +181,7 @@ function TutorialCourse() {
                     >
 
                       <span>
-                        {section.section}
+                        {section.title}
                       </span>
 
                       <span>
@@ -204,7 +204,7 @@ function TutorialCourse() {
                         >
 
                           {
-                            section.topics.map(
+                            section.lessons.map( //section.topics.map
                               (lesson) => (
 
                                 <Link
@@ -286,7 +286,7 @@ function TutorialCourse() {
                 (section, index) => (
 
                   <div
-                    key={section.section}
+                    key={section.id} //key={section.section}
                   >
 
                     <div
@@ -299,7 +299,7 @@ function TutorialCourse() {
                     >
 
                       <span>
-                        {section.section}
+                        {section.title}
                       </span>
 
                       <span>
@@ -328,7 +328,7 @@ function TutorialCourse() {
                         >
 
                           {
-                            section.topics.map(
+                            section.items.map( //section.topics.map
                               (resource) => (
 
                                 <Link
@@ -424,17 +424,17 @@ function TutorialCourse() {
             }
           >
             {
-              tutorial.category
+              tutorial.info.category //tutorial.category
             }
           </span>
 
           <h1>
-            {tutorial.title}
+            {tutorial.info.title}
           </h1>
 
           <p>
             {
-              tutorial.description
+              tutorial.info.description //tutorial.description 432:tutorial.title
             }
           </p>
 
@@ -454,8 +454,7 @@ function TutorialCourse() {
 
             <h3>
               {
-                tutorial.lessons
-                  .length
+                Object.keys(tutorial.lessonIndex).length //tutorial.lessons.length
               }
             </h3>
 
@@ -473,7 +472,7 @@ function TutorialCourse() {
 
             <h3>
               {
-                tutorial.duration
+                `${tutorial.info.estimatedHours} Hours` //tutorial.duration
               }
             </h3>
 
@@ -491,7 +490,7 @@ function TutorialCourse() {
 
             <h3>
               {
-                tutorial.level
+                tutorial.info.difficulty //tutorial.level
               }
             </h3>
 
@@ -548,7 +547,7 @@ function TutorialCourse() {
             className={styles.startBtn}
             onClick={() =>
               navigate(
-                `/tutorials/${slug}/${tutorial.lessons[0].topics[0].slug}`
+                `/tutorials/${slug}/${tutorial.sections[0].lessons[0].slug}` //tutorials/${slug}/${tutorial.lessons[0].topics[0].slug}
               )
             }
           >

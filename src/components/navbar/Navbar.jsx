@@ -9,6 +9,11 @@ function Navbar() {
   const [user, setUser] = useState(null);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  /* new states here for mobile responsiveness of navbar items */
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [mobileAccordion, setMobileAccordion] = useState(null);
+  /* up to this point */
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
 
@@ -76,6 +81,31 @@ function Navbar() {
 
   }, []);
 
+  // Close mobile menu automatically if window is resized back to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1200) {
+        setShowMobileMenu(false);
+        setMobileAccordion(null);
+      }
+    };
+ 
+    window.addEventListener("resize", handleResize);
+ 
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+ 
+  const toggleMobileAccordion = (key) => {
+    setMobileAccordion((prev) => (prev === key ? null : key));
+  };
+ 
+  const closeMobileMenu = () => {
+    setShowMobileMenu(false);
+    setMobileAccordion(null);
+  };
+
   return (
     <header className={styles.header}>
 
@@ -84,10 +114,29 @@ function Navbar() {
 
         <div className={styles.topNavbar}>
 
-          {/* LOGO */}
+          {/* Hamburger Menu button for navbar mobile view */}
+          <div className={styles.leftSection}>
+            <button
+              className={`${styles.hamburger} ${showMobileMenu ? styles.hamburgerOpen : ""}`}
+              aria-label="Open menu"
+              aria-expanded={showMobileMenu}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowMobileMenu((prev) => !prev);
+                setMobileAccordion(null);
+              }}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
 
-          <div className={styles.logo}>
-            <h1>DevSphere</h1>
+            {/* LOGO */}
+
+            <div className={styles.logo}>
+              <h1>DevSphere</h1>
+            </div>
+
           </div>
 
           {/* SEARCH BAR */}
@@ -151,7 +200,7 @@ function Navbar() {
               </div>
 
             <Link to="/blogs">Blogs</Link>
-            <Link to="/jobs">Jobs</Link>
+            <Link to="/games">Games</Link>
 
           </nav>
 
@@ -270,6 +319,119 @@ function Navbar() {
 
         </div>
 
+        {/* MOBILE OVERLAY — closes panel when clicking outside it */}
+        {showMobileMenu && (
+          <div
+            className={styles.mobileOverlay}
+            onClick={closeMobileMenu}
+          ></div>
+        )}
+
+        {/* MOBILE SLIDE-DOWN PANEL */}
+        <div
+          className={`${styles.mobilePanel} ${showMobileMenu ? styles.mobilePanelOpen : ""}`}
+        >
+          <ul className={styles.mobileLinkList}>
+ 
+            <li>
+              <Link to="/" onClick={closeMobileMenu}>Home</Link>
+            </li>
+
+            {/* COURSES ACCORDION */}
+            <li className={styles.mobileAccordionItem}>
+              <button
+                className={styles.mobileAccordionTrigger}
+                onClick={() => toggleMobileAccordion("courses")}
+              >
+                Courses
+                <span
+                  className={`${styles.mobileAccordionArrow} ${
+                    mobileAccordion === "courses" ? styles.mobileAccordionArrowOpen : ""
+                  }`}
+                >
+                  ▾
+                </span>
+              </button>
+
+              <div
+                className={`${styles.mobileAccordionPanel} ${
+                  mobileAccordion === "courses" ? styles.mobileAccordionPanelOpen : ""
+                }`}
+              >
+                <Link to="/courses/webdev" onClick={closeMobileMenu}>Web Development</Link>
+                <Link to="/courses/dsa" onClick={closeMobileMenu}>DSA</Link>
+                <Link to="/courses/python" onClick={closeMobileMenu}>Python</Link>
+                <Link to="/courses/machine-learning" onClick={closeMobileMenu}>Machine Learning</Link>
+              </div>
+            </li>
+
+            {/* TUTORIALS ACCORDION */}
+            <li className={styles.mobileAccordionItem}>
+              <button
+                className={styles.mobileAccordionTrigger}
+                onClick={() => toggleMobileAccordion("tutorials")}
+              >
+                Tutorials
+                <span
+                  className={`${styles.mobileAccordionArrow} ${
+                    mobileAccordion === "tutorials" ? styles.mobileAccordionArrowOpen : ""
+                  }`}
+                >
+                  ▾
+                </span>
+              </button>
+
+              <div
+                className={`${styles.mobileAccordionPanel} ${
+                  mobileAccordion === "tutorials" ? styles.mobileAccordionPanelOpen : ""
+                }`}
+              >
+                <Link to="/tutorials/react" onClick={closeMobileMenu}>React</Link>
+                <Link to="/tutorials/javascript" onClick={closeMobileMenu}>JavaScript</Link>
+                <Link to="/tutorials/java" onClick={closeMobileMenu}>Java</Link>
+                <Link to="/tutorials/cpp" onClick={closeMobileMenu}>C++</Link>
+              </div>
+            </li>
+
+            {/* PRACTICE ACCORDION */}
+            <li className={styles.mobileAccordionItem}>
+              <button
+                className={styles.mobileAccordionTrigger}
+                onClick={() => toggleMobileAccordion("practice")}
+              >
+                Practice
+                <span
+                  className={`${styles.mobileAccordionArrow} ${
+                    mobileAccordion === "practice" ? styles.mobileAccordionArrowOpen : ""
+                  }`}
+                >
+                  ▾
+                </span>
+              </button>
+
+              <div
+                className={`${styles.mobileAccordionPanel} ${
+                  mobileAccordion === "practice" ? styles.mobileAccordionPanelOpen : ""
+                }`}
+              >
+                <Link to="/practice/problems" onClick={closeMobileMenu}>Problems</Link>
+                <Link to="/practice/quizzes" onClick={closeMobileMenu}>Quizzes</Link>
+                <Link to="/practice/interview" onClick={closeMobileMenu}>Interview Prep</Link>
+                <Link to="/practice/contests" onClick={closeMobileMenu}>Contests</Link>
+              </div>
+            </li>
+ 
+            <li>
+              <Link to="/blogs" onClick={closeMobileMenu}>Blogs</Link>
+            </li>
+ 
+            <li>
+              <Link to="/games" onClick={closeMobileMenu}>Games</Link>
+            </li>
+ 
+          </ul>
+        </div>
+
         {/* BOTTOM NAVBAR */}
 
         <div className={styles.bottomNavbar}>
@@ -288,6 +450,8 @@ function Navbar() {
         </div>
         
       </nav>
+      
+      {/* up to this */}
 
       {
         showAuthModal && (

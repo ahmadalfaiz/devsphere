@@ -1,0 +1,72 @@
+/* TEAM */
+
+Founder & Lead Developer: Faiz Ahmad
+Role: Software Developer
+Website: https://devspherehq.com
+
+/* PROJECT */
+
+Project Name: DevSphere
+Description: A comprehensive developer learning platform offering high-quality tutorials, hands-on projects, interview preparation, coding practice, blogs, and developer resources.
+
+Mission:
+To make high-quality programming education accessible, practical, and structured for developers worldwide.
+
+Primary Topics:
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Next.js
+- Node.js
+- Express.js
+- REST APIs
+- Python
+- C
+- C++
+- Java
+- SQL
+- MongoDB
+- Git & GitHub
+- DevOps
+- Cloud Computing
+- Data Structures & Algorithms
+- System Design
+- Artificial Intelligence
+- Machine Learning
+- Cybersecurity
+
+Website:
+https://devspherehq.com
+
+/* TECHNOLOGIES */
+
+Frontend:
+React
+Vite
+React Router
+
+Backend:
+Node.js
+Express.js
+
+Database:
+MongoDB
+
+Authentication:
+JWT
+
+Hosting:
+Cloudflare Pages
+
+Version Control:
+Git & GitHub
+
+/* SPECIAL THANKS */
+
+Thanks to the open-source community and educators whose knowledge, tools, and contributions continue to inspire developers around the world.
+
+/* COPYRIGHT */
+
+© 2026 DevSphere. All rights reserved.
