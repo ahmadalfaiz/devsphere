@@ -23,7 +23,7 @@ function Profile() {
 
         const response =
           await fetch(
-            `http://localhost:5000/api/profile?email=${user.email}`
+            `https://devsphere-2nqo.onrender.com/api/profile?email=${user.email}`
           );
 
         const data =
