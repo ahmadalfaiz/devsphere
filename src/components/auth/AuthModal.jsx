@@ -158,6 +158,7 @@ function AuthModal({ authType, setAuthType, closeModal }) {
 
   const googleLogin = useGoogleLogin({
     flow: "implicit",
+    /* newly added for testing */ scope: "openid profile email",
 
     onSuccess: async (tokenResponse) => {
       try {
