@@ -25,7 +25,7 @@ function AuthModal({ authType, setAuthType, closeModal }) {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        "http://devsphere-2nqo.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -50,7 +50,7 @@ function AuthModal({ authType, setAuthType, closeModal }) {
     } else {
 
       const response = await fetch(
-        "http://localhost:5000/api/auth/login",
+        "http://devsphere-2nqo.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -107,7 +107,7 @@ function AuthModal({ authType, setAuthType, closeModal }) {
     try {
 
       const response = await fetch(
-        "http://localhost:5000/api/auth/google",
+        "http://devsphere-2nqo.onrender.com/api/auth/google",
         {
           method: "POST",
           headers: {
@@ -176,7 +176,7 @@ function AuthModal({ authType, setAuthType, closeModal }) {
           await userInfoResponse.json();
 
         const response = await fetch(
-          "http://localhost:5000/api/auth/google",
+          "http://devsphere-2nqo.onrender.com/api/auth/google",
           {
             method: "POST",
             headers: {
