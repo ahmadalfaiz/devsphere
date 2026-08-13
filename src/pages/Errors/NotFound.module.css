@@ -14,8 +14,6 @@
     #050b1a;
 }
 
-<<<<<<< HEAD
-=======
 /*.notFoundPage::before {
   background:radial-gradient(
         circle,
@@ -24,7 +22,6 @@
     );
 }*/
 
->>>>>>> 5bd2f56 (Add automatic tutorial sitemap generation)
 .notFoundPage::before{
     content:"";
     position:fixed;
