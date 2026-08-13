@@ -1,7 +1,7 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { createWriteStream, existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
-//import contentRegistry from "../src/content/contentRegistry.js";
+import contentRegistry from "../src/content/contentRegistry.js";
 
 const SITE_URL = "https://devspherehq.com";
 
@@ -82,6 +82,28 @@ for (const techStack in contentRegistry) {
   }
 }*/
 
+/* Newly added code on 13th AUg to automatically add lesson url */
+const lessonPages = [];
+
+Object.entries(contentRegistry).forEach(
+  ([stackSlug, lessons]) => {
+
+    Object.keys(lessons).forEach(
+      (lessonSlug) => {
+
+        lessonPages.push({
+          url: `/tutorials/${stackSlug}/${lessonSlug}`,
+          changefreq: "monthly",
+          priority: 0.80,
+        });
+
+      }
+    );
+
+  }
+);
+/* Upto this line newly added 13th Aug */
+
 async function generateSitemap() {
   const distFolder = resolve("dist");
 
@@ -106,11 +128,38 @@ async function generateSitemap() {
     });
   });
 
+  /* Newly added code on 13th AUg to automatically add lesson url */
+  lessonPages.forEach((page) => {
+
+    sitemap.write({
+      url: page.url,
+      changefreq: page.changefreq,
+      priority: page.priority,
+      lastmod: new Date().toISOString(),
+    });
+
+  });
+  /* Upto this line newly added 13th Aug */
+
   sitemap.end();
 
   await streamToPromise(sitemap);
 
   console.log("✅ sitemap.xml generated successfully!");
+
+  /* Newly added code on 13th Aug to automatically add lesson url */
+  console.log(
+    `📄 Static pages: ${pages.length}`
+  );
+
+  console.log(
+    `📚 Tutorial lessons: ${lessonPages.length}`
+  );
+
+  console.log(
+    `🔗 Total URLs: ${pages.length + lessonPages.length}`
+  );
+  /* Upto this line newly added 13th Aug */
 }
 
 generateSitemap().catch((error) => {

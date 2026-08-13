@@ -12,10 +12,10 @@ function NotFound() {
 
     setSEO({
 
-      title: "404 - Page Not Found | DevSphereHQ",
+      title: "404 - Page Not Found | DevSphere",
 
       description:
-        "The page you are looking for could not be found. Browse our tutorials and continue learning on DevSphereHQ.",
+        "The page you are looking for could not be found. Browse our tutorials and continue learning on DevSphere.",
 
       url: "/404",
 

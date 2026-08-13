@@ -137,13 +137,13 @@ npm run dev
 Frontend will run on:
 
 ```text
-http://localhost:5173
+https://devspherehq.pages.dev/
 ```
 
 Backend will run on:
 
 ```text
-http://localhost:5000
+https://devsphere-2nqo.onrender.com
 ```
 
 ---
