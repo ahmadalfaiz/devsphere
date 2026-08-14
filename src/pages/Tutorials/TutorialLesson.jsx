@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import { tutorials } from "../../data/tutorialsData";
 import lessonRegistry from "../../registry/lessonRegistry";
 import contentRegistry from "../../content/contentRegistry";
+import { setSEO } from "../../utils/seo";
 
 import styles from "./Tutorials.module.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -14,6 +15,56 @@ function TutorialLesson() {
     slug,
     lessonSlug,
   } = useParams();
+
+  /* Added on 15th Aug new part for unique title for each lesson */
+  useEffect(() => {
+    const currentTutorial = lessonRegistry?.[slug];
+
+    if (!currentTutorial) {
+      setSEO({
+        title: "Tutorial Not Found - DevSphere",
+        description: "The requested DevSphere tutorial could not be found.",
+        url: `/tutorials/${slug || ""}`,
+      });
+
+      return;
+    }
+
+    const currentLesson =
+      currentTutorial.lessonIndex?.[lessonSlug] ||
+      currentTutorial.resourceIndex?.[lessonSlug];
+
+    if (!currentLesson) {
+      setSEO({
+        title: "Lesson Not Found - DevSphere",
+        description: "The requested DevSphere lesson could not be found.",
+        url: `/tutorials/${slug}/${lessonSlug || ""}`,
+      });
+
+      return;
+    }
+
+    setSEO({
+      title:
+        currentLesson.seo?.title ||
+        `${currentLesson.title} - DevSphere ${currentTutorial.info.shortTitle} Tutorial`,
+
+      description:
+        currentLesson.seo?.description ||
+        currentLesson.description ||
+        currentTutorial.info.description,
+
+      keywords:
+        currentLesson.seo?.keywords ||
+        [...new Set([
+          currentLesson.title,
+          ...(currentLesson.tags || [])
+        ])],
+
+      url: `/tutorials/${slug}/${lessonSlug}`,
+    });
+  }, [slug, lessonSlug]);
+  /* up to this */
 
   const tutorial =
     lessonRegistry?.[slug]; //tutorials[slug];
