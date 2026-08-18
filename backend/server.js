@@ -41,7 +41,32 @@ import profileRoutes from "./routes/profileRoutes.js";
 
 const app = express();
 
-app.use(cors({origin: "https://devspherehq.pages.dev",}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://devspherehq.pages.dev",
+  "https://devspherehq.com",
+  "https://www.devspherehq.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests without an Origin header
+      // (for example, server-to-server requests or tools like Postman)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
