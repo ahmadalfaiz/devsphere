@@ -55,32 +55,24 @@
 .socialIcons a{
   width:48px;
   height:48px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:14px;
-
+  color: #00d084;
   background:
   rgba(255,255,255,0.05);
-
   border:
   1px solid rgba(255,255,255,0.08);
-
   text-decoration:none;
-
   font-size:1.2rem;
-
   transition:0.35s;
 }
 
 .socialIcons a:hover{
   transform:translateY(-5px);
-
   background:
   rgba(0,208,132,0.12);
-
   border:
   1px solid rgba(0,208,132,0.3);
 }

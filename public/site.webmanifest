@@ -1,13 +1,13 @@
 {
-  "name": "DevSphereHQ - Learn Programming & Software Development",
-  "short_name": "DevSphereHQ",
+  "name": "DevSphere - Learn Programming & Software Development",
+  "short_name": "DevSphere",
   "description": "Master programming with comprehensive tutorials, interactive examples, projects, interview preparation, and developer resources. Learn HTML, CSS, JavaScript, React, Node.js, Express.js, Python, REST APIs, databases, cloud computing, and more.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#00d084",
   "lang": "en",
   "dir": "ltr",
   "categories": [
@@ -18,19 +18,25 @@
   ],
   "icons": [
     {
-      "src": "/icons/android-chrome-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/android-chrome-512x512.png",
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/android-chrome-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
