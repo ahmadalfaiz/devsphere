@@ -18,6 +18,11 @@ import CourseDetails from "./pages/Courses/CourseDetails";
 
 import NotFound from "./pages/Errors/NotFound";
 
+import Articles from "./pages/Articles/Articles";
+import ArticlesDetails from "./pages/Articles/ArticlesDetails";
+
+import Contact from "./pages/Contact/Contact";
+
 function App() {
   return (
     <BrowserRouter>
@@ -38,6 +43,11 @@ function App() {
           <Route path="courses/:slug" element={<CourseDetails />}/>
 
           <Route path="*" element={<NotFound />} />
+
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:slug" element={<ArticlesDetails />}/>
+
+          <Route path="/contact-us" element={<Contact />} />
 
         </Route>
 

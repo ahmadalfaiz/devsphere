@@ -1,8 +1,10 @@
 import styles from "./LatestSection.module.css";
+import { Link } from "react-router-dom";
+import articlesData from "../../../data/articlesData";
 
 function LatestSection() {
 
-  const articles = [
+  /*const articles = [
 
     {
       category: "JavaScript",
@@ -34,7 +36,8 @@ function LatestSection() {
       image: "https://images.pexels.com/photos/37801118/pexels-photo-37801118.jpeg"
     }
 
-  ];
+  ];*/
+  const articles = articlesData.slice(0, 3);
 
   return (
 
@@ -114,9 +117,12 @@ function LatestSection() {
 
               </div>
 
-              <button>
+              <Link
+                to={`/articles/${article.slug}`}
+                className={styles.readArticle}
+              >
                 Read Article →
-              </button>
+              </Link>
 
             </div>
 

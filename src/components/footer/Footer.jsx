@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 import { FaGlobe, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Footer() {
 
@@ -34,11 +35,11 @@ function Footer() {
               <FaGlobe />
             </a>
 
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/devspherehq/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedinIn />
             </a>
 
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <a href="" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <FaTwitter />
             </a>
 
@@ -62,21 +63,21 @@ function Footer() {
             Home
           </a>
 
-          <a href="#">
+          <Link to="/courses">
             Courses
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link to="/tutorials">
             Tutorials
-          </a>
+          </Link>
 
-          <a href="#">
-            Blogs
-          </a>
+          <Link to="/articles">
+            Articles
+          </Link>
 
-          <a href="#">
+          <Link to="/contact-us">
             Contact
-          </a>
+          </Link>
 
         </div>
 

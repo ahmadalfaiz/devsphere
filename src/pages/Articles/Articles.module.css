@@ -1,0 +1,802 @@
+/* Articles page CSS Goes here */
+/* =========================================================
+   ARTICLES PAGE
+   ========================================================= */
+.articlesPage {
+  min-height: 100vh;
+  color: #f5f7fa;
+  padding-bottom: 100px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 170, 0.12),
+      transparent 30%
+    ),
+    #050b1a;
+}
+
+.articlesPage::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    left:50%;
+    top:-120px;
+    transform:translateX(-50%);
+    background:radial-gradient(
+        circle,
+        rgba(0,208,132,.18),
+        transparent 70%
+    );
+    pointer-events:none;
+}
+
+/* =========================================================
+   ARTICLES HEADER
+   ========================================================= */
+.articlesHeader {
+  text-align: center;
+  padding: 40px 24px 45px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.articlesTitle {
+  margin: 0;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #00d084;
+}
+
+.articlesSubtitle {
+  max-width: 700px;
+  margin: 14px auto 0;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #aeb8c7;
+  font-weight: 400;
+}
+
+/* =========================================================
+   ARTICLES SECTION
+   ========================================================= */
+.articlesSection {
+  width: min(1400px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   ARTICLES GRID
+   Desktop  : 4 columns
+   Tablet   : 2 columns
+   Mobile   : 1 column
+   ========================================================= */
+.articlesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   ARTICLE CARD
+   ========================================================= */
+.articleCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: rgba(14, 22, 35, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 18px;
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.articleCard:hover {
+  transform: translateY(-7px);
+  border-color: rgba(0, 212, 148, 0.42);
+  background: rgba(16, 27, 41, 0.98);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 212, 148, 0.04),
+    0 8px 30px rgba(0, 212, 148, 0.06);
+}
+
+/* =========================================================
+   ARTICLE IMAGE
+   ========================================================= */
+.articleImageLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.articleImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b111c;
+}
+
+.articleImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+.articleCard:hover .articleImage {
+  transform: scale(1.055);
+  filter: saturate(1.08);
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.02) 0%,
+      rgba(0, 0, 0, 0.08) 55%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  transition: opacity 0.35s ease;
+}
+
+.articleCard:hover .imageOverlay {
+  opacity: 0.72;
+}
+
+/* =========================================================
+   ARTICLE CONTENT
+   ========================================================= */
+.articleContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px 24px 25px; /*24px 24px 25px; change */
+
+  position: relative; /* change line */
+  margin-top: -20px;
+}
+
+/* =========================================================
+   ARTICLE CATEGORY
+   ========================================================= */
+.articleCategory {
+  /*align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(0, 212, 148, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 212, 148, 0.08);
+  color: #00d494;
+  font-size: 0.72rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  white-space: nowrap;*/
+
+  position: absolute;
+  top: -150px;
+  left: 20px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(20, 28, 42, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #aeb8c7;
+  font-size: 0.76rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.articleCard:hover .articleCategory {
+  background: rgba(20, 35, 45, 0.68); /* ye pura block hi change hai */
+  border-color: rgba(0, 212, 148, 0.3);
+}
+
+/* =========================================================
+   ARTICLE TITLE
+   ========================================================= */
+.articleTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.38;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  color: #f8fafc;
+}
+
+.articleTitle a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.articleTitle a:hover {
+  color: #00d494;
+}
+
+/* =========================================================
+   ARTICLE DESCRIPTION
+   ========================================================= */
+.articleDescription {
+  margin: 14px 0 0;
+  font-size: 0.91rem;
+  line-height: 1.7;
+  color: #9ca8b8;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+/* =========================================================
+   ARTICLE META
+   ========================================================= */
+.articleMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 15px;
+  color: #7f8b9b;
+  font-size: 0.77rem;
+  line-height: 1.4;
+}
+
+.articleDate,
+.articleReadTime {
+  white-space: nowrap;
+}
+
+.metaSeparator {
+  color: #4e5968;
+  font-size: 0.7rem;
+}
+
+/* =========================================================
+   READ ARTICLE
+   ========================================================= */
+.readArticle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 15px;
+  color: #00d494;
+  text-decoration: none;
+  font-size: 0.90rem;
+  font-weight: 700;
+  transition:
+    color 0.25s ease,
+    gap 0.25s ease;
+}
+
+.readArticle:hover {
+  color: #39e6ae;
+  gap: 12px;
+}
+
+.readArrow {
+  display: inline-block;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.readArticle:hover .readArrow {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+.emptyState {
+  width: min(650px, 100%);
+  margin: 20px auto 0;
+  padding: 60px 30px;
+  text-align: center;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 18px;
+  background: rgba(14, 22, 35, 0.8);
+}
+
+.emptyState h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.emptyState p {
+  margin: 12px 0 0;
+  color: #8f9aaa;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   LARGE LAPTOP / SMALL DESKTOP
+   ========================================================= */
+@media (max-width: 1250px) {
+  .articlesSection {
+    width: min(1160px, calc(100% - 48px));
+  }
+
+  .articlesGrid {
+    gap: 24px;
+  }
+
+  .articleContent {
+    padding: 22px;
+  }
+
+  .articleCategory {
+    padding: 6px 10px;
+    top: -115px;
+  }
+
+  .articleTitle {
+    font-size: 1.16rem;
+  }
+}
+
+/* =========================================================
+   TABLET
+   2 ARTICLES PER ROW
+   ========================================================= */
+@media (max-width: 900px) {
+  .articlesHeader {
+    padding: 40px 24px 44px;
+  }
+
+  .articlesTitle {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  }
+
+  .articlesSubtitle {
+    font-size: 1rem;
+  }
+
+  .articlesSection {
+    width: min(760px, calc(100% - 40px));
+  }
+
+  .articlesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .articleContent {
+    padding: 21px;
+  }
+
+  .articleCategory {
+    padding: 6px 10px;
+    top: -165px;
+    position: absolute;
+  }
+
+  .articleTitle {
+    font-size: 1.12rem;
+  }
+
+  .articleDescription {
+    font-size: 0.88rem;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   1 ARTICLE PER ROW
+   ========================================================= */
+@media (max-width: 600px) {
+  .articlesPage {
+    padding-bottom: 70px;
+  }
+
+  .articlesHeader {
+    padding: 43px 20px 36px;
+  }
+
+  .articlesTitle {
+    font-size: 2.55rem;
+    letter-spacing: -0.035em;
+  }
+
+  .articlesSubtitle {
+    margin-top: 15px;
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .articlesSection {
+    width: calc(100% - 32px);
+  }
+
+  .articlesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .articleCard {
+    border-radius: 16px;
+  }
+
+  .articleContent {
+    padding: 32px 20px 20px;
+  }
+
+  .articleCategory {
+    margin-bottom: 14px;
+    padding: 7px 11px;
+    left: 20px;
+    top: -250px;
+  }
+
+  .articleTitle {
+    font-size: 1.18rem;
+    line-height: 1.4;
+  }
+
+  .articleDescription {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .articleMeta {
+    padding-top: 22px;
+  }
+
+  .readArticle {
+    margin-top: 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+@media (max-width: 380px) {
+  .articlesHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .articlesTitle {
+    font-size: 2.25rem;
+  }
+
+  .articlesSubtitle {
+    font-size: 0.88rem;
+  }
+
+  .articlesSection {
+    width: calc(100% - 24px);
+  }
+
+  .articleContent {
+    padding: 18px;
+  }
+
+  .articleCategory {
+    padding: 6px 10px;
+    top: -140px;
+  }
+
+  .articleTitle {
+    font-size: 1.08rem;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+.articleImageLink:focus-visible,
+.articleTitle a:focus-visible,
+.readArticle:focus-visible {
+  outline: 2px solid #00d494;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .articleCard,
+  .articleImage,
+  .imageOverlay,
+  .readArticle,
+  .readArrow,
+  .articleTitle a {
+    transition: none;
+  }
+
+  .articleCard:hover {
+    transform: none;
+  }
+
+  .articleCard:hover .articleImage {
+    transform: none;
+  }
+
+  .readArticle:hover .readArrow {
+    transform: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Articles Detils Page CSS Goes Here*/
+.articleDetailsPage {
+  min-height: 100vh;
+  padding: 60px 24px 100px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 170, 0.12),
+      transparent 30%
+    ),
+    #050b1a;
+}
+
+.articleDetails {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.backToArticles {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 35px;
+  color: #00d084;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.backToArticles:hover {
+  opacity: 1;
+  color: #005939;
+}
+
+.articleDetailsHeader {
+  padding-bottom: 40px;
+  border-bottom: 3px solid rgba(128, 128, 128, 0.5);
+}
+
+.articleDetailsHeader h1 {
+  margin: 0 0 20px;
+  font-size: 46px;
+  line-height: 1.2;
+  color: #00d084;
+}
+
+.articleDetailsDescription {
+  max-width: 760px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.75;
+  opacity: 1;
+  color: #ffffff;
+}
+
+.articleDetailsMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 16px;
+  opacity: 0.9;
+  color: #fafafa;
+}
+
+.articleContent {
+  padding-top: 45px;
+  color: #ffffff
+}
+
+.articleIntroduction {
+  margin: 0 0 25px;
+  font-size: 19px;
+  line-height: 1.85;
+  font-weight: 500;
+}
+
+/* =========================================================
+  ARTICLE DETAILS IMAGE
+========================================================= */
+.articleDetailsImageWrapper {
+  width: 100%;
+  margin: 0px 0 25px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: #0b111c;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.articleDetailsImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+/* Subtle zoom when the reader hovers over the image */
+.articleDetailsImageWrapper:hover .articleDetailsImage {
+  transform: scale(1.015);
+}
+
+.contentSection {
+  margin-bottom: 42px;
+}
+
+.contentSection h2 {
+  margin: 0 0 17px;
+  font-size: 28px;
+  line-height: 1.35;
+  color: #00d084;
+}
+
+.contentSection p {
+  margin: 0 0 17px;
+  font-size: 19px;
+  line-height: 1.85;
+  opacity: 1;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.contentSection pre {
+  overflow-x: auto;
+  margin: 24px 0 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.contentSection code {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+.articleNotFound {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.articleNotFound h1 {
+  margin: 0 0 15px;
+  font-size: 36px;
+}
+
+.articleNotFound p {
+  margin: 0 0 25px;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .articleDetailsPage {
+    padding: 45px 18px 70px;
+  }
+
+  .articleDetailsHeader h1 {
+    font-size: 34px;
+  }
+
+  .articleDetailsDescription {
+    font-size: 18px;
+  }
+
+  .articleDetailsMeta {
+    font-size: 16px;
+  }
+
+  .articleIntroduction {
+    font-size: 18px;
+  }
+
+  .contentSection h2 {
+    font-size: 23px;
+  }
+
+  .contentSection p {
+    font-size: 18px;
+  }
+
+  .contentSection pre {
+    padding: 16px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+  ARTICLE DETAILS IMAGE - TABLET
+========================================================= */
+@media (max-width: 900px) {
+  .articleDetailsImageWrapper {
+    margin: 0px 0 25px;
+    border-radius: 16px;
+  }
+
+  .articleDetailsImage {
+    max-height: 480px;
+  }
+}
+
+/* =========================================================
+  ARTICLE DETAILS IMAGE - MOBILE
+========================================================= */
+@media (max-width: 600px) {
+  .articleDetailsImageWrapper {
+    margin: 0px 0 25px;
+    border-radius: 13px;
+  }
+
+  .articleDetailsImage {
+    max-height: 360px;
+  }
+
+  /* Disable zoom on touch devices */
+  .articleDetailsImageWrapper:hover .articleDetailsImage {
+    transform: none;
+  }
+}

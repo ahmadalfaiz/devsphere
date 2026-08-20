@@ -1,0 +1,532 @@
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+.contactPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(0, 194, 255, 0.045),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 75%,
+      rgba(0, 200, 150, 0.04),
+      transparent 30%
+    ),
+    #ffffff;
+  color: #111827;
+  padding-bottom: 100px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 170, 0.12),
+      transparent 30%
+    ),
+    #050b1a;
+}
+
+.contactPage::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    left:50%;
+    top:-120px;
+    transform:translateX(-50%);
+    background:radial-gradient(
+        circle,
+        rgba(0,208,132,.18),
+        transparent 70%
+    );
+    pointer-events:none;
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+.contactHeader {
+  text-align: center;
+  padding: 46px 24px 55px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contactTitle {
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 700;
+  color: #00d084;
+  letter-spacing: -2px;
+}
+
+.contactSubtitle {
+  margin: 25px auto 0;
+  max-width: 700px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #c6d3e6;
+}
+
+
+/* =========================================================
+   MAIN CONTACT SECTION
+========================================================= */
+.contactSection {
+  width: 100%;
+  padding: 10px 24px 0;
+}
+
+.contactContainer {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+
+  /*
+   * THIS IS THE IMPORTANT PART
+   * Left = Get in Touch
+   * Right = Send a Message
+   */
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 55px;
+  align-items: start;
+}
+
+
+/* =========================================================
+   GET IN TOUCH — LEFT SIDE
+========================================================= */
+.getInTouch {
+  min-width: 0;
+}
+
+.sectionIntro {
+  margin-bottom: 28px;
+}
+
+.sectionLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #00d084;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  color: #c6d3e6;
+}
+
+.sectionDescription {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #a6b9d5;
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION
+========================================================= */
+.contactInfo {
+  position: relative;
+  padding: 30px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(0, 255, 102, 0.2),
+      transparent 28%
+    ),
+    rgba(248, 252, 250, 0.237);
+
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+/* Decorative glow */
+.contactInfo::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -75px;
+  top: -75px;
+  border-radius: 50%;
+  background: rgba(0, 194, 255, 0.08);
+  pointer-events: none;
+}
+
+/* =========================================================
+   CONTACT ITEM
+========================================================= */
+.contactItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 14px 0;
+}
+
+.contactItem:first-child {
+  padding-top: 0;
+}
+
+.contactItem:last-child {
+  padding-bottom: 0;
+}
+
+/* =========================================================
+   CONTACT ICON
+========================================================= */
+.contactIcon {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    #e8fff4,
+    #dcfff0
+  );
+  color: #00d084;
+  font-size: 1.25rem;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.05);
+}
+
+/* =========================================================
+   CONTACT ITEM CONTENT
+========================================================= */
+.contactItemContent {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.contactItemLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #00d084;
+}
+
+.contactItemText {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #c4c4c4;
+}
+
+/* =========================================================
+   SEND A MESSAGE — RIGHT SIDE
+========================================================= */
+.messageCard {
+  min-width: 0;
+  padding: 34px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(0, 255, 102, 0.2),
+      transparent 28%
+    ),
+    rgba(248, 252, 250, 0.237);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 55px rgba(15, 23, 42, 0.07);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.messageCard:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 25px 65px rgba(15, 23, 42, 0.09);
+}
+
+.messageHeader {
+  margin-bottom: 27px;
+}
+
+.messageTitle {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  color: #c6d3e6;
+}
+
+.messageDescription {
+  margin: 11px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #a6b9d5;
+}
+
+.successMessage,
+.errorMessage {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.successMessage {
+  color: #005939;
+  background: rgba(16, 185, 129, 0.10);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.errorMessage {
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.20);
+}
+
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 0.90rem;
+  font-weight: 600;
+  color: #00d084;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #131a26;
+  background: #ffffff;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.formGroup input {
+  min-height: 50px;
+}
+
+.formGroup textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Focus */
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #005939;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px rgba(0, 184, 121, 0.1);
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+.submitButton {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 3px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #00d084,
+    #005939
+  );
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 184, 121, 0.2);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 14px 30px rgba(0, 184, 121, 0.28);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.submitButton span {
+    padding-right: 6px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 900px) {
+  .contactHeader {
+    padding-top: 45px;
+    padding-bottom: 40px;
+  }
+
+  .contactContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 720px;
+  }
+
+  .getInTouch,
+  .messageCard {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 600px) {
+  .contactPage {
+    padding-bottom: 65px;
+  }
+
+  .contactHeader {
+    padding: 40px 20px 35px;
+  }
+
+  .contactTitle {
+    font-size: 3rem;
+    letter-spacing: -1.5px;
+  }
+
+  .contactSubtitle {
+    margin-top: 18px;
+    font-size: 0.95rem;
+  }
+
+  .contactSection {
+    padding: 0 16px;
+  }
+
+  .contactContainer {
+    gap: 30px;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .sectionDescription {
+    font-size: 0.95rem;
+  }
+
+  .contactInfo {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .contactItem {
+    gap: 14px;
+  }
+
+  .contactIcon {
+    flex-basis: 46px;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+  }
+
+  .contactItemText {
+    font-size: 0.92rem;
+  }
+
+  .messageCard {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .messageTitle {
+    font-size: 1.8rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .contactTitle {
+    font-size: 2.6rem;
+  }
+
+  .contactItem {
+    align-items: flex-start;
+  }
+
+  .contactIcon {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .contactInfo {
+    padding: 22px 16px;
+  }
+
+  .messageCard {
+    padding: 22px 16px;
+  }
+}

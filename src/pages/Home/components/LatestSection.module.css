@@ -184,23 +184,19 @@
 
 /* BUTTON */
 
-.content button{
+.readArticle{
   background:transparent;
-
   border:none;
-
   color:#00d084;
-
   font-size:1rem;
-
   font-weight:600;
-
   cursor:pointer;
-
   transition:0.3s;
+  display: inline-block;
+  text-decoration: none;
 }
 
-.content button:hover{
+.readArticle:hover{
   transform:translateX(6px);
 }
 
