@@ -16,55 +16,32 @@ const SITE_URL = "https://devspherehq.com";
 */
 
 const pages = [
-  {
-    url: "/",
-    changefreq: "daily",
-    priority: 1.0,
-  },
-
-  {
-    url: "/tutorials",
-    changefreq: "daily",
-    priority: 0.95,
-  },
-
-  {
-    url: "/courses",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
+  { url: "/", changefreq: "daily", priority: 1.0,},
+  { url: "/tutorials", changefreq: "daily", priority: 0.95,},
+  { url: "/courses", changefreq: "weekly", priority: 0.90,},
 
   // Tutorial Course Pages
-  {
-    url: "/tutorials/html",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
-  {
-    url: "/tutorials/css",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
-  {
-    url: "/tutorials/react",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
-  {
-    url: "/tutorials/nextjs",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
-  {
-    url: "/tutorials/nodejs",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
-  {
-    url: "/tutorials/expressjs",
-    changefreq: "weekly",
-    priority: 0.90,
-  },
+  { url: "/tutorials/html", changefreq: "weekly", priority: 0.90,},
+  { url: "/tutorials/css", changefreq: "weekly", priority: 0.90,},
+  { url: "/tutorials/react", changefreq: "weekly", priority: 0.90,},
+  { url: "/tutorials/nextjs", changefreq: "weekly", priority: 0.90,},
+  { url: "/tutorials/nodejs", changefreq: "weekly", priority: 0.90,},
+  { url: "/tutorials/expressjs", changefreq: "weekly", priority: 0.90,},
+
+  /* Games, Articles, Privacy, Terms and Cookies */
+  { url: "/games", changefreq: "weekly", priority: 0.90,},
+  { url: "/games/sudoku", changefreq: "weekly", priority: 0.85,},
+  { url: "/games/wordle", changefreq: "weekly", priority: 0.85,},
+  { url: "/games/octordle", changefreq: "weekly", priority: 0.85,},
+
+  { url: "/articles", changefreq: "weekly", priority: 0.85,},
+  { url: "/articles/top-javascript-concepts-every-developer-must-know", changefreq: "weekly", priority: 0.85,},
+  { url: "/articles/how-ai-is-changing-modern-web-development", changefreq: "weekly", priority: 0.85,},
+  { url: "/articles/complete-roadmap-to-crack-product-based-companies", changefreq: "weekly", priority: 0.85,},
+
+  { url: "/privacy-policy", changefreq: "yearly", priority: 0.30,},
+  { url: "/terms", changefreq: "yearly", priority: 0.30,},
+  { url: "/cookies", changefreq: "yearly", priority: 0.30,},
 ];
 
 // Automatically build a URL for every lesson inside contentRegistry
@@ -119,7 +96,12 @@ async function generateSitemap() {
 
   sitemap.pipe(writeStream);
 
-  /*[...pages, ...lessonPages]*/ pages.forEach((page) => {
+  /*[...pages, ...lessonPages]*/ 
+  const allPages = [
+    ...pages,
+    ...lessonPages,
+  ];
+  allPages.forEach((page) => {
     sitemap.write({
       url: page.url,
       changefreq: page.changefreq,
@@ -129,16 +111,7 @@ async function generateSitemap() {
   });
 
   /* Newly added code on 13th AUg to automatically add lesson url */
-  lessonPages.forEach((page) => {
 
-    sitemap.write({
-      url: page.url,
-      changefreq: page.changefreq,
-      priority: page.priority,
-      lastmod: new Date().toISOString(),
-    });
-
-  });
   /* Upto this line newly added 13th Aug */
 
   sitemap.end();
@@ -157,7 +130,7 @@ async function generateSitemap() {
   );
 
   console.log(
-    `🔗 Total URLs: ${pages.length + lessonPages.length}`
+    `🔗 Total URLs: ${allPages.length}` /*+ lessonPages.length`*/
   );
   /* Upto this line newly added 13th Aug */
 }
