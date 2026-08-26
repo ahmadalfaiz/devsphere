@@ -289,7 +289,7 @@
 }
 
 .successMessage {
-  color: #005939;
+  color: #00d084;
   background: rgba(16, 185, 129, 0.10);
   border: 1px solid rgba(16, 185, 129, 0.25);
 }
@@ -313,7 +313,6 @@
   flex-direction: column;
   gap: 20px;
 }
-
 
 /* =========================================================
    FORM GROUP

@@ -1,0 +1,1170 @@
+/* =========================================================
+   PAGE
+========================================================= */
+.sudokuPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.07),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(59, 130, 246, 0.05),
+      transparent 28%
+    ),
+    #f8fafc;
+  color: #0f172a;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.sudokuHeader {
+  position: relative;
+  overflow: hidden;
+  padding: 45px 24px 45px;
+  border-bottom: 1px solid #e2e8f0;
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fafc 55%,
+      #eef2ff 100%
+    );
+}
+
+.sudokuHeader::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -180px;
+  right: -100px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.08);
+  pointer-events: none;
+}
+
+.sudokuHeader::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  bottom: -170px;
+  left: -80px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.05);
+  pointer-events: none;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backLink svg {
+  font-size: 0.82rem;
+}
+
+.backLink:hover {
+  color: #4f46e5;
+  transform: translateX(-3px);
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 13px;
+  color: #4f46e5;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding-left: 10px;
+}
+
+.sudokuTitle {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(2.4rem, 5vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.sudokuSubtitle {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+.sudokuSection {
+  padding: 42px 24px 80px;
+}
+
+.sudokuContainer {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   GAME TOP BAR
+========================================================= */
+.gameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.045);
+}
+
+.gameStats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 115px;
+}
+
+.statItem > svg {
+  color: #4f46e5;
+  font-size: 1.05rem;
+}
+
+.statLabel {
+  display: block;
+  margin-bottom: 2px;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.statValue {
+  display: block;
+  color: #1e293b;
+  font-size: 0.93rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.mistakeIndicator {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  min-width: 38px;
+  color: #ef4444;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.mistakeIndicator span {
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.progressCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #c7d2fe;
+  border-radius: 50%;
+  color: #4f46e5;
+  background: #eef2ff;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.gameActions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  color: #475569;
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.actionButton:hover:not(:disabled) {
+  border-color: #c7d2fe;
+  color: #4f46e5;
+  background: #f8faff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(79, 70, 229, 0.08);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   CONTROLS BAR
+========================================================= */
+.controlsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.difficultyControl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.difficultyControl label {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.difficultyControl select {
+  min-width: 120px;
+  height: 38px;
+  padding: 0 34px 0 12px;
+  border: 1px solid #dbe3ee;
+  border-radius: 9px;
+  outline: none;
+  color: #1e293b;
+  background: #f8fafc;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.difficultyControl select:hover {
+  border-color: #c7d2fe;
+}
+
+.difficultyControl select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.newGameButton,
+.secondaryNewGameButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #4f46e5;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.18);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.newGameButton:hover,
+.secondaryNewGameButton:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.23);
+}
+
+.newGameButton:active,
+.secondaryNewGameButton:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   GAME MESSAGE
+========================================================= */
+.gameMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 10px 18px;
+  margin-bottom: 20px;
+  border-radius: 11px;
+  text-align: center;
+  font-size: 0.87rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.gameMessage {
+  border: 1px solid #fde68a;
+  color: #92400e;
+  background: #fffbeb;
+}
+
+.successMessage {
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  background: #f0fdf4;
+}
+
+.successMessage svg {
+  flex-shrink: 0;
+  color: #00d084;
+}
+
+/* =========================================================
+   BOARD AREA
+========================================================= */
+.boardArea {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  padding: 30px;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.055);
+}
+
+.sudokuBoardWrapper {
+  width: min(540px, 100%);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.sudokuBoard {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 3px solid #1e293b;
+  border-radius: 7px;
+  background: #ffffff;
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+.sudokuCell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid #dbe3ee;
+  border-bottom: 1px solid #dbe3ee;
+  outline: none;
+  color: #334155;
+  background: #ffffff;
+  font: inherit;
+  font-size: clamp(1rem, 2.5vw, 1.65rem);
+  font-weight: 650;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.sudokuCell:hover {
+  background: #f5f7ff;
+}
+
+.sudokuCell:focus-visible {
+  z-index: 4;
+  box-shadow:
+    inset 0 0 0 3px rgba(79, 70, 229, 0.45);
+}
+
+/* =========================================================
+   GIVEN / EDITABLE CELLS
+========================================================= */
+.givenCell {
+  color: #172033;
+  background: #f8fafc;
+  font-weight: 800;
+}
+
+.givenCell:hover {
+  background: #f1f5f9;
+}
+
+.editableCell {
+  color: #4f46e5;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+/* =========================================================
+   CELL STATES
+========================================================= */
+.selectedCell {
+  z-index: 3;
+  color: #312e81;
+  background: #c7d2fe !important;
+  box-shadow:
+    inset 0 0 0 2px #6366f1;
+}
+
+.relatedCell {
+  background: #f1f5ff;
+}
+
+.sameNumberCell {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.selectedCell.sameNumberCell {
+  background: #c7d2fe !important;
+  color: #312e81;
+}
+
+.conflictCell {
+  color: #dc2626 !important;
+  background: #fee2e2 !important;
+}
+
+.conflictCell.selectedCell {
+  box-shadow:
+    inset 0 0 0 2px #ef4444;
+}
+
+/* =========================================================
+   3×3 BOX BORDERS
+========================================================= */
+.boxRightBorder {
+  border-right: 3px solid #334155;
+}
+
+.boxBottomBorder {
+  border-bottom: 3px solid #334155;
+}
+
+/* =========================================================
+   PAUSED BOARD
+========================================================= */
+.boardPaused {
+  filter: grayscale(0.15);
+}
+
+.pauseOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.76);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.pauseContent {
+  width: min(320px, 90%);
+  padding: 30px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  text-align: center;
+  color: #ffffff;
+  background: rgba(30, 41, 59, 0.94);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28);
+}
+
+.pauseContent > svg {
+  margin-bottom: 12px;
+  color: #a5b4fc;
+  font-size: 1.45rem;
+}
+
+.pauseContent h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.pauseContent p {
+  margin: 8px 0 20px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.resumeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #4f46e5;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.resumeButton:hover {
+  background: #6366f1;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   NUMBER PAD
+========================================================= */
+.numberPad {
+  display: grid;
+  grid-template-columns: repeat(3, 62px);
+  gap: 10px;
+  width: 204px;
+  flex-shrink: 0;
+}
+
+.numberButton,
+.clearButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 58px;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  background: #f8fafc;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.numberButton {
+  color: #334155;
+  font-size: 1.18rem;
+  font-weight: 750;
+}
+
+.numberButton:hover:not(:disabled) {
+  border-color: #a5b4fc;
+  color: #4f46e5;
+  background: #eef2ff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 15px rgba(79, 70, 229, 0.1);
+}
+
+.numberButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.numberButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.numberButton small {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  min-width: 12px;
+  color: #16a34a;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.clearButton {
+  grid-column: 1 / -1;
+  gap: 8px;
+  min-height: 48px;
+  color: #64748b;
+  background: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 750;
+}
+
+.clearButton:hover:not(:disabled) {
+  border-color: #fecaca;
+  color: #dc2626;
+  background: #fff7f7;
+}
+
+.clearButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   CHECK AREA
+========================================================= */
+.checkArea {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 42px;
+}
+
+.checkButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 190px;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 11px;
+  color: #ffffff;
+  background: #0f172a;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow:
+    0 7px 18px rgba(15, 23, 42, 0.15);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.checkButton:hover:not(:disabled) {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.2);
+}
+
+.checkButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.checkButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+.instructions {
+  padding: 36px 0 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.instructionsHeader {
+  margin-bottom: 24px;
+}
+
+.sectionLabel {
+  display: block;
+  margin-bottom: 7px;
+  color: #4f46e5;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.instructionsHeader h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ruleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 125px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #ffffff;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ruleCard:hover {
+  border-color: #c7d2fe;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.ruleCard > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: #4f46e5;
+  background: #eef2ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.ruleCard h3 {
+  margin: 2px 0 6px;
+  color: #1e293b;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.ruleCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   BOTTOM ACTION
+========================================================= */
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  padding: 38px 0 8px;
+}
+
+.secondaryNewGameButton {
+  min-height: 45px;
+  padding: 0 20px;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+.actionButton:focus-visible,
+.newGameButton:focus-visible,
+.secondaryNewGameButton:focus-visible,
+.checkButton:focus-visible,
+.numberButton:focus-visible,
+.clearButton:focus-visible,
+.resumeButton:focus-visible,
+.backLink:focus-visible,
+.difficultyControl select:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.25);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .sudokuHeader {
+    padding: 56px 20px 50px;
+  }
+
+  .sudokuSection {
+    padding: 36px 20px 65px;
+  }
+
+  .gameTopBar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gameActions {
+    width: 100%;
+  }
+
+  .actionButton {
+    flex: 1;
+  }
+
+  .boardArea {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .sudokuBoardWrapper {
+    width: min(620px, 100%);
+  }
+
+  .numberPad {
+    grid-template-columns: repeat(5, 58px);
+    width: auto;
+  }
+
+  .clearButton {
+    grid-column: auto;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .sudokuHeader {
+    padding: 42px 16px 40px;
+  }
+
+  .backLink {
+    margin-bottom: 22px;
+  }
+
+  .sudokuTitle {
+    font-size: 2.55rem;
+  }
+
+  .sudokuSubtitle {
+    margin-top: 14px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .sudokuSection {
+    padding: 24px 12px 50px;
+  }
+
+  .gameTopBar {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .gameStats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .statItem {
+    min-width: 0;
+    gap: 7px;
+  }
+
+  .statLabel {
+    font-size: 0.61rem;
+  }
+
+  .statValue {
+    font-size: 0.76rem;
+  }
+
+  .mistakeIndicator {
+    min-width: 28px;
+    font-size: 0.9rem;
+  }
+
+  .progressCircle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.57rem;
+  }
+
+  .gameActions {
+    gap: 7px;
+  }
+
+  .actionButton {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 0.74rem;
+  }
+
+  .controlsBar {
+    padding: 13px;
+    border-radius: 13px;
+  }
+
+  .difficultyControl {
+    gap: 8px;
+  }
+
+  .difficultyControl label {
+    font-size: 0.75rem;
+  }
+
+  .difficultyControl select {
+    min-width: 98px;
+    height: 36px;
+    font-size: 0.75rem;
+  }
+
+  .newGameButton {
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 0.73rem;
+  }
+
+  .gameMessage,
+  .successMessage {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+
+  .boardArea {
+    gap: 20px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .sudokuBoard {
+    border-width: 2px;
+  }
+
+  .sudokuCell {
+    font-size: clamp(0.92rem, 6vw, 1.35rem);
+  }
+
+  .boxRightBorder {
+    border-right-width: 2px;
+  }
+
+  .boxBottomBorder {
+    border-bottom-width: 2px;
+  }
+
+  .numberPad {
+    grid-template-columns: repeat(5, minmax(48px, 1fr));
+    width: 100%;
+    gap: 7px;
+  }
+
+  .numberButton {
+    min-height: 50px;
+    border-radius: 9px;
+    font-size: 1rem;
+  }
+
+  .numberButton small {
+    right: 4px;
+    bottom: 3px;
+    font-size: 0.58rem;
+  }
+
+  .clearButton {
+    min-height: 44px;
+    border-radius: 9px;
+  }
+
+  .checkArea {
+    padding: 20px 0 34px;
+  }
+
+  .checkButton {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .rulesGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ruleCard {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .ruleCard > span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ruleCard h3 {
+    font-size: 0.88rem;
+  }
+
+  .ruleCard p {
+    font-size: 0.77rem;
+  }
+
+  .bottomActions {
+    padding-top: 28px;
+  }
+
+  .secondaryNewGameButton {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+@media (max-width: 420px) {
+
+  .gameStats {
+    gap: 8px;
+  }
+
+  .statItem {
+    gap: 5px;
+  }
+
+  .statItem > svg {
+    display: none;
+  }
+
+  .statLabel {
+    font-size: 0.56rem;
+  }
+
+  .statValue {
+    font-size: 0.7rem;
+  }
+
+  .mistakeIndicator {
+    font-size: 0.82rem;
+  }
+
+  .controlsBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .difficultyControl {
+    justify-content: space-between;
+  }
+
+  .difficultyControl select {
+    flex: 1;
+  }
+
+  .newGameButton {
+    width: 100%;
+  }
+
+  .boardArea {
+    padding: 8px;
+  }
+
+  .numberPad {
+    gap: 5px;
+  }
+
+  .numberButton {
+    min-height: 46px;
+  }
+
+  .clearButton {
+    min-height: 42px;
+  }
+
+  .pauseContent {
+    padding: 24px 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .backLink,
+  .actionButton,
+  .newGameButton,
+  .secondaryNewGameButton,
+  .sudokuCell,
+  .numberButton,
+  .clearButton,
+  .checkButton,
+  .resumeButton,
+  .ruleCard {
+    transition: none;
+  }
+}

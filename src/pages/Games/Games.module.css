@@ -1,0 +1,766 @@
+/* =========================================================
+   GAMES PAGE
+========================================================= */
+.gamesPage {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 255, 170, 0.12),
+      transparent 30%
+    ),
+    #050b1a;
+  color: #1f2937;
+}
+
+.gamesPage::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    left:50%;
+    top:-120px;
+    transform:translateX(-50%);
+    background:radial-gradient(
+        circle,
+        rgba(0,208,132,.18),
+        transparent 70%
+    );
+    pointer-events:none;
+}
+
+/* =========================================================
+   GAMES HEADER
+========================================================= */
+.gamesHeader {
+  position: relative;
+  width: 100%;
+  padding: 45px 24px 25px;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(0, 208, 132, 0.096),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(0, 208, 132, 0.096),
+      transparent 30%
+    ),
+    #050b1a;
+  border-bottom: 2px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* Decorative background element */
+.gamesHeader::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: -150px;
+  right: -90px;
+  border: 1px solid rgba(0, 208, 132, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gamesHeader::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  bottom: -120px;
+  left: -70px;
+  border: 1px solid rgba(0, 208, 132, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================================================
+   HEADER LABEL
+========================================================= */
+.headerLabel {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  line-height: 1;
+  color: #00d084;
+  text-transform: uppercase;
+  background: rgba(0, 208, 132, 0.09);
+  border: 1px solid rgba(0, 168, 107, 0.18);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+.headerLabel svg {
+  font-size: 13px;
+}
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+.gamesTitle {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #00d084;
+}
+
+/* =========================================================
+   PAGE SUBTITLE
+========================================================= */
+.gamesSubtitle {
+  width: min(100%, 680px);
+  margin: 22px auto 0;
+  font-size: 1.08rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #cfdaee;
+}
+
+/* =========================================================
+   GAMES SECTION
+========================================================= */
+.gamesSection {
+  width: 100%;
+  padding: 40px 24px 75px;
+  /*background: #ffffff;*/
+}
+
+/* =========================================================
+   GAMES CONTAINER
+========================================================= */
+.gamesContainer {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   SECTION INTRO
+========================================================= */
+.sectionIntro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+.sectionLabel {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #00d084;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #cfdaee;
+}
+
+/* =========================================================
+   SECTION DESCRIPTION
+========================================================= */
+.sectionDescription {
+  max-width: 470px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #cfdaee;
+}
+
+/* =========================================================
+   GAMES GRID
+========================================================= */
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+/* =========================================================
+   GAME CARD
+========================================================= */
+.gameCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 154px;
+  width: 100%;
+  padding: 22px 20px;
+  gap: 18px;
+  text-decoration: none;
+  background: #f1f6ff;
+  border: 1px solid #00d084;
+  border-radius: 14px;
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.03),
+    0 8px 24px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* Green accent line */
+.gameCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #00d084;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+
+/* Hover */
+.gameCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 208, 132, 0.35);
+  box-shadow:
+    0 6px 14px rgba(15, 23, 42, 0.05),
+    0 18px 38px rgba(15, 23, 42, 0.08);
+  background: #fcfffd;
+}
+
+.gameCard:hover::before {
+  transform: scaleY(1);
+}
+
+/* Keyboard focus */
+.gameCard:focus-visible {
+  outline: 3px solid rgba(0, 208, 132, 0.22);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   GAME ICON
+========================================================= */
+.gameIcon {
+  flex: 0 0 70px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    #e8fff4,
+    #dcfff0
+  );
+  border: 1px solid #d5f2e5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.gameCard:hover .gameIcon {
+  transform: scale(1.05) rotate(-2deg);
+  border-color: rgba(0, 208, 132, 0.35);
+}
+
+.gameIcon span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* =========================================================
+   GAME CONTENT
+========================================================= */
+.gameContent {
+  min-width: 0;
+  flex: 1;
+}
+
+/* =========================================================
+   GAME TOP ROW
+========================================================= */
+.gameTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+/* =========================================================
+   GAME TITLE
+========================================================= */
+.gameTitle {
+  min-width: 0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.gameCard:hover .gameTitle {
+  color: #00d084;
+}
+
+/* =========================================================
+   GAME DIFFICULTY
+========================================================= */
+.gameDifficulty {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  color: #005939;
+  background: #ecfdf5;
+  border: 1px solid #c6ffea;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   GAME CATEGORY
+========================================================= */
+.gameCategory {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.3px;
+  color: #00d084;
+}
+
+/* =========================================================
+   GAME DESCRIPTION
+========================================================= */
+.gameDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 0;
+  overflow: hidden;
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #6b7280;
+}
+
+/* =========================================================
+   GAME ARROW
+========================================================= */
+.gameArrow {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #6b7280;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.gameArrow svg {
+  font-size: 13px;
+}
+
+.gameCard:hover .gameArrow {
+  transform: translateX(4px);
+  color: #ffffff;
+  background: #00d084;
+  border-color: #00ad6e;
+}
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+.comingSoon {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 34px;
+  padding: 22px 24px;
+  background:
+    linear-gradient(
+      135deg,
+      #fbfffd 0%,
+      #f7faf9 100%
+    );
+  border: 1px dashed #cbd5d1;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   COMING SOON ICON
+========================================================= */
+.comingSoonIcon {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #00d084;
+  background: linear-gradient(
+    145deg,
+    #e8fff4,
+    #dcfff0
+  );
+  border: 1px solid #d1fae5;
+}
+
+.comingSoonIcon svg {
+  font-size: 18px;
+}
+
+/* =========================================================
+   COMING SOON CONTENT
+========================================================= */
+.comingSoonContent {
+  min-width: 0;
+}
+
+/* =========================================================
+   COMING SOON TITLE
+========================================================= */
+.comingSoonTitle {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #1f2937;
+}
+
+/* =========================================================
+   COMING SOON TEXT
+========================================================= */
+.comingSoonText {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+/* =========================================================
+   LARGE TABLETS
+========================================================= */
+@media (max-width: 1000px) {
+
+  .gamesHeader {
+    padding: 45px 22px 25px;
+  }
+
+  .gamesSection {
+    padding: 40px 22px 75px;
+  }
+
+  .gamesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* =========================================================
+   TABLETS
+========================================================= */
+@media (max-width: 760px) {
+
+  .gamesHeader {
+    padding: 43px 20px 24px;
+  }
+
+  .gamesTitle {
+    letter-spacing: -1.5px;
+  }
+
+  .gamesSubtitle {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .gamesSection {
+    padding: 37px 20px 60px;
+  }
+
+  .sectionIntro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .sectionDescription {
+    max-width: 620px;
+  }
+
+  .gamesGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gameCard {
+    min-height: 140px;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 520px) {
+
+  .gamesHeader {
+    padding: 40px 16px 23px;
+  }
+
+  .headerLabel {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+  }
+
+  .gamesTitle {
+    font-size: 42px;
+    letter-spacing: -1.2px;
+  }
+
+  .gamesSubtitle {
+    margin-top: 17px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .gamesSection {
+    padding: 36px 16px 54px;
+  }
+
+  .sectionLabel {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .sectionDescription {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .gameCard {
+    min-height: 0;
+    padding: 17px 15px;
+    gap: 13px;
+    border-radius: 12px;
+  }
+
+  .gameIcon {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+    border-radius: 13px;
+  }
+
+  .gameIcon span {
+    font-size: 27px;
+  }
+
+  .gameTopRow {
+    align-items: flex-start;
+  }
+
+  .gameTitle {
+    font-size: 17px;
+  }
+
+  .gameDifficulty {
+    padding: 4px 7px;
+
+    font-size: 9px;
+  }
+
+  .gameCategory {
+    margin-bottom: 6px;
+
+    font-size: 10px;
+  }
+
+  .gameDescription {
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .gameArrow {
+    flex: 0 0 31px;
+
+    width: 31px;
+    height: 31px;
+  }
+
+  .gameArrow svg {
+    font-size: 11px;
+  }
+
+  .comingSoon {
+    gap: 13px;
+    margin-top: 26px;
+    padding: 17px;
+    border-radius: 12px;
+  }
+
+  .comingSoonIcon {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .comingSoonIcon svg {
+    font-size: 15px;
+  }
+
+  .comingSoonTitle {
+    font-size: 13px;
+  }
+
+  .comingSoonText {
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .gamesHeader {
+    padding: 38px 14px 21px;
+  }
+
+  .gamesSection {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .gamesTitle {
+    font-size: 38px;
+  }
+
+  .gameCard {
+    padding: 15px 13px;
+    gap: 11px;
+  }
+
+  .gameIcon {
+    flex-basis: 52px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .gameIcon span {
+    font-size: 24px;
+  }
+
+  .gameTitle {
+    font-size: 16px;
+  }
+
+  .gameDifficulty {
+    display: none;
+  }
+
+  .gameArrow {
+    flex-basis: 28px;
+    width: 28px;
+    height: 28px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gameCard,
+  .gameIcon,
+  .gameArrow,
+  .gameCard::before {
+    transition: none;
+  }
+
+  .gameCard:hover {
+    transform: none;
+  }
+
+  .gameCard:hover .gameIcon {
+    transform: none;
+  }
+
+  .gameCard:hover .gameArrow {
+    transform: none;
+  }
+
+}

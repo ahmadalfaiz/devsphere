@@ -1,0 +1,1318 @@
+/* =========================================================
+   OCTORDLE PAGE
+========================================================= */
+.octordlePage {
+  min-height: 100vh;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #111827); /*#9C00F2*/
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.octordleHeader {
+  position: relative;
+  overflow: hidden;
+  padding: 45px 24px 45px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(156, 0, 242, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #f8eaff 0%,
+      #ffffff 100%
+    );
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.headerContent {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backLink:hover {
+  color: #9c00f2;
+  transform: translateX(-3px);
+}
+
+.headerLabel {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #9c00f2;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding-left: 10px;
+}
+
+.octordleTitle {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.octordleSubtitle {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   GAME SECTION
+========================================================= */
+.octordleSection {
+  width: 100%;
+  padding: 28px 0 70px;
+}
+
+.octordleContainer {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   GAME TOP BAR
+========================================================= */
+.gameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  border: 1px solid #ebe1ef;
+  border-radius: 14px;
+  background: #fbf4ff;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.gameStats {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #64748b;
+}
+
+.statItem > svg {
+  width: 18px;
+  height: 18px;
+  color: #9c00f2;
+  font-size: 1.05rem;
+}
+
+.statLabel {
+  display: block;
+  margin-bottom: 2px;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statValue {
+  display: block;
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.progressCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #dbe5f5;
+  border-radius: 50%;
+  color: #9c00f2;
+  background: #fbf7ff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.gameActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newGameButton,
+.secondaryNewGameButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 9px;
+  background: #9c00f2;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.newGameButton {
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.newGameButton:hover,
+.secondaryNewGameButton:hover {
+  background: #e9c0ff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+  color: #1e293b;
+}
+
+.newGameButton:active,
+.secondaryNewGameButton:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   GAME MESSAGE
+========================================================= */
+.gameMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  margin-bottom: 18px;
+  padding: 9px 14px;
+  border: 1px solid #e1e7ef;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #526071;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.successMessage {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.successMessage svg {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   BOARDS AREA
+========================================================= */
+.boardsArea {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.boardsArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   CRITICAL OCTORDLE GRID
+   ALWAYS 2 COLUMNS × 4 ROWS
+========================================================= */
+.boardsGrid {
+  display: grid;
+
+  /*
+    IMPORTANT:
+    Octordle must ALWAYS remain 2 columns.
+    Never change this to 1 column at smaller
+    breakpoints.
+  */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  /*
+    Eight boards:
+    2 columns × 4 rows.
+  */
+  grid-template-rows: repeat(4, auto);
+  gap: 16px;
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   INDIVIDUAL PUZZLE BOARD
+========================================================= */
+.puzzleBoard {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #e6dcec;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.045);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.puzzleBoard:hover {
+  border-color: #d7cbe1;
+  box-shadow:
+    0 6px 20px rgba(15, 23, 42, 0.07);
+}
+
+.solvedBoard {
+  border-color: #86efac;
+  background: #f7fff9;
+}
+
+/* =========================================================
+   BOARD HEADER
+========================================================= */
+.boardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 8px;
+  padding: 0 2px;
+}
+
+.boardNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  border-radius: 7px;
+  background: #f9efff;
+  color: #9c00f2;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.boardHeaderContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.boardLabel {
+  min-width: 0;
+  color: #483454;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.solvedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.solvedBadge svg {
+  width: 9px;
+  height: 9px;
+}
+
+/* =========================================================
+   WORDLE BOARD
+========================================================= */
+.wordleBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+/* =========================================================
+   WORDLE ROW
+========================================================= */
+.wordleRow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3px;
+  width: 100%;
+}
+
+/* =========================================================
+   WORDLE CELL
+========================================================= */
+.wordleCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+    The board width controls the cell width.
+    aspect-ratio guarantees square cells.
+  */
+  width: 100%;
+  aspect-ratio: 1.85 / 1;
+  min-width: 0;
+  border: 1px solid #e0d6e7;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #281733;
+  font-size: clamp(11px, 1.5vw, 16px);
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.filledCell {
+  border-color: #a894b8;
+  color: #111827;
+  background: #ffffff;
+  animation: cellPop 0.12s ease;
+}
+
+.currentCell {
+  border-color: #9c00f2;
+  box-shadow: inset 0 0 0 1px #8825eb;
+}
+
+/* =========================================================
+   LETTER STATUS COLORS
+========================================================= */
+.correctCell {
+  border-color: #0f7835;
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.presentCell {
+  border-color: #ca8a04;
+  background: #facc15;
+  color: #ffffff;
+}
+
+.absentCell {
+  border-color: #4b5768;
+  background: #8190a6;
+  color: #ffffff;
+}
+
+/* =========================================================
+   SOLVED OVERLAY
+========================================================= */
+.solvedOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 253, 244, 0.58);
+  pointer-events: none;
+}
+
+.solvedOverlay svg {
+  width: clamp(32px, 5vw, 48px);
+  height: clamp(32px, 5vw, 48px);
+  padding: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: #ffffff;
+  box-shadow:
+    0 6px 18px rgba(22, 163, 74, 0.25);
+}
+
+.keyboardDock {
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--octordle-page-bg, #faf8fc);
+  padding-top: 8px;
+  padding-bottom: 0px;
+}
+
+.boardProgressSection {
+  width: 600px;
+  padding: 4px 0 8px;
+  max-width: calc(100% - 24px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.boardProgressScroller {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-sizing: border-box;
+}
+
+.boardProgressScroller::-webkit-scrollbar {
+  display: none;
+}
+
+.boardProgress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.boardProgressItem {
+  flex: 0 0 auto;
+  width: 68px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: #7d945f;
+  color: #f5f7f5;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.boardProgressSolved {
+  background: #aad2af;
+}
+
+.boardProgressSolved svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* =========================================================
+   KEYBOARD SECTION
+========================================================= */
+.keyboardSection {
+  width: 100%;
+  max-width: 600px;
+  margin: 0px auto 0;
+  box-sizing: border-box;
+}
+
+.keyboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 4px;
+}
+
+.sectionLabel {
+  display: inline-block;
+  color: #9c00f2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.keyboardHint {
+  color: #9384a1;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+/* =========================================================
+   VIRTUAL KEYBOARD
+========================================================= */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.keyboardRow {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.keyboardKey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 38px;
+  padding: 0 5px;
+  border: 1px solid #e1d6e8;
+  border-radius: 7px;
+  background: #efe8f3;
+  color: #281c34;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.keyboardKey:hover:not(:disabled) {
+  border-color: #ccbdd7;
+  background: #eadfee;
+}
+
+.keyboardKey:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.keyboardKey:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.actionKey {
+  flex: 1.45 1.45 0;
+  font-size: 10px;
+}
+
+/* =========================================================
+   KEYBOARD STATUS
+========================================================= */
+.keyboardCorrect {
+  border-color: #15803d;
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.keyboardPresent {
+  border-color: #ca8a04;
+  background: #facc15;
+  color: #ffffff;
+}
+
+.keyboardAbsent {
+  border-color: #334155;
+  background: #8190a6;
+  color: #ffffff;
+}
+
+/* =========================================================
+   HOW TO PLAY
+========================================================= */
+.instructions {
+  width: 100%;
+  max-width: 920px;
+  margin: 52px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid #e9e1ef;
+}
+
+.instructionsHeader {
+  margin-bottom: 20px;
+}
+
+.instructionsHeader h2 {
+  margin: 6px 0 0;
+  color: #172033;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* =========================================================
+   RULES GRID
+========================================================= */
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ruleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid #e8e1ef;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.ruleCard > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: #f8efff;
+  color: #9c00f2;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ruleCard h3 {
+  margin: 0 0 5px;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.ruleCard p {
+  margin: 0;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   BOTTOM ACTION
+========================================================= */
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.secondaryNewGameButton {
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes cellPop {
+  0% {
+    transform: scale(0.92);
+  }
+
+  70% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL DESKTOP
+========================================================= */
+@media (max-width: 900px) {
+  .octordleHeader {
+    padding: 45px 20px 20px;
+  }
+  
+  .headerContent,
+  .octordleContainer {
+    width: min(100% - 30px, 760px);
+  }
+
+  .boardsGrid {
+    max-width: 500px;
+    gap: 12px;
+  }
+
+  .puzzleBoard {
+    padding: 9px;
+  }
+
+  .keyboardSection {
+    max-width: 540px;
+  }
+
+  .keyboardKey {
+    height: 36px;
+  }
+
+  .boardProgressSection {
+    width: 540px;
+  }
+
+  .boardProgressItem {
+    width: 60px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .octordleHeader {
+    padding: 42px 20px 18px;
+  }
+  
+  .boardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 480px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 700px) {
+  .octordleHeader {
+    border-bottom-color: #ece5f0;
+    padding: 40px 20px 18px;
+  }
+
+  .headerContent {
+    padding: 22px 0 21px;
+  }
+
+  .backLink {
+    margin-bottom: 17px;
+  }
+
+  .octordleSubtitle {
+    font-size: 14px;
+  }
+
+  .octordleSection {
+    padding-top: 20px;
+  }
+
+  .gameTopBar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .gameStats {
+    justify-content: space-between;
+  }
+
+  .gameActions {
+    width: 100%;
+  }
+
+  .newGameButton {
+    width: 100%;
+  }
+
+  /*
+    STILL 2 COLUMNS.
+  */
+  .boardsGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    grid-template-rows:
+      repeat(4, auto);
+    gap: 9px;
+    max-width: 465px;
+  }
+
+  .puzzleBoard {
+    padding: 7px;
+    border-radius: 10px;
+  }
+
+  .boardHeader {
+    margin-bottom: 6px;
+  }
+
+  .boardNumber {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .boardLabel {
+    font-size: 8px;
+  }
+
+  .solvedBadge {
+    padding: 2px 4px;
+    font-size: 7px;
+  }
+
+  .solvedBadge svg {
+    width: 7px;
+    height: 7px;
+  }
+
+  .wordleBoard {
+    gap: 2px;
+  }
+
+  .wordleRow {
+    gap: 2px;
+  }
+
+  .wordleCell {
+    border-radius: 3px;
+    font-size: clamp(9px, 2vw, 13px);
+  }
+
+  .boardProgress {
+    gap: 6px;
+  }
+
+  .boardProgressItem {
+    width: 58px;
+    height: 22px;
+    font-size: 13px;
+  }
+
+  .boardProgressSection {
+    width: 510px;
+  }
+
+  .keyboardSection {
+    margin-top: 6px;
+    max-width: 480px;
+  }
+
+  .keyboardHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .keyboardHint {
+    text-align: left;
+  }
+
+  .keyboard {
+    gap: 5px;
+  }
+
+  .keyboardRow {
+    gap: 4px;
+  }
+
+  .keyboardKey {
+    height: 32px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .actionKey {
+    font-size: 9px;
+  }
+
+  .instructions {
+    margin-top: 40px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 480px) {
+  .octordleHeader {
+    padding: 20px 20px 0px;
+  }
+  
+  .headerContent,
+  .octordleContainer {
+    width: calc(100% - 20px);
+  }
+
+  .headerContent {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .backLink {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .headerLabel {
+    font-size: 9px;
+  }
+
+  .octordleTitle {
+    font-size: 30px;
+  }
+
+  .octordleSubtitle {
+    margin-top: 7px;
+
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .octordleSection {
+    padding-top: 14px;
+    padding-bottom: 45px;
+  }
+
+  .gameTopBar {
+    margin-bottom: 12px;
+    padding: 11px;
+    border-radius: 10px;
+  }
+
+  .gameStats {
+    gap: 10px;
+  }
+
+  .statItem {
+    gap: 7px;
+  }
+
+  .statItem > svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .progressCircle {
+    width: 30px;
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .statLabel {
+    font-size: 8px;
+  }
+
+  .statValue {
+    font-size: 12px;
+  }
+
+  .newGameButton {
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  .gameMessage,
+  .successMessage {
+    min-height: 36px;
+
+    margin-bottom: 12px;
+    padding: 7px 9px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+  }
+
+
+  /*
+    =======================================================
+    IMPORTANT:
+    MOBILE REMAINS 2 × 4
+    =======================================================
+  */
+
+  .boardsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows:
+      repeat(4, auto);
+    gap: 6px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .puzzleBoard {
+    width: 100%;
+    min-width: 0;
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  .boardHeader {
+    gap: 4px;
+    margin-bottom: 4px;
+    padding: 0 1px;
+  }
+
+  .boardNumber {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  .boardLabel {
+    font-size: 6.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .solvedBadge {
+    gap: 2px;
+    padding: 2px 3px;
+    border-radius: 5px;
+    font-size: 6px;
+  }
+
+  .solvedBadge svg {
+    width: 6px;
+    height: 6px;
+  }
+
+  .wordleBoard {
+    gap: 1.5px;
+  }
+
+  .wordleRow {
+    gap: 1.5px;
+  }
+
+  .wordleCell {
+    border-radius: 2px;
+    font-size: 9px;
+  }
+
+  .solvedOverlay svg {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE KEYBOARD
+  ------------------------------------------------------- */
+  .boardProgressSection {
+    width: 480px;
+  }
+
+  .boardProgressItem {
+    width: 46px;
+    height: 19px;
+  }
+  
+  .keyboardSection {
+    margin-top: 6px;
+    max-width: 460px;
+  }
+
+  .keyboardHeader {
+    margin-bottom: 8px;
+  }
+
+  .sectionLabel {
+    font-size: 9px;
+  }
+
+  .keyboardHint {
+    font-size: 9px;
+  }
+
+  .keyboard {
+    gap: 4px;
+  }
+
+  .keyboardRow {
+    gap: 3px;
+  }
+
+  .keyboardKey {
+    height: 28px;
+    padding: 0 2px;
+    border-radius: 5px;
+    font-size: 10px;
+  }
+
+  .actionKey {
+    font-size: 7px;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE INSTRUCTIONS
+  ------------------------------------------------------- */
+
+  .instructions {
+    margin-top: 32px;
+    padding-top: 22px;
+  }
+
+  .instructionsHeader {
+    margin-bottom: 14px;
+  }
+
+  .instructionsHeader h2 {
+    font-size: 20px;
+  }
+
+  .rulesGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .ruleCard {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .ruleCard > span {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  .ruleCard h3 {
+    margin-bottom: 4px;
+    font-size: 10px;
+  }
+
+  .ruleCard p {
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .bottomActions {
+    margin-top: 22px;
+  }
+
+  .secondaryNewGameButton {
+    width: 100%;
+    min-height: 40px;
+
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+@media (max-width: 380px) {
+  .octordleHeader {
+    padding: 10px 20px 0px;
+  }
+  
+  .headerContent,
+  .octordleContainer {
+    width: calc(100% - 14px);
+  }
+
+  .boardsGrid {
+    gap: 4px;
+  }
+
+  .puzzleBoard {
+    padding: 4px;
+    border-radius: 6px;
+  }
+
+  .boardHeader {
+    margin-bottom: 3px;
+  }
+
+  .boardNumber {
+    width: 16px;
+    height: 16px;
+
+    font-size: 7px;
+  }
+
+  .boardLabel {
+    font-size: 5.5px;
+  }
+
+  .solvedBadge {
+    display: none;
+  }
+
+  .wordleBoard {
+    gap: 1px;
+  }
+
+  .wordleRow {
+    gap: 1px;
+  }
+
+  .wordleCell {
+    font-size: 8px;
+  }
+
+  .keyboardKey {
+    height: 34px;
+    font-size: 9px;
+  }
+
+  .actionKey {
+    font-size: 6px;
+  }
+
+  .boardProgressItem {
+    width: 35.1px;
+    height: 17.5px;
+  }
+}

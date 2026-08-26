@@ -1,16 +1,31 @@
+import "dotenv/config";
 import express from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router = express.Router();
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.CONTACT_EMAIL,
-    pass: process.env.CONTACT_EMAIL_PASSWORD,
-  },
-});
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
+
+// =========================================
+// HTML ESCAPE FUNCTION
+// =========================================
+
+const escapeHtml = (value = "") => {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+};
+
+
+// =========================================
+// CONTACT FORM
+// =========================================
 
 router.post("/", async (req, res) => {
   try {
@@ -22,9 +37,9 @@ router.post("/", async (req, res) => {
     } = req.body;
 
 
-    // ================================
+    // =====================================
     // VALIDATION
-    // ================================
+    // =====================================
 
     if (!name || !email || !subject || !message) {
       return res.status(400).json({
@@ -34,14 +49,26 @@ router.post("/", async (req, res) => {
     }
 
 
-    // ================================
-    // SEND EMAIL
-    // ================================
+    // =====================================
+    // CLEAN / ESCAPE USER INPUT
+    // =====================================
 
-    await transporter.sendMail({
-      from: process.env.CONTACT_EMAIL,
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message)
+      .replace(/\n/g, "<br />");
 
-      to: process.env.CONTACT_RECEIVER_EMAIL,
+
+    // =====================================
+    // SEND EMAIL USING RESEND
+    // =====================================
+
+    const { data, error } = await resend.emails.send({
+
+      from: process.env.CONTACT_SENDER_EMAIL,
+
+      to: [process.env.CONTACT_RECEIVER_EMAIL],
 
       replyTo: email,
 
@@ -59,7 +86,15 @@ ${message}
       `,
 
       html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222;">
+        <div
+          style="
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            max-width: 700px;
+            margin: 0 auto;
+          "
+        >
 
           <h2 style="color: #00d084;">
             New DevSphere Contact Message
@@ -68,27 +103,38 @@ ${message}
           <hr />
 
           <p>
-            <strong>Name:</strong> ${name}
+            <strong>Name:</strong>
+            ${safeName}
           </p>
 
           <p>
-            <strong>Email:</strong> ${email}
+            <strong>Email:</strong>
+            ${safeEmail}
           </p>
 
           <p>
-            <strong>Subject:</strong> ${subject}
+            <strong>Subject:</strong>
+            ${safeSubject}
           </p>
 
-          <h3>Message</h3>
+          <h3>
+            Message
+          </h3>
 
           <p>
-            ${message.replace(/\n/g, "<br />")}
+            ${safeMessage}
           </p>
 
           <hr />
 
-          <p style="color: #777; font-size: 13px;">
-            This message was sent through the DevSphere contact form.
+          <p
+            style="
+              color: #777;
+              font-size: 13px;
+            "
+          >
+            This message was sent through the
+            DevSphere contact form.
           </p>
 
         </div>
@@ -96,13 +142,38 @@ ${message}
     });
 
 
-    // ================================
+    // =====================================
+    // RESEND ERROR
+    // =====================================
+
+    if (error) {
+
+      console.error(
+        "Resend email error:",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Something went wrong while sending your message.",
+      });
+    }
+
+
+    // =====================================
     // SUCCESS RESPONSE
-    // ================================
+    // =====================================
+
+    console.log(
+      "Contact email sent successfully:",
+      data?.id
+    );
 
     return res.status(200).json({
       success: true,
-      message: "Your message has been sent successfully.",
+      message:
+        "Your message has been sent successfully.",
     });
 
   } catch (error) {
@@ -114,7 +185,8 @@ ${message}
 
     return res.status(500).json({
       success: false,
-      message: "Something went wrong while sending your message.",
+      message:
+        "Something went wrong while sending your message.",
     });
   }
 });

@@ -1,0 +1,915 @@
+/* =========================================================
+   WORDLE PAGE
+========================================================= */
+.wordlePage {
+  min-height: 100vh;
+  background: var(--bg-primary, #ffffff);
+  color: var(--text-primary, #111827);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.wordleHeader {
+  position: relative;
+  overflow: hidden;
+  padding: 45px 24px 45px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(255, 108, 0, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #fcfaf8 0%,
+      #ffffff 100%
+    );
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.headerContent {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backLink:hover {
+  color: #ff6c00;
+  transform: translateX(-3px);
+}
+
+.headerLabel {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #ff6c00;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding-left: 10px;
+}
+
+.wordleTitle {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(2.4rem, 5vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.wordleSubtitle {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   GAME SECTION
+========================================================= */
+.wordleSection {
+  padding: 42px 24px 80px;
+  background: #ffffff;
+}
+
+.wordleContainer {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   GAME TOP BAR
+========================================================= */
+.gameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  background: #fcfaf8;
+  border: 1px solid #ebe9e5;
+  border-radius: 16px;
+}
+
+.gameStats {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 120px;
+  color: #64748b;
+}
+
+.statItem > svg {
+  flex-shrink: 0;
+  color: #eb7725;
+  font-size: 1.05rem;
+}
+
+.statLabel {
+  display: block;
+  margin-bottom: 3px;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.statValue {
+  display: block;
+  color: #1e293b;
+  font-size: 0.92rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.progressCircle {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 2px solid #fef1db;
+  border-radius: 50%;
+  background: #fff8ef;
+  color: #eb7725;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.gameActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newGameButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid #fef1db;
+  border-radius: 10px;
+  background: #fff8ef;
+  color: #eb7725;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.newGameButton:hover {
+  background: #fef3db;
+  border-color: #feedbf;
+  transform: translateY(-1px);
+}
+
+.newGameButton:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   GAME MESSAGE
+========================================================= */
+.gameMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  margin-bottom: 24px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+.gameMessage {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+}
+
+.successMessage {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.successMessage svg {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   BOARD AREA
+========================================================= */
+.boardArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wordleBoard {
+  display: grid;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.wordleRow {
+  display: grid;
+  grid-template-columns: repeat(5, 62px);
+  gap: 8px;
+}
+
+/* =========================================================
+   WORDLE CELLS
+========================================================= */
+.wordleCell {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  border: 2px solid #dbd6d1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.filledCell {
+  border-color: #94a3b8;
+}
+
+.currentCell {
+  border-color: #eb7725;
+  box-shadow:
+    0 0 0 2px rgba(37, 99, 235, 0.08);
+}
+
+.correctCell {
+  border-color: #0f7835;
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.presentCell {
+  border-color: #ca8a04;
+  background: #eab308;
+  color: #ffffff;
+}
+
+.absentCell {
+  border-color: #4b5768;
+  background: #8190a6;
+  color: #ffffff;
+}
+
+/* =========================================================
+   GAME RESULT
+========================================================= */
+.resultPanel {
+  display: flex;
+  align-items: center;
+  width: min(100%, 500px);
+  margin: 26px auto 0;
+  padding: 20px 22px;
+  border: 1px solid #f0eae2;
+  border-radius: 16px;
+  background: #fcfaf8;
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.resultIcon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  place-items: center;
+  border-radius: 14px;
+  background: #fff9ef;
+  color: #eb7725;
+  font-size: 1.2rem;
+}
+
+.resultContent {
+  min-width: 0;
+}
+
+.resultLabel {
+  display: block;
+  margin-bottom: 4px;
+  color: #eb9925;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.resultTitle {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.resultText {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.answerWord {
+  margin: 5px 0 0;
+  color: #111827;
+  font-size: 1.05rem;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+}
+
+/* =========================================================
+   VIRTUAL KEYBOARD
+========================================================= */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.keyboardRow {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.keyboardKey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 54px;
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #e5e7eb;
+  color: #1e293b;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.keyboardKey:hover:not(:disabled) {
+  background: #dbe1e8;
+  border-color: #cbd5e1;
+}
+
+.keyboardKey:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.keyboardKey:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.keyboardKey:disabled {
+  cursor: default;
+}
+
+.actionKey {
+  min-width: 76px;
+  background: #cbd5e1;
+  font-size: 0.72rem;
+}
+
+.keyboardCorrect {
+  border-color: #15803d;
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.keyboardPresent {
+  border-color: #ca8a04;
+  background: #eab308;
+  color: #ffffff;
+}
+
+.keyboardAbsent {
+  border-color: #334155;
+  background: #8190a6;
+  color: #ffffff;
+}
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+.instructions {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid #ebe9e5;
+}
+
+.instructionsHeader {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.sectionLabel {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #eb7725;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.instructionsHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ruleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid #ebe8e5;
+  border-radius: 14px;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ruleCard:hover {
+  border-color: #feecdb;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
+
+.ruleCard > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #fff9ef;
+  color: #eb7725;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.ruleCard h3 {
+  margin: 1px 0 7px;
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.ruleCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 38px;
+}
+
+.secondaryNewGameButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 21px;
+  border: 1px solid #fef2db;
+  border-radius: 10px;
+  background: #fff9ef;
+  color: #eb7725;
+  font-size: 0.88rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.secondaryNewGameButton:hover {
+  background: #fef4db;
+  border-color: #fee7bf;
+  transform: translateY(-1px);
+}
+
+.secondaryNewGameButton:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+.backLink:focus-visible,
+.newGameButton:focus-visible,
+.secondaryNewGameButton:focus-visible {
+  outline: 2px solid #eb8825;
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .wordleHeader {
+    padding: 56px 20px 50px;
+  }
+
+  .wordleSection {
+    padding: 40px 20px 70px;
+  }
+
+  .gameTopBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .gameStats {
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .statItem {
+    min-width: 0;
+  }
+
+  .gameActions {
+    width: 100%;
+  }
+
+  .newGameButton {
+    width: 100%;
+  }
+
+  .keyboardKey {
+    min-width: 36px;
+    height: 50px;
+    padding: 0 8px;
+  }
+
+  .actionKey {
+    min-width: 68px;
+  }
+
+  .instructions {
+    margin-top: 58px;
+    padding-top: 40px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .wordleHeader {
+    padding: 42px 16px 38px;
+  }
+
+  .backLink {
+    margin-bottom: 22px;
+    font-size: 0.84rem;
+  }
+
+  .headerLabel {
+    font-size: 0.68rem;
+  }
+
+  .wordleTitle {
+    font-size: 2.65rem;
+  }
+
+  .wordleSubtitle {
+    margin-top: 14px;
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .wordleSection {
+    padding: 28px 14px 56px;
+  }
+
+  .gameTopBar {
+    margin-bottom: 18px;
+    padding: 15px;
+    border-radius: 13px;
+  }
+
+  .gameStats {
+    gap: 8px;
+  }
+
+  .statItem {
+    gap: 7px;
+  }
+
+  .statItem > svg {
+    font-size: 0.9rem;
+  }
+
+  .statLabel {
+    font-size: 0.59rem;
+  }
+
+  .statValue {
+    font-size: 0.76rem;
+  }
+
+  .progressCircle {
+    width: 35px;
+    height: 35px;
+    font-size: 0.62rem;
+  }
+
+  .gameMessage,
+  .successMessage {
+    margin-bottom: 18px;
+    padding: 9px 12px;
+    font-size: 0.8rem;
+  }
+
+  .wordleBoard {
+    gap: 6px;
+  }
+
+  .wordleRow {
+    grid-template-columns: repeat(5, 54px);
+    gap: 6px;
+  }
+
+  .wordleCell {
+    width: 54px;
+    height: 54px;
+    border-width: 2px;
+    border-radius: 7px;
+    font-size: 1.4rem;
+  }
+
+  .resultPanel {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 13px;
+  }
+
+  .resultIcon {
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+    border-radius: 11px;
+    font-size: 1rem;
+  }
+
+  .resultLabel {
+    font-size: 0.6rem;
+  }
+
+  .resultTitle {
+    font-size: 1rem;
+  }
+
+  .resultText {
+    font-size: 0.78rem;
+  }
+
+  .answerWord {
+    font-size: 0.94rem;
+  }
+
+  .keyboard {
+    gap: 6px;
+    margin-top: 24px;
+  }
+
+  .keyboardRow {
+    gap: 4px;
+  }
+
+  .keyboardKey {
+    min-width: 28px;
+    height: 46px;
+    padding: 0 6px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+  }
+
+  .actionKey {
+    min-width: 54px;
+    font-size: 0.61rem;
+  }
+
+  .instructions {
+    margin-top: 48px;
+    padding-top: 34px;
+  }
+
+  .instructionsHeader {
+    margin-bottom: 22px;
+  }
+
+  .sectionLabel {
+    font-size: 0.65rem;
+  }
+
+  .instructionsHeader h2 {
+    font-size: 1.65rem;
+  }
+
+  .rulesGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ruleCard {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .ruleCard > span {
+    width: 32px;
+    height: 32px;
+    font-size: 0.66rem;
+  }
+
+  .ruleCard h3 {
+    font-size: 0.92rem;
+  }
+
+  .ruleCard p {
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .bottomActions {
+    margin-top: 30px;
+  }
+
+  .secondaryNewGameButton {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — VERY SMALL PHONES
+========================================================= */
+@media (max-width: 390px) {
+
+  .wordleSection {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .wordleRow {
+    grid-template-columns: repeat(5, 48px);
+    gap: 5px;
+  }
+
+  .wordleCell {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .keyboard {
+    gap: 5px;
+  }
+
+  .keyboardRow {
+    gap: 3px;
+  }
+
+  .keyboardKey {
+    min-width: 25px;
+    height: 43px;
+    padding: 0 5px;
+    font-size: 0.67rem;
+  }
+
+  .actionKey {
+    min-width: 48px;
+    font-size: 0.56rem;
+  }
+
+  .gameStats {
+    gap: 5px;
+  }
+
+  .statItem {
+    gap: 5px;
+  }
+
+  .statLabel {
+    font-size: 0.55rem;
+  }
+
+  .statValue {
+    font-size: 0.7rem;
+  }
+
+  .progressCircle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.57rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .backLink,
+  .newGameButton,
+  .secondaryNewGameButton,
+  .ruleCard,
+  .keyboardKey,
+  .wordleCell {
+    transition: none;
+  }
+}

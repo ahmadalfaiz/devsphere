@@ -151,17 +151,17 @@ function Footer() {
 
         <div className={styles.bottomLinks}>
 
-          <a href="#">
+          <Link to="/privacy-policy">
             Privacy Policy
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link to="/terms-of-service">
             Terms
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link to="/cookies-policy">
             Cookies
-          </a>
+          </Link>
 
         </div>
 

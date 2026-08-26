@@ -22,6 +22,14 @@ import Articles from "./pages/Articles/Articles";
 import ArticlesDetails from "./pages/Articles/ArticlesDetails";
 
 import Contact from "./pages/Contact/Contact";
+import PrivacyPolicy from "./pages/Privacy/PrivacyPolicy";
+import Terms from "./pages/Terms/Terms";
+import Cookies from "./pages/Cookies/Cookies";
+
+import Games from "./pages/Games/Games";
+import Sudoku from "./pages/Games/components/Sudoku";
+import Wordle from "./pages/Games/components/Wordle";
+import Octordle from "./pages/Games/components/Octordle";
 
 function App() {
   return (
@@ -47,7 +55,15 @@ function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:slug" element={<ArticlesDetails />}/>
 
-          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />}/>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
+          <Route path="/terms-of-service" element={<Terms />} />
+          <Route path="/cookies-policy" element={<Cookies />}/>
+
+          <Route path="/games" element={<Games />} />
+          <Route path="/games/sudoku" element={<Sudoku />} />
+          <Route path="/games/wordle" element={<Wordle />} />
+          <Route path="/games/octordle" element={<Octordle />} />
 
         </Route>
 
