@@ -98,6 +98,7 @@ function Tutorials() {
             {name: "JavaScript", slug: "javascript",},
             {name: "React", slug: "react",},
             {name: "Next.js", slug: "nextjs",},
+            {name: "Nuxt.js", slug: "nuxtjs"},
             ],
         },
 
@@ -117,9 +118,16 @@ function Tutorials() {
             topics: [
             {name: "C", slug: "c",},
             {name: "C++", slug: "cpp",},
+            {name: "C#", slug: "c-sharp"},
             {name: "Java", slug: "java",},
             {name: "Python", slug: "python",},
             {name: "JavaScript", slug: "javascript",},
+            {name: "Rust", slug: "rust"},
+            {name: "Swift", slug: "swift"},
+            {name: "Kotlin", slug: "kotlin"},
+            {name: "Dart", slug: "dart"},
+            {name: "Ruby", slug: "ruby"},
+            {name: "Go", slug: "golang"},
             ],
         },
 
@@ -128,7 +136,7 @@ function Tutorials() {
             topics: [
             {name: "Machine Learning", slug: "machine-learning",},
             {name: "Deep Learning", slug: "deep-learning",},
-            {name: "NLP", slug: "nlp",},
+            {name: "NLP", slug: "natural-language-processing",},
             {name: "Computer Vision", slug: "computer-vision",},
             {name: "Generative AI", slug: "generative-ai",},
             ],
@@ -141,7 +149,7 @@ function Tutorials() {
             {name: "Kubernetes", slug: "kubernetes",},
             {name: "CI/CD", slug: "ci-cd",},
             {name: "Linux", slug: "linux",},
-            {name: "AWS", slug: "aws",},
+            {name: "AWS", slug: "amazon-web-services",},
             ],
         },
 

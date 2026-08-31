@@ -436,16 +436,16 @@ function Navbar() {
 
         <div className={styles.bottomNavbar}>
 
-          <Link to="/dsa">DSA</Link>
+          <Link to="/courses/dsa">DSA</Link>
           <Link to="/webdev">Web Dev</Link>
-          <Link to="/python">Python</Link>
-          <Link to="/javascript">JavaScript</Link>
-          <Link to="/java">Java</Link>
-          <Link to="/cpp">C++</Link>
+          <Link to="/tutorials/python">Python</Link>
+          <Link to="/tutorials/javascript">JavaScript</Link>
+          <Link to="/tutorials/java">Java</Link>
+          <Link to="/tutorials/cpp">C++</Link>
           <Link to="/ai">AI</Link>
-          <Link to="/machine-learning">Machine Learning</Link>
+          <Link to="/tutorials/machine-learning">Machine Learning</Link>
           <Link to="/data-science">Data Science</Link>
-          <Link to="/devops">DevOps</Link>
+          <Link to="/courses/devops">DevOps</Link>
 
         </div>
         

@@ -140,7 +140,7 @@ function Courses() {
             topics: [
                 { name: "Machine Learning", slug: "machine-learning" },
                 { name: "Deep Learning", slug: "deep-learning" },
-                { name: "Natural Language Processing", slug: "nlp" },
+                { name: "Natural Language Processing", slug: "natural-language-processing" },
                 { name: "Computer Vision", slug: "computer-vision" },
                 { name: "Generative AI", slug: "generative-ai" },
             ],
