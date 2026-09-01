@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import ScrollToTop from "./components/common/ScrollToTop";
 import MainLayout from "./layouts/MainLayout";
 
 import Home from "./pages/Home/Home";
@@ -34,7 +34,7 @@ import Octordle from "./pages/Games/components/Octordle";
 function App() {
   return (
     <BrowserRouter>
-
+    <ScrollToTop />
       <Routes>
 
         <Route path="/" element={<MainLayout />}>

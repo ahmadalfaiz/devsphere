@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Tutorials.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaReact, FaJs, FaPython, FaJava, FaCentos, FaCogs, FaLaptopCode, FaServer, FaLayerGroup, FaBrain, FaCode, FaCloud, FaDatabase } from "react-icons/fa";
 
 function Tutorials() {
 
@@ -9,31 +10,31 @@ function Tutorials() {
 
     {
       title: "React.js",
-      icon: "⚛️",
-      lessons: 120,
+      icon: FaReact,
+      lessons: 106,
       level: "Beginner → Advanced",
       route: "/tutorials/react",
     },
 
     {
       title: "JavaScript",
-      icon: "🟨",
-      lessons: 95,
+      icon: FaJs,
+      lessons: 130,
       level: "Beginner → Advanced",
       route: "/tutorials/javascript",
     },
 
     {
       title: "Python",
-      icon: "🐍",
-      lessons: 110,
+      icon: FaPython,
+      lessons: 120,
       level: "Beginner → Advanced",
       route: "/tutorials/python",
     },
 
     {
       title: "Java",
-      icon: "☕",
+      icon: FaJava,
       lessons: 90,
       level: "Intermediate",
       route: "/tutorials/java",
@@ -41,16 +42,16 @@ function Tutorials() {
 
     {
       title: "C++",
-      icon: "💻",
-      lessons: 85,
+      icon: FaCentos,
+      lessons: 259,
       level: "Intermediate",
       route: "/tutorials/cpp",
     },
 
     {
       title: "Machine Learning",
-      icon: "🤖",
-      lessons: 130,
+      icon: FaCogs,
+      lessons: 126,
       level: "Advanced",
       route: "/tutorials/machine-learning",
     },
@@ -63,35 +64,36 @@ function Tutorials() {
       title: "Frontend Developer",
       description:
         "Master HTML, CSS, JavaScript, React and modern frontend tools.",
-      icon: "🎨",
+      icon: FaLaptopCode,
     },
 
     {
       title: "Backend Developer",
       description:
         "Learn Node.js, Express, APIs, Databases and Authentication.",
-      icon: "⚙️",
+      icon: FaServer,
     },
 
     {
       title: "Full Stack Developer",
       description:
         "Become job-ready by mastering frontend and backend development.",
-      icon: "🚀",
+      icon: FaLayerGroup,
     },
 
     {
       title: "AI Engineer",
       description:
         "Learn Python, Machine Learning, Deep Learning and AI systems.",
-      icon: "🧠",
+      icon: FaBrain,
     },
 
   ];
 
     const categories = [
         {
-            title: "🎨 Frontend",
+            title: "Frontend",
+            icon: FaLaptopCode,
             topics: [
             {name: "HTML", slug: "html",},
             {name: "CSS", slug: "css",},
@@ -103,7 +105,8 @@ function Tutorials() {
         },
 
         {
-            title: "⚙️ Backend",
+            title: "Backend",
+            icon: FaServer,
             topics: [
             {name: "Node.js", slug: "nodejs",},
             {name: "Express.js", slug: "expressjs",},
@@ -114,7 +117,8 @@ function Tutorials() {
         },
 
         {
-            title: "💻 Programming",
+            title: "Programming",
+            icon: FaCode,
             topics: [
             {name: "C", slug: "c",},
             {name: "C++", slug: "cpp",},
@@ -132,7 +136,8 @@ function Tutorials() {
         },
 
         {
-            title: "🤖 AI & ML",
+            title: "AI & ML",
+            icon: FaBrain,
             topics: [
             {name: "Machine Learning", slug: "machine-learning",},
             {name: "Deep Learning", slug: "deep-learning",},
@@ -143,7 +148,8 @@ function Tutorials() {
         },
 
         {
-            title: "☁️ DevOps",
+            title: "DevOps",
+            icon: FaCloud,
             topics: [
             {name: "Docker", slug: "docker",},
             {name: "Kubernetes", slug: "kubernetes",},
@@ -154,7 +160,8 @@ function Tutorials() {
         },
 
         {
-            title: "🗄️ Databases",
+            title: "Databases",
+            icon: FaDatabase,
             topics: [
             {name: "MySQL", slug: "mysql",},
             {name: "PostgreSQL", slug: "postgresql",},
@@ -211,7 +218,7 @@ function Tutorials() {
 
       {/* CATEGORIES */}
 
-      <section className={styles.categorySection}>
+      <section id="explore-categories" className={styles.categorySection}>
 
         <div className={styles.sectionHeader}>
 
@@ -245,7 +252,10 @@ function Tutorials() {
                         )
                     }
                     >
-                    {category.title}
+                      <span className={styles.categoryIcon}>
+                        <category.icon />
+                      </span>
+                      <span>{category.title}</span>
                     </div>
 
                     {
@@ -305,7 +315,7 @@ function Tutorials() {
 
           {
             featuredTutorials.map(
-              (tutorial) => (
+              (tutorial) => { const Icon = tutorial.icon; return(
 
                 <div
                   key={tutorial.title}
@@ -313,7 +323,7 @@ function Tutorials() {
                 >
 
                   <div className={styles.tutorialIcon}>
-                    {tutorial.icon}
+                    <Icon />{/*</>{tutorial.icon}*/}
                   </div>
 
                   <h3>
@@ -337,7 +347,7 @@ function Tutorials() {
 
                 </div>
 
-              )
+              );}
             )
           }
 
@@ -365,7 +375,7 @@ function Tutorials() {
 
           {
             learningPaths.map(
-              (path) => (
+              (path) => { const Icon = path.icon; return(
 
                 <div
                   key={path.title}
@@ -373,7 +383,7 @@ function Tutorials() {
                 >
 
                   <div className={styles.pathIcon}>
-                    {path.icon}
+                    <Icon />
                   </div>
 
                   <h3>
@@ -386,7 +396,7 @@ function Tutorials() {
 
                 </div>
 
-              )
+              );}
             )
           }
 
@@ -410,7 +420,17 @@ function Tutorials() {
             DevSphere.
           </p>
 
-          <button>
+          <button
+            type="button"
+            onClick={() => {
+              document
+                .getElementById("explore-categories")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+            }}
+          >
             Start Learning
           </button>
 

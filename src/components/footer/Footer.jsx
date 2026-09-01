@@ -59,9 +59,9 @@ function Footer() {
             Quick Links
           </h3>
 
-          <a href="#">
+          <Link to="/">
             Home
-          </a>
+          </Link>
 
           <Link to="/courses">
             Courses

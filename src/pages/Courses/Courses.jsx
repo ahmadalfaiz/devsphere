@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Courses.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaCode, FaProjectDiagram, FaMicrochip, FaCogs, FaBrain, FaCloud, FaDatabase, FaCubes, FaNetworkWired,} from "react-icons/fa";
 
 function Courses() {
 
@@ -9,7 +10,7 @@ function Courses() {
 
         {
             title: "DSA",
-            icon: "⚛️",
+            icon: FaProjectDiagram,
             lessons: 120,
             level: "Beginner → Advanced",
             route: "/courses/dsa",
@@ -17,7 +18,7 @@ function Courses() {
 
         {
             title: "Operating Systems",
-            icon: "🟨",
+            icon: FaMicrochip,
             lessons: 95,
             level: "Beginner → Advanced",
             route: "/courses/operating-systems",
@@ -25,7 +26,7 @@ function Courses() {
 
         {
             title: "DBMS",
-            icon: "📊",
+            icon: FaDatabase,
             lessons: 110,
             level: "Beginner → Advanced",
             route: "/courses/dbms",
@@ -33,7 +34,7 @@ function Courses() {
 
         {
             title: "OOPs",
-            icon: "🫆",
+            icon: FaCubes,
             lessons: 90,
             level: "Intermediate",
             route: "/courses/oops",
@@ -41,7 +42,7 @@ function Courses() {
 
         {
             title: "Computer Networks",
-            icon: "💻",
+            icon: FaNetworkWired,
             lessons: 85,
             level: "Intermediate",
             route: "/courses/computer-networks",
@@ -49,7 +50,7 @@ function Courses() {
 
         {
             title: "Software Engineering",
-            icon: "🤖",
+            icon: FaCogs,
             lessons: 130,
             level: "Advanced",
             route: "/courses/software-engineering",
@@ -63,28 +64,28 @@ function Courses() {
             title: "Programming Foundations",
             description:
                 "Build strong programming fundamentals with C, C++, Java, Python, and Object-Oriented Programming concepts.",
-            icon: "💻",
+            icon: FaCode,
         },
 
         {
             title: "Core Computer Science",
             description:
                 "Master Operating Systems, DBMS, Computer Networks, Theory of Computation, and Compiler Design.",
-            icon: "🖥️",
+            icon: FaMicrochip,
         },
 
         {
             title: "Data Structures & Algorithms",
             description:
                 "Develop problem-solving skills through Data Structures, Algorithms, Competitive Programming, and interview preparation.",
-            icon: "🧮",
+            icon: FaProjectDiagram,
         },
 
         {
             title: "Artificial Intelligence",
             description:
                 "Explore Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Generative AI.",
-            icon: "🤖",
+            icon: FaBrain,
         },
 
     ];
@@ -92,7 +93,8 @@ function Courses() {
     const categories = [
 
         {
-            title: "📘 Programming Fundamentals",
+            title: "Programming Fundamentals",
+            icon: FaCode,
             topics: [
                 { name: "C", slug: "c" },
                 { name: "C++", slug: "cpp" },
@@ -103,7 +105,8 @@ function Courses() {
         },
 
         {
-            title: "🧮 Data Structures & Algorithms",
+            title: "Data Structures & Algorithms",
+            icon: FaProjectDiagram,
             topics: [
                 { name: "Data Structures", slug: "data-structures" },
                 { name: "Algorithms", slug: "algorithms" },
@@ -114,7 +117,8 @@ function Courses() {
         },
 
         {
-            title: "💻 Core Computer Science",
+            title: "Core Computer Science",
+            icon: FaMicrochip,
             topics: [
                 { name: "Operating Systems", slug: "operating-systems" },
                 { name: "Database Management Systems", slug: "dbms" },
@@ -125,7 +129,8 @@ function Courses() {
         },
 
         {
-            title: "🌐 Software Engineering",
+            title: "Software Engineering",
+            icon: FaCogs,
             topics: [
                 { name: "Software Engineering", slug: "software-engineering" },
                 { name: "System Design", slug: "system-design" },
@@ -136,7 +141,8 @@ function Courses() {
         },
 
         {
-            title: "🤖 Artificial Intelligence",
+            title: "Artificial Intelligence",
+            icon: FaBrain,
             topics: [
                 { name: "Machine Learning", slug: "machine-learning" },
                 { name: "Deep Learning", slug: "deep-learning" },
@@ -147,7 +153,8 @@ function Courses() {
         },
 
         {
-            title: "☁️ Cloud & DevOps",
+            title: "Cloud & DevOps",
+            icon: FaCloud,
             topics: [
                 { name: "Cloud Computing", slug: "cloud-computing" },
                 { name: "Docker", slug: "docker" },
@@ -206,7 +213,7 @@ function Courses() {
 
         {/* CATEGORIES */}
 
-        <section className={styles.categorySection}>
+        <section id="explore-categories" className={styles.categorySection}>
 
             <div className={styles.sectionHeader}>
 
@@ -239,7 +246,9 @@ function Courses() {
                                 )
                             }
                         >
-
+                            <span className={styles.categoryIcon}>
+                                <category.icon />
+                            </span>
                             <span>{category.title}</span>
 
                         </div>
@@ -299,7 +308,7 @@ function Courses() {
         
                 {
                     featuredSubjects.map(
-                        (tutorial) => (
+                        (tutorial) => { const Icon = tutorial.icon; return(
         
                         <div
                           key={tutorial.title}
@@ -307,7 +316,7 @@ function Courses() {
                         >
         
                             <div className={styles.tutorialIcon}>
-                                {tutorial.icon}
+                                <Icon />{/*</>{tutorial.icon}*/}
                             </div>
         
                                 <h3>
@@ -331,7 +340,7 @@ function Courses() {
         
                         </div>
         
-                        )
+                        );}
                     )
                 }
             </div>
@@ -357,7 +366,7 @@ function Courses() {
         
                 {
                     studyTracks.map(
-                        (path) => (
+                        (path) => { const Icon = path.icon; return(
         
                     <div
                         key={path.title}
@@ -365,7 +374,7 @@ function Courses() {
                     >
         
                         <div className={styles.pathIcon}>
-                            {path.icon}
+                            <Icon />
                         </div>
         
                             <h3>
@@ -378,7 +387,7 @@ function Courses() {
         
                     </div>
         
-                        )
+                        );}
                     )
                 }
         
@@ -401,7 +410,17 @@ function Courses() {
                     DevSphere.
                 </p>
         
-                <button>
+                <button
+                  type="button"
+                    onClick={() => {
+                        document
+                        .getElementById("explore-categories")
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }}
+                >
                     Start Learning
                 </button>
         

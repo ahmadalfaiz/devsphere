@@ -1,41 +1,42 @@
 import styles from "./CategoriesSection.module.css";
+import { FaLaptopCode, FaBrain, FaChartBar, FaRobot, FaProjectDiagram, FaCloud,} from "react-icons/fa";
 
 function CategoriesSection() {
 
   const categories = [
 
     {
-      icon: "💻",
+      icon: FaLaptopCode,
       title: "Web Development",
       courses: "120+ Courses"
     },
 
     {
-      icon: "🤖",
+      icon: FaBrain,
       title: "Artificial Intelligence",
       courses: "80+ Courses"
     },
 
     {
-      icon: "📊",
+      icon: FaChartBar,
       title: "Data Science",
       courses: "70+ Courses"
     },
 
     {
-      icon: "🧠",
+      icon: FaRobot,
       title: "Machine Learning",
       courses: "95+ Courses"
     },
 
     {
-      icon: "⚡",
+      icon: FaProjectDiagram,
       title: "DSA",
       courses: "150+ Problems"
     },
 
     {
-      icon: "☁️",
+      icon: FaCloud,
       title: "Cloud & DevOps",
       courses: "60+ Courses"
     }
@@ -78,7 +79,7 @@ function CategoriesSection() {
           >
 
             <div className={styles.icon}>
-              {category.icon}
+              <category.icon />
             </div>
 
             <h3>

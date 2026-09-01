@@ -1,32 +1,33 @@
 import styles from "./FeaturesSection.module.css";
+import { FaLaptopCode, FaRocket, FaBrain, FaBookOpen,} from "react-icons/fa";
 
 function FeaturesSection() {
 
   const features = [
 
     {
-      icon: "💻",
+      icon: FaLaptopCode,
       title: "Interactive Learning",
       description:
         "Learn with practical coding exercises, real projects and hands-on tutorials."
     },
 
     {
-      icon: "🚀",
+      icon: FaRocket,
       title: "Career Focused",
       description:
         "Master industry-ready skills that help you crack interviews and jobs."
     },
 
     {
-      icon: "🧠",
+      icon: FaBrain,
       title: "AI Powered",
       description:
         "Get personalized recommendations and smarter learning paths."
     },
 
     {
-      icon: "📚",
+      icon: FaBookOpen,
       title: "Premium Resources",
       description:
         "Access high-quality notes, articles, roadmaps and coding practice."
@@ -71,7 +72,7 @@ function FeaturesSection() {
           >
 
             <div className={styles.icon}>
-              {feature.icon}
+              <feature.icon />
             </div>
 
             <h3>

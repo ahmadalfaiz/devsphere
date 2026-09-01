@@ -201,10 +201,10 @@
   font-size: 1.15rem;
   font-weight: 600;
   transition: 0.35s ease;
-
+  gap: 10px;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: center/*space-between*/;
   align-items: center;
 }
 
@@ -251,6 +251,14 @@
   overflow: hidden;
   animation: dropdownReveal 0.35s ease;
   backdrop-filter: blur(16px);
+}
+
+.categoryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 22px;
 }
 
 .topicItem {

@@ -17,7 +17,7 @@ export const tutorialInfo = {
   icon: "database-design",
   difficulty: "Advanced", // course-level badge, separate from per-section defaults
   estimatedHours: 43,
-  totalLessons: 100,
+  totalLessons: 103,
   version: "Latest Version",
   language: "English",
   path: "/database-design",
