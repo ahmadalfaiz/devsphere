@@ -62,21 +62,26 @@ function Footer() {
           <Link to="/">
             Home
           </Link>
-
           <Link to="/courses">
             Courses
           </Link>
-
           <Link to="/tutorials">
             Tutorials
           </Link>
-
           <Link to="/articles">
             Articles
           </Link>
-
           <Link to="/contact-us">
             Contact
+          </Link>
+          <Link to="/about-us">
+            About
+          </Link>
+          <Link to="/advertise-with-us">
+            Advertise
+          </Link>
+          <Link to="/support-devsphere" className={styles.supportLink}>
+            💚 Support DevSphere
           </Link>
 
         </div>

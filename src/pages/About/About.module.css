@@ -1,0 +1,1463 @@
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.aboutPage {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(16, 185, 129, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(37, 99, 235, 0.045),
+      transparent 28%
+    ),
+    #f8fafc;
+  color: #172033;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.heroSection,
+.introSection,
+.missionSection,
+.featuresSection,
+.whySection,
+.approachSection,
+.founderSection,
+.futureSection,
+.ctaSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COMMON SECTION HEADER
+========================================================= */
+
+.sectionHeader {
+  max-width: 780px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.sectionEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 13px;
+
+  color: #059669;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+
+  color: #172033;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.sectionHeader h2 span {
+  color: #059669;
+}
+
+.sectionHeader p {
+  max-width: 680px;
+  margin: 18px auto 0;
+
+  color: #687386;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.heroSection {
+  position: relative;
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 90px 24px 100px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #f0fdf9 48%,
+      #f8fafc 100%
+    );
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.heroGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(16, 185, 129, 0.11);
+  filter: blur(90px);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 8px 15px;
+
+  border: 1px solid rgba(5, 150, 105, 0.22);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: #047857;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.04);
+
+  backdrop-filter: blur(8px);
+}
+
+.heroBadge svg {
+  font-size: 13px;
+}
+
+.heroContent h1 {
+  margin: 25px 0 20px;
+
+  color: #111827;
+  font-size: clamp(48px, 7vw, 78px);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.heroContent h1 span {
+  color: #059669;
+}
+
+.heroContent > p {
+  max-width: 700px;
+  margin: 0 auto;
+
+  color: #667085;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 13px;
+
+  margin-top: 32px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primaryButton,
+.secondaryButton {
+  min-height: 46px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 11px 20px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primaryButton {
+  border: 1px solid #059669;
+  background: #059669;
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(5, 150, 105, 0.18);
+}
+
+.primaryButton:hover {
+  background: #047857;
+  border-color: #047857;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(5, 150, 105, 0.24);
+}
+
+.secondaryButton {
+  border: 1px solid #d7dee8;
+  background: rgba(255, 255, 255, 0.8);
+  color: #344054;
+}
+
+.secondaryButton:hover {
+  border-color: #a7b4c5;
+  background: #ffffff;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.primaryButton svg {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   INTRO SECTION
+========================================================= */
+
+.introSection {
+  max-width: 1180px;
+  margin: 0 auto;
+
+  padding: 100px 28px;
+}
+
+.introContent {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  align-items: center;
+  gap: 55px;
+
+  max-width: 1000px;
+  margin: 0 auto;
+
+  padding: 45px;
+
+  border: 1px solid #e3e8ef;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  box-shadow:
+    0 15px 45px rgba(15, 23, 42, 0.045);
+}
+
+.introIcon {
+  width: 140px;
+  height: 140px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(5, 150, 105, 0.12),
+      rgba(5, 150, 105, 0.035)
+    );
+
+  border: 1px solid rgba(5, 150, 105, 0.13);
+
+  color: #059669;
+
+  font-size: 54px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.introText p {
+  margin: 0 0 17px;
+
+  color: #596579;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.introText p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MISSION SECTION
+========================================================= */
+
+.missionSection {
+  padding: 20px 28px 100px;
+}
+
+.missionCard {
+  position: relative;
+
+  max-width: 1080px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 38px;
+
+  padding: 50px;
+
+  border: 1px solid rgba(5, 150, 105, 0.16);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #effcf7 0%,
+      #f7fcfa 52%,
+      #ffffff 100%
+    );
+
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.055);
+
+  overflow: hidden;
+}
+
+.missionCard::after {
+  content: "";
+
+  position: absolute;
+  width: 260px;
+  height: 260px;
+
+  right: -100px;
+  bottom: -130px;
+
+  border-radius: 50%;
+
+  background: rgba(16, 185, 129, 0.08);
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.missionIcon {
+  width: 90px;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(5, 150, 105, 0.15);
+
+  color: #059669;
+
+  font-size: 37px;
+
+  box-shadow:
+    0 10px 25px rgba(5, 150, 105, 0.08);
+}
+
+.missionContent {
+  position: relative;
+  z-index: 1;
+}
+
+.missionContent .sectionEyebrow {
+  margin-bottom: 10px;
+}
+
+.missionContent h2 {
+  max-width: 700px;
+
+  margin: 0 0 20px;
+
+  color: #172033;
+  font-size: clamp(29px, 4vw, 43px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.missionContent h2 span {
+  color: #059669;
+}
+
+.missionContent p {
+  max-width: 780px;
+
+  margin: 0 0 16px;
+
+  color: #596579;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.missionContent p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FEATURES SECTION
+========================================================= */
+
+.featuresSection {
+  max-width: 1180px;
+  margin: 0 auto;
+
+  padding: 100px 28px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.featureCard {
+  position: relative;
+
+  padding: 30px 28px;
+
+  min-height: 225px;
+  box-sizing: border-box;
+
+  border: 1px solid #e2e7ee;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(5, 150, 105, 0.24);
+
+  box-shadow:
+    0 18px 38px rgba(15, 23, 42, 0.075);
+}
+
+.featureIcon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 21px;
+
+  border-radius: 13px;
+
+  background: rgba(5, 150, 105, 0.09);
+
+  color: #059669;
+
+  font-size: 22px;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.featureCard:hover .featureIcon {
+  background: rgba(5, 150, 105, 0.14);
+  transform: scale(1.04);
+}
+
+.featureCard h3 {
+  margin: 0 0 10px;
+
+  color: #202938;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.featureCard p {
+  margin: 0;
+
+  color: #6a7587;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   WHY DEVSPHERE
+========================================================= */
+
+.whySection {
+  padding: 100px 28px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f1f5f9 0%,
+      #f8fafc 100%
+    );
+
+  border-top: 1px solid rgba(15, 23, 42, 0.045);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.045);
+}
+
+.whyContent {
+  max-width: 1080px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 75px;
+  align-items: start;
+}
+
+.whyHeading {
+  position: sticky;
+  top: 100px;
+}
+
+.whyHeading h2 {
+  max-width: 440px;
+
+  margin: 0;
+
+  color: #172033;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.whyHeading h2 span {
+  color: #059669;
+}
+
+.whyText > p {
+  margin: 0 0 18px;
+
+  color: #5e6a7c;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.whyPoints {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-top: 32px;
+}
+
+.whyPoint {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 15px;
+  align-items: start;
+
+  padding: 18px;
+
+  border: 1px solid #e3e8ef;
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whyPoint:hover {
+  transform: translateX(4px);
+
+  border-color: rgba(5, 150, 105, 0.2);
+
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.05);
+}
+
+.pointIcon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: rgba(5, 150, 105, 0.09);
+
+  color: #059669;
+
+  font-size: 18px;
+}
+
+.whyPoint h3 {
+  margin: 1px 0 5px;
+
+  color: #202938;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.whyPoint p {
+  margin: 0;
+
+  color: #707b8c;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   LEARNING APPROACH
+========================================================= */
+
+.approachSection {
+  max-width: 1180px;
+  margin: 0 auto;
+
+  padding: 105px 28px;
+}
+
+.approachGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.approachCard {
+  position: relative;
+
+  padding: 28px 24px 30px;
+
+  min-height: 255px;
+
+  border: 1px solid #e2e7ee;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.035);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.approachCard:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(5, 150, 105, 0.2);
+
+  box-shadow:
+    0 18px 35px rgba(15, 23, 42, 0.07);
+}
+
+.approachNumber {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+
+  color: #d9e2dc;
+
+  font-size: 34px;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.approachIcon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  border-radius: 13px;
+
+  background: rgba(5, 150, 105, 0.09);
+
+  color: #059669;
+
+  font-size: 21px;
+}
+
+.approachCard h3 {
+  margin: 0 0 9px;
+
+  color: #202938;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.approachCard p {
+  margin: 0;
+
+  color: #6b7688;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   FOUNDER / BEHIND DEVSPHERE
+========================================================= */
+
+.founderSection {
+  padding: 15px 28px 105px;
+}
+
+.founderCard {
+  max-width: 1080px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  align-items: stretch;
+
+  border: 1px solid #dfe6e2;
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.055);
+
+  overflow: hidden;
+}
+
+.founderVisual {
+  min-height: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(5, 150, 105, 0.16),
+      transparent 62%
+    ),
+    linear-gradient(
+      145deg,
+      #edfdf7,
+      #f7faf9
+    );
+}
+
+.founderVisual::before,
+.founderVisual::after {
+  content: "";
+
+  position: absolute;
+
+  border: 1px solid rgba(5, 150, 105, 0.11);
+  border-radius: 50%;
+}
+
+.founderVisual::before {
+  width: 230px;
+  height: 230px;
+}
+
+.founderVisual::after {
+  width: 310px;
+  height: 310px;
+}
+
+.founderIcon {
+  position: relative;
+  z-index: 1;
+
+  width: 105px;
+  height: 105px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(5, 150, 105, 0.15);
+
+  color: #059669;
+
+  font-size: 42px;
+
+  box-shadow:
+    0 18px 40px rgba(5, 150, 105, 0.12);
+}
+
+.founderContent {
+  padding: 52px 50px;
+}
+
+.founderContent h2 {
+  margin: 0 0 19px;
+
+  color: #172033;
+  font-size: clamp(29px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.founderContent > p {
+  margin: 0 0 17px;
+
+  color: #5f6b7c;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.founderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-top: 28px;
+  padding-top: 22px;
+
+  border-top: 1px solid #e7ebef;
+}
+
+.founderInfo strong {
+  color: #202938;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.founderInfo span {
+  color: #059669;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   FUTURE / JOURNEY AHEAD
+========================================================= */
+
+.futureSection {
+  padding: 100px 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0fdf8 0%,
+      #f8fafc 50%,
+      #f0f7ff 100%
+    );
+
+  border-top: 1px solid rgba(15, 23, 42, 0.045);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.045);
+}
+
+.futureContent {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 35px;
+  align-items: start;
+}
+
+.futureIcon {
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(5, 150, 105, 0.14);
+
+  color: #059669;
+
+  font-size: 31px;
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.055);
+}
+
+.futureContent h2 {
+  margin: 0 0 20px;
+
+  color: #172033;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.futureContent h2 span {
+  color: #059669;
+}
+
+.futureContent p {
+  max-width: 800px;
+
+  margin: 0 0 17px;
+
+  color: #5f6b7c;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.futureContent p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   CTA SECTION
+========================================================= */
+
+.ctaSection {
+  max-width: 1180px;
+  margin: 0 auto;
+
+  padding: 100px 28px 115px;
+}
+
+.ctaCard {
+  position: relative;
+
+  max-width: 900px;
+  margin: 0 auto;
+
+  padding: 65px 45px;
+
+  text-align: center;
+
+  border: 1px solid rgba(5, 150, 105, 0.18);
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(16, 185, 129, 0.14),
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      #f0fdf8,
+      #ffffff
+    );
+
+  box-shadow:
+    0 20px 55px rgba(15, 23, 42, 0.065);
+
+  overflow: hidden;
+}
+
+.ctaCard::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  top: -160px;
+  left: -110px;
+
+  border-radius: 50%;
+
+  background: rgba(5, 150, 105, 0.07);
+  filter: blur(30px);
+}
+
+.ctaIcon {
+  position: relative;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 22px;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(5, 150, 105, 0.14);
+
+  color: #059669;
+
+  font-size: 23px;
+
+  box-shadow:
+    0 10px 25px rgba(5, 150, 105, 0.09);
+}
+
+.ctaCard .sectionEyebrow {
+  margin-bottom: 11px;
+}
+
+.ctaCard h2 {
+  position: relative;
+
+  margin: 0 0 15px;
+
+  color: #172033;
+
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.ctaCard > p {
+  position: relative;
+
+  max-width: 650px;
+  margin: 0 auto;
+
+  color: #667386;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.ctaActions {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+
+/* =========================================================
+   FOCUS / ACCESSIBILITY
+========================================================= */
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline: 3px solid rgba(5, 150, 105, 0.25);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .approachGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .whyContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .whyHeading {
+    position: static;
+  }
+
+  .whyHeading h2 {
+    max-width: 650px;
+  }
+
+  .founderCard {
+    grid-template-columns: 1fr;
+  }
+
+  .founderVisual {
+    min-height: 300px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .heroSection {
+    min-height: auto;
+    padding: 75px 20px 80px;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(44px, 14vw, 62px);
+  }
+
+  .heroContent > p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroActions .primaryButton,
+  .heroActions .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 38px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 31px;
+  }
+
+  .sectionHeader p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .introSection {
+    padding: 75px 18px;
+  }
+
+  .introContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    padding: 32px 25px;
+  }
+
+  .introIcon {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 23px;
+
+    font-size: 40px;
+  }
+
+  .introText p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .missionSection {
+    padding: 0 18px 75px;
+  }
+
+  .missionCard {
+    grid-template-columns: 1fr;
+    gap: 25px;
+
+    padding: 32px 25px;
+  }
+
+  .missionIcon {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 18px;
+
+    font-size: 29px;
+  }
+
+  .missionContent h2 {
+    font-size: 30px;
+  }
+
+  .missionContent p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .featuresSection {
+    padding: 75px 18px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .featureCard {
+    min-height: auto;
+    padding: 27px 24px;
+  }
+
+  .featureCard p {
+    font-size: 13.5px;
+  }
+
+  .whySection {
+    padding: 75px 18px;
+  }
+
+  .whyHeading h2 {
+    font-size: 31px;
+  }
+
+  .whyText > p {
+    font-size: 14px;
+  }
+
+  .whyPoint {
+    grid-template-columns: 42px 1fr;
+    gap: 13px;
+    padding: 16px;
+  }
+
+  .pointIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .approachSection {
+    padding: 75px 18px;
+  }
+
+  .approachGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .approachCard {
+    min-height: auto;
+    padding: 27px 24px;
+  }
+
+  .founderSection {
+    padding: 0 18px 75px;
+  }
+
+  .founderVisual {
+    min-height: 270px;
+  }
+
+  .founderIcon {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 23px;
+
+    font-size: 34px;
+  }
+
+  .founderContent {
+    padding: 35px 25px;
+  }
+
+  .founderContent h2 {
+    font-size: 30px;
+  }
+
+  .founderContent > p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .futureSection {
+    padding: 75px 18px;
+  }
+
+  .futureContent {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .futureIcon {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 18px;
+
+    font-size: 26px;
+  }
+
+  .futureContent h2 {
+    font-size: 31px;
+  }
+
+  .futureContent p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .ctaSection {
+    padding: 75px 18px 90px;
+  }
+
+  .ctaCard {
+    padding: 48px 24px;
+    border-radius: 18px;
+  }
+
+  .ctaCard h2 {
+    font-size: 34px;
+  }
+
+  .ctaCard > p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+  }
+
+  .ctaActions .primaryButton,
+  .ctaActions .secondaryButton {
+    width: 100%;
+    max-width: 280px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .heroSection {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .heroBadge {
+    font-size: 9px;
+    padding: 7px 12px;
+  }
+
+  .heroContent h1 {
+    font-size: 43px;
+  }
+
+  .introContent,
+  .missionCard,
+  .founderContent {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 28px;
+  }
+
+  .missionContent h2,
+  .whyHeading h2,
+  .futureContent h2 {
+    font-size: 28px;
+  }
+
+  .ctaCard {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ctaCard h2 {
+    font-size: 31px;
+  }
+
+}

@@ -22,6 +22,9 @@ import Articles from "./pages/Articles/Articles";
 import ArticlesDetails from "./pages/Articles/ArticlesDetails";
 
 import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+import Advertise from "./pages/Advertise/Advertise";
+import Support from "./pages/Support/Support";
 import PrivacyPolicy from "./pages/Privacy/PrivacyPolicy";
 import Terms from "./pages/Terms/Terms";
 import Cookies from "./pages/Cookies/Cookies";
@@ -56,6 +59,9 @@ function App() {
           <Route path="/articles/:slug" element={<ArticlesDetails />}/>
 
           <Route path="/contact-us" element={<Contact />}/>
+          <Route path="/about-us" element={<About />}/>
+          <Route path="/advertise-with-us" element={<Advertise />}/>
+          <Route path="/support-devsphere" element={<Support />}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
           <Route path="/terms-of-service" element={<Terms />} />
           <Route path="/cookies-policy" element={<Cookies />}/>

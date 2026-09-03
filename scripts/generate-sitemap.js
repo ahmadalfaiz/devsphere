@@ -34,6 +34,9 @@ const pages = [
   { url: "/games/wordle", changefreq: "weekly", priority: 0.85,},
   { url: "/games/octordle", changefreq: "weekly", priority: 0.85,},
 
+  { url: "/contact-us", changefreq: "yearly", priority: 0.85,},
+  { url: "/about-us", changefreq: "yearly", priority: 0.85,},
+  { url: "/advertise-with-us", changefreq: "yearly", priority: 0.85,},
   { url: "/articles", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/top-javascript-concepts-every-developer-must-know", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/how-ai-is-changing-modern-web-development", changefreq: "weekly", priority: 0.85,},

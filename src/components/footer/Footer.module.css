@@ -1,52 +1,37 @@
 .footer{
   background:
   linear-gradient(to bottom, #0b0f14, #05070a);
-
   padding-top:100px;
-
   border-top:
   1px solid rgba(255,255,255,0.08);
-
   overflow:hidden;
 }
 
 /* TOP FOOTER */
-
 .topFooter{
   width:100%;
-
   display:grid;
-
   grid-template-columns:
   1.4fr 1fr 1fr 1.4fr;
-
   gap:50px;
-
   padding:0 8% 70px;
 }
 
 /* BRAND */
-
 .brandSection h2{
   color:#00d084;
-
   font-size:2.2rem;
-
   margin-bottom:22px;
 }
 
 .brandSection p{
   color:#cbd5e1;
-
   line-height:1.9;
-
   margin-bottom:30px;
-
   max-width:380px;
 }
 
 /* SOCIAL */
-
 .socialIcons{
   display:flex;
   gap:15px;
@@ -82,9 +67,7 @@
 .footerColumn h3,
 .newsletterSection h3{
   color:white;
-
   font-size:1.3rem;
-
   margin-bottom:28px;
 }
 
@@ -94,62 +77,45 @@
 }
 
 /* LINKS */
-
 .footerColumn a{
   color:#cbd5e1;
-
   text-decoration:none;
-
   margin-bottom:16px;
-
   transition:0.3s;
 }
 
 .footerColumn a:hover{
   color:#00d084;
-
   transform:translateX(4px);
 }
 
-/* NEWSLETTER */
+.supportLink {
+  margin-top: 8px;
+}
 
+/* NEWSLETTER */
 .newsletterSection p{
   color:#cbd5e1;
-
   line-height:1.8;
-
   margin-bottom:25px;
 }
 
 /* INPUT BOX */
-
 .newsletterBox{
   display:flex;
-
   flex-direction:column;
-
   gap:15px;
 }
 
 .newsletterBox input{
   width:100%;
-
   padding:16px 18px;
-
   border:none;
-
   outline:none;
-
   border-radius:14px;
-
-  background:
-  rgba(255,255,255,0.05);
-
-  border:
-  1px solid rgba(255,255,255,0.08);
-
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
   color:white;
-
   font-size:1rem;
 }
 
@@ -158,49 +124,33 @@
 }
 
 /* BUTTON */
-
 .newsletterBox button{
   padding:16px;
-
   border:none;
-
   border-radius:14px;
-
   background:#00d084;
-
   color:black;
-
   font-size:1rem;
-
   font-weight:600;
-
   cursor:pointer;
-
   transition:0.35s;
 }
 
 .newsletterBox button:hover{
   transform:translateY(-3px);
-
   box-shadow:
   0 10px 25px rgba(0,208,132,0.3);
 }
 
 /* BOTTOM FOOTER */
-
 .bottomFooter{
   border-top:
   1px solid rgba(255,255,255,0.08);
-
   padding:28px 8%;
-
   display:flex;
-
   align-items:center;
   justify-content:space-between;
-
   flex-wrap:wrap;
-
   gap:20px;
 }
 
@@ -209,7 +159,6 @@
 }
 
 /* BOTTOM LINKS */
-
 .bottomLinks{
   display:flex;
   gap:25px;
@@ -217,9 +166,7 @@
 
 .bottomLinks a{
   color:#94a3b8;
-
   text-decoration:none;
-
   transition:0.3s;
 }
 
