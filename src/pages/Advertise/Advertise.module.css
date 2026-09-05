@@ -1,12 +1,11 @@
 /* =========================================================
    Advertise With Us — DevSphere
    ========================================================= */
-
 .advertisePage {
-  --advertise-primary: #2563eb;
-  --advertise-primary-dark: #1d4ed8;
-  --advertise-primary-soft: rgba(37, 99, 235, 0.1);
-  --advertise-primary-border: rgba(37, 99, 235, 0.2);
+  --advertise-primary: #25eb8f;
+  --advertise-primary-dark: #1dd874;
+  --advertise-primary-soft: rgba(37, 235, 143, 0.1);
+  --advertise-primary-border: rgba(37, 235, 143, 0.2);
 
   --advertise-bg: #ffffff;
   --advertise-bg-soft: #f8fafc;
@@ -40,11 +39,9 @@
   background: var(--advertise-bg);
 }
 
-
 /* =========================================================
    Shared Typography / Section Elements
    ========================================================= */
-
 .sectionHeader {
   width: min(820px, calc(100% - 40px));
   margin: 0 auto 58px;
@@ -56,9 +53,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   margin-bottom: 16px;
-
   color: var(--advertise-primary);
   font-size: 0.76rem;
   font-weight: 800;
@@ -96,23 +91,18 @@
   line-height: 1.8;
 }
 
-
 /* =========================================================
    Buttons
    ========================================================= */
-
 .primaryButton,
 .secondaryButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   min-height: 50px;
   padding: 0 22px;
-
   border-radius: 12px;
-
   font-size: 0.94rem;
   font-weight: 700;
   line-height: 1;
@@ -130,7 +120,7 @@
   color: #ffffff;
   background: var(--advertise-primary);
   border: 1px solid var(--advertise-primary);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 10px 25px rgba(37, 235, 143, 0.2);
 }
 
 .primaryButton svg {
@@ -143,7 +133,7 @@
   background: var(--advertise-primary-dark);
   border-color: var(--advertise-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 14px 30px rgba(37, 235, 133, 0.28);
 }
 
 .primaryButton:hover svg {
@@ -164,33 +154,27 @@
   box-shadow: var(--advertise-shadow-sm);
 }
 
-
 /* =========================================================
    Hero Section
    ========================================================= */
-
 .heroSection {
   position: relative;
   display: flex;
   align-items: center;
-
   min-height: 650px;
   padding: 100px 24px 90px;
-
   overflow: hidden;
-
   background:
     radial-gradient(
       circle at 50% 5%,
-      rgba(37, 99, 235, 0.11),
+      rgba(37, 235, 143, 0.11),
       transparent 34%
     ),
     linear-gradient(
       180deg,
-      #f8fbff 0%,
+      #f8fffc 0%,
       #ffffff 100%
     );
-
   border-bottom: 1px solid var(--advertise-border-light);
 }
 
@@ -200,13 +184,9 @@
   left: 50%;
   width: 700px;
   height: 700px;
-
   transform: translateX(-50%);
-
   border-radius: 50%;
-
-  background: rgba(37, 99, 235, 0.08);
-
+  background: rgba(37, 235, 143, 0.08);
   filter: blur(90px);
   pointer-events: none;
 }
@@ -214,29 +194,24 @@
 .heroGrid {
   position: absolute;
   inset: 0;
-
   opacity: 0.38;
   pointer-events: none;
-
   background-image:
     linear-gradient(
-      rgba(37, 99, 235, 0.045) 1px,
+      rgba(37, 235, 143, 0.045) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(37, 99, 235, 0.045) 1px,
+      rgba(37, 235, 143, 0.045) 1px,
       transparent 1px
     );
-
   background-size: 46px 46px;
-
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.9),
     transparent 88%
   );
-
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.9),
@@ -247,10 +222,8 @@
 .heroContent {
   position: relative;
   z-index: 2;
-
   width: min(1080px, 100%);
   margin: 0 auto;
-
   text-align: center;
 }
 
@@ -258,15 +231,12 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-
   margin-bottom: 24px;
   padding: 9px 14px;
-
   color: var(--advertise-primary);
-  background: rgba(37, 99, 235, 0.07);
-  border: 1px solid rgba(37, 99, 235, 0.14);
+  background: rgba(37, 235, 143, 0.149);
+  border: 1px solid rgba(37, 235, 143, 0.14);
   border-radius: 999px;
-
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -280,9 +250,7 @@
 .heroContent h1 {
   max-width: 950px;
   margin: 0 auto;
-
   color: var(--advertise-text);
-
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 850;
   line-height: 0.98;
@@ -291,16 +259,13 @@
 
 .heroContent h1 span {
   display: block;
-
   color: var(--advertise-primary);
 }
 
 .heroContent > p {
   max-width: 790px;
   margin: 28px auto 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: clamp(1rem, 2vw, 1.13rem);
   line-height: 1.8;
 }
@@ -310,7 +275,6 @@
   align-items: center;
   justify-content: center;
   gap: 13px;
-
   margin-top: 34px;
 }
 
@@ -318,7 +282,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-
   width: min(900px, 100%);
   margin: 65px auto 0;
 }
@@ -327,17 +290,12 @@
   display: flex;
   align-items: center;
   gap: 13px;
-
   padding: 18px 20px;
-
   text-align: left;
-
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: 16px;
-
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.045);
-
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
@@ -349,24 +307,20 @@
 
 .heroHighlight:hover {
   transform: translateY(-4px);
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 235, 143, 0.2);
   box-shadow: var(--advertise-shadow-md);
 }
 
 .highlightIcon {
   flex: 0 0 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
-
   color: var(--advertise-primary);
-  background: rgba(37, 99, 235, 0.08);
-
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  background: rgba(37, 235, 143, 0.08);
+  border: 1px solid rgba(37, 235, 143, 0.1);
   border-radius: 12px;
 }
 
@@ -381,9 +335,7 @@
 
 .heroHighlight strong {
   margin-bottom: 4px;
-
   color: var(--advertise-text);
-
   font-size: 0.88rem;
   font-weight: 750;
   line-height: 1.35;
@@ -391,19 +343,15 @@
 
 .heroHighlight span {
   color: var(--advertise-text-muted);
-
   font-size: 0.76rem;
   line-height: 1.45;
 }
 
-
 /* =========================================================
    Why Advertise
    ========================================================= */
-
 .whySection {
   padding: 110px 24px;
-
   background: var(--advertise-bg);
 }
 
@@ -411,21 +359,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-
   width: min(1180px, 100%);
   margin: 0 auto;
 }
 
 .whyCard {
   position: relative;
-
   min-height: 255px;
   padding: 28px 25px;
-
   background: #ffffff;
   border: 1px solid var(--advertise-border);
   border-radius: var(--advertise-radius-md);
-
   box-shadow: var(--advertise-shadow-sm);
 
   transition:
@@ -436,30 +380,24 @@
 
 .whyCard::before {
   content: "";
-
   position: absolute;
   top: 0;
   left: 28px;
   right: 28px;
-
   height: 2px;
-
   opacity: 0;
-
   background: linear-gradient(
     90deg,
     transparent,
     var(--advertise-primary),
     transparent
   );
-
   transition: opacity 0.28s ease;
 }
 
 .whyCard:hover {
   transform: translateY(-7px);
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 143, 0.18);
   box-shadow: var(--advertise-shadow-md);
 }
 
@@ -471,15 +409,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 50px;
   height: 50px;
   margin-bottom: 22px;
-
   color: var(--advertise-primary);
   background: var(--advertise-primary-soft);
-
-  border: 1px solid rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 235, 143, 0.12);
   border-radius: 14px;
 }
 
@@ -489,9 +424,7 @@
 
 .whyCard h3 {
   margin: 0 0 11px;
-
   color: var(--advertise-text);
-
   font-size: 1.05rem;
   font-weight: 750;
   line-height: 1.35;
@@ -499,26 +432,21 @@
 
 .whyCard p {
   margin: 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.9rem;
   line-height: 1.7;
 }
 
-
 /* =========================================================
    Audience Section
    ========================================================= */
-
 .audienceSection {
   padding: 110px 24px;
-
   background:
     linear-gradient(
       180deg,
-      #f8fafc 0%,
-      #f5f8fc 100%
+      #f8fcfa 0%,
+      #f5fcf9 100%
     );
 }
 
@@ -527,7 +455,6 @@
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: 80px;
   align-items: center;
-
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -546,9 +473,7 @@
 
 .audienceHeading p {
   margin: 21px 0 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.98rem;
   line-height: 1.8;
 }
@@ -563,16 +488,12 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
-
   min-height: 165px;
   padding: 23px;
-
   background: #ffffff;
   border: 1px solid var(--advertise-border);
   border-radius: var(--advertise-radius-md);
-
   box-shadow: var(--advertise-shadow-sm);
-
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -581,24 +502,19 @@
 
 .audienceCard:hover {
   transform: translateY(-5px);
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 143, 0.18);
   box-shadow: var(--advertise-shadow-md);
 }
 
 .audienceIcon {
   flex: 0 0 44px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 44px;
   height: 44px;
-
   color: var(--advertise-primary);
   background: var(--advertise-primary-soft);
-
   border-radius: 12px;
 }
 
@@ -608,9 +524,7 @@
 
 .audienceCard h3 {
   margin: 1px 0 8px;
-
   color: var(--advertise-text);
-
   font-size: 0.97rem;
   font-weight: 750;
   line-height: 1.35;
@@ -618,21 +532,16 @@
 
 .audienceCard p {
   margin: 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.84rem;
   line-height: 1.65;
 }
 
-
 /* =========================================================
    Advertising Opportunities
    ========================================================= */
-
 .opportunitiesSection {
   padding: 115px 24px;
-
   background: #ffffff;
   scroll-margin-top: 80px;
 }
@@ -641,25 +550,19 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 18px;
-
   width: min(1180px, 100%);
   margin: 0 auto;
 }
 
 .opportunityCard {
   grid-column: span 2;
-
   position: relative;
-
   min-height: 270px;
   padding: 27px 25px;
-
   background: #ffffff;
   border: 1px solid var(--advertise-border);
   border-radius: var(--advertise-radius-md);
-
   box-shadow: var(--advertise-shadow-sm);
-
   transition:
     transform 0.28s ease,
     border-color 0.28s ease,
@@ -668,8 +571,7 @@
 
 .opportunityCard:hover {
   transform: translateY(-7px);
-
-  border-color: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 235, 126, 0.2);
   box-shadow: var(--advertise-shadow-md);
 }
 
@@ -680,24 +582,18 @@
       rgba(37, 99, 235, 0.065),
       rgba(255, 255, 255, 1) 65%
     );
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 143, 0.18);
 }
 
 .featuredOpportunity::after {
   content: "FEATURED";
-
   position: absolute;
   top: 18px;
   right: 18px;
-
   padding: 5px 8px;
-
   color: var(--advertise-primary);
-  background: rgba(37, 99, 235, 0.08);
-
+  background: rgba(37, 235, 143, 0.08);
   border-radius: 999px;
-
   font-size: 0.61rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -707,7 +603,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   margin-bottom: 25px;
 }
 
@@ -715,14 +610,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 50px;
   height: 50px;
-
   color: var(--advertise-primary);
   background: var(--advertise-primary-soft);
-
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 235, 143, 0.1);
   border-radius: 14px;
 }
 
@@ -731,8 +623,7 @@
 }
 
 .opportunityNumber {
-  color: #cbd5e1;
-
+  color: #cbe1d7;
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -740,9 +631,7 @@
 
 .opportunityCard h3 {
   margin: 0 0 11px;
-
   color: var(--advertise-text);
-
   font-size: 1.05rem;
   font-weight: 750;
   line-height: 1.35;
@@ -750,9 +639,7 @@
 
 .opportunityCard p {
   margin: 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.88rem;
   line-height: 1.7;
 }
@@ -765,42 +652,34 @@
   grid-column: 4 / span 2;
 }
 
-
 /* =========================================================
    Process / How It Works
    ========================================================= */
-
 .processSection {
   padding: 110px 24px;
-
   background:
     linear-gradient(
       180deg,
-      #f8fafc 0%,
-      #f1f5f9 100%
+      #f8fcfa 0%,
+      #f1f9f5 100%
     );
 }
 
 .processGrid {
   position: relative;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
-
   width: min(1180px, 100%);
   margin: 0 auto;
 }
 
 .processItem {
   position: relative;
-
   padding: 28px 25px;
-
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid var(--advertise-border);
   border-radius: var(--advertise-radius-md);
-
   box-shadow: var(--advertise-shadow-sm);
 
   transition:
@@ -811,16 +690,13 @@
 
 .processItem:hover {
   transform: translateY(-6px);
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 143, 0.18);
   box-shadow: var(--advertise-shadow-md);
 }
 
 .processNumber {
   margin-bottom: 17px;
-
-  color: rgba(37, 99, 235, 0.35);
-
+  color: rgba(37, 235, 143, 0.35);
   font-size: 0.76rem;
   font-weight: 850;
   letter-spacing: 0.13em;
@@ -830,15 +706,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 48px;
   height: 48px;
   margin-bottom: 20px;
-
   color: var(--advertise-primary);
-  background: rgba(37, 99, 235, 0.08);
-
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  background: rgba(37, 235, 143, 0.08);
+  border: 1px solid rgba(37, 235, 143, 0.1);
   border-radius: 13px;
 }
 
@@ -848,9 +721,7 @@
 
 .processItem h3 {
   margin: 0 0 10px;
-
   color: var(--advertise-text);
-
   font-size: 1rem;
   font-weight: 750;
   line-height: 1.35;
@@ -858,9 +729,7 @@
 
 .processItem p {
   margin: 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.86rem;
   line-height: 1.7;
 }
@@ -868,23 +737,17 @@
 .processConnector {
   position: absolute;
   z-index: 3;
-
   top: 51px;
   right: -17px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 34px;
   height: 34px;
-
   color: var(--advertise-primary);
   background: #ffffff;
-
-  border: 1px solid rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(37, 235, 143, 0.14);
   border-radius: 50%;
-
   box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08);
 }
 
@@ -892,14 +755,11 @@
   font-size: 0.72rem;
 }
 
-
 /* =========================================================
    Industries / Who We Work With
    ========================================================= */
-
 .industriesSection {
   padding: 110px 24px;
-
   background: #ffffff;
 }
 
@@ -908,7 +768,6 @@
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 75px;
   align-items: center;
-
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -927,9 +786,7 @@
 
 .industriesHeading p {
   margin: 22px 0 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.98rem;
   line-height: 1.8;
 }
@@ -944,16 +801,12 @@
   display: flex;
   align-items: center;
   gap: 15px;
-
   min-height: 90px;
   padding: 18px;
-
   background: #ffffff;
   border: 1px solid var(--advertise-border);
   border-radius: 15px;
-
   box-shadow: var(--advertise-shadow-sm);
-
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
@@ -962,24 +815,19 @@
 
 .industryCard:hover {
   transform: translateY(-4px);
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 143, 0.18);
   box-shadow: var(--advertise-shadow-md);
 }
 
 .industryIcon {
   flex: 0 0 43px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 43px;
   height: 43px;
-
   color: var(--advertise-primary);
   background: var(--advertise-primary-soft);
-
   border-radius: 12px;
 }
 
@@ -989,24 +837,20 @@
 
 .industryCard span {
   color: var(--advertise-text);
-
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.35;
 }
 
-
 /* =========================================================
    Partnership Principles
    ========================================================= */
-
 .principlesSection {
   padding: 110px 24px;
-
   background:
     linear-gradient(
       180deg,
-      #f8fafc 0%,
+      #f8fcfa 0%,
       #ffffff 100%
     );
 }
@@ -1015,7 +859,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
-
   width: min(980px, 100%);
   margin: 0 auto;
 }
@@ -1024,15 +867,11 @@
   display: flex;
   align-items: flex-start;
   gap: 18px;
-
   padding: 26px;
-
   background: #ffffff;
   border: 1px solid var(--advertise-border);
   border-radius: var(--advertise-radius-md);
-
   box-shadow: var(--advertise-shadow-sm);
-
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
@@ -1041,25 +880,20 @@
 
 .principleCard:hover {
   transform: translateY(-5px);
-
-  border-color: rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 235, 133, 0.18);
   box-shadow: var(--advertise-shadow-md);
 }
 
 .principleIcon {
   flex: 0 0 47px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 47px;
   height: 47px;
-
   color: var(--advertise-primary);
   background: var(--advertise-primary-soft);
-
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 235, 133, 0.1);
   border-radius: 13px;
 }
 
@@ -1069,9 +903,7 @@
 
 .principleContent h3 {
   margin: 2px 0 8px;
-
   color: var(--advertise-text);
-
   font-size: 1rem;
   font-weight: 750;
   line-height: 1.35;
@@ -1079,29 +911,22 @@
 
 .principleContent p {
   margin: 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 0.87rem;
   line-height: 1.7;
 }
 
-
 /* =========================================================
    Final CTA
    ========================================================= */
-
 .ctaSection {
   position: relative;
-
   padding: 100px 24px 115px;
-
   overflow: hidden;
-
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(37, 99, 235, 0.09),
+      rgba(37, 235, 133, 0.09),
       transparent 42%
     ),
     #ffffff;
@@ -1111,16 +936,11 @@
   position: absolute;
   top: 15%;
   left: 50%;
-
   width: 600px;
   height: 420px;
-
   transform: translateX(-50%);
-
   border-radius: 50%;
-
   background: rgba(37, 99, 235, 0.065);
-
   filter: blur(80px);
   pointer-events: none;
 }
@@ -1128,23 +948,18 @@
 .ctaCard {
   position: relative;
   z-index: 2;
-
   width: min(920px, 100%);
   margin: 0 auto;
   padding: 68px 55px;
-
   text-align: center;
-
   background:
     linear-gradient(
       145deg,
       #ffffff 0%,
-      #f8fbff 100%
+      #f8fffc 100%
     );
-
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 235, 133, 0.15);
   border-radius: var(--advertise-radius-xl);
-
   box-shadow:
     0 25px 80px rgba(15, 23, 42, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.8) inset;
@@ -1154,19 +969,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 64px;
   height: 64px;
   margin: 0 auto 23px;
-
   color: var(--advertise-primary);
-  background: rgba(37, 99, 235, 0.09);
-
-  border: 1px solid rgba(37, 99, 235, 0.13);
+  background: rgba(37, 235, 133, 0.09);
+  border: 1px solid rgba(37, 235, 133, 0.13);
   border-radius: 18px;
-
   box-shadow:
-    0 10px 25px rgba(37, 99, 235, 0.08);
+    0 10px 25px rgba(37, 235, 133, 0.08);
 }
 
 .ctaIcon svg {
@@ -1180,16 +991,13 @@
 .ctaCard h2 {
   max-width: 700px;
   margin: 0 auto;
-
   font-size: clamp(2.15rem, 4.5vw, 3.4rem);
 }
 
 .ctaCard p {
   max-width: 680px;
   margin: 21px auto 0;
-
   color: var(--advertise-text-secondary);
-
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -1199,15 +1007,12 @@
   align-items: center;
   justify-content: center;
   gap: 13px;
-
   margin-top: 31px;
 }
-
 
 /* =========================================================
    Focus States / Accessibility
    ========================================================= */
-
 .primaryButton:focus-visible,
 .secondaryButton:focus-visible {
   outline: 3px solid rgba(37, 99, 235, 0.25);
@@ -1225,7 +1030,6 @@
 .ctaIcon svg {
   flex-shrink: 0;
 }
-
 
 /* =========================================================
    Large Tablet
@@ -1269,7 +1073,6 @@
     display: none;
   }
 }
-
 
 /* =========================================================
    Tablet
@@ -1349,7 +1152,6 @@
 
   .heroContent > p {
     margin-top: 22px;
-
     font-size: 0.94rem;
     line-height: 1.7;
   }
@@ -1370,7 +1172,6 @@
   .heroHighlights {
     grid-template-columns: 1fr;
     gap: 10px;
-
     margin-top: 38px;
   }
 
@@ -1466,7 +1267,6 @@
     line-height: 1.7;
   }
 }
-
 
 /* =========================================================
    Small Mobile

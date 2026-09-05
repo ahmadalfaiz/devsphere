@@ -41,6 +41,7 @@ const pages = [
   { url: "/articles/top-javascript-concepts-every-developer-must-know", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/how-ai-is-changing-modern-web-development", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/complete-roadmap-to-crack-product-based-companies", changefreq: "weekly", priority: 0.85,},
+  { url: "/articles/why-teenage-students-still-need-to-study-themselves", changefreq: "weekly", priority: 0.85,},
 
   { url: "/privacy-policy", changefreq: "yearly", priority: 0.30,},
   { url: "/terms", changefreq: "yearly", priority: 0.30,},
