@@ -60,6 +60,7 @@ import nextjsDataFetching from "./nextjs/nextjsDataFetching.js";
 import nextjsServerActionsMutations from "./nextjs/nextjsServerActionsMutations.js";
 import nextjsApisBackendDevelopment from "./nextjs/nextjsApisBackendDevelopment.js";
 import nextjsAuthenticationAuthorization from "./nextjs/nextjsAuthenticationAuthorization.js";
+import nextjsDatabaseIntegration from "./nextjs/nextjsDatabaseIntegration.js";
 
 import nodejsIntroductionToNodejs from "./nodejs/nodejsIntroductionToNodejs.js";
 import nodejsJavaScriptEssentialsNodejs from "./nodejs/nodejsJavaScriptEssentialsNodejs.js";
@@ -154,6 +155,7 @@ const contentRegistry = {
     ...nextjsServerActionsMutations,
     ...nextjsApisBackendDevelopment,
     ...nextjsAuthenticationAuthorization,
+    ...nextjsDatabaseIntegration,
   },
 
   nodejs: {
