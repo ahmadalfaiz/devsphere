@@ -134,7 +134,7 @@ function Navbar() {
             {/* LOGO */}
 
             <div className={styles.logo}>
-              <h1>DevSphere</h1>
+              <span>DevSphere</span>
             </div>
 
           </div>

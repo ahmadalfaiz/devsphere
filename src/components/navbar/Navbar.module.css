@@ -73,13 +73,13 @@
 }
 
 /* LOGO */
-
-.logo h1{
+.logo span{
   color:#00d084;
   font-size:2rem;
   font-weight:700;
   cursor:pointer;
   min-width:180px;
+  padding-right: 31px;
 }
 
 /* SEARCH */
@@ -605,7 +605,7 @@
     font-size:1rem;
   }
  
-  .logo h1{
+  .logo span{
     font-size:1.7rem;
     min-width:auto;
   }
