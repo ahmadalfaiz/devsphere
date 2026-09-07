@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import { tutorials } from "../../data/tutorialsData";
 import lessonRegistry from "../../registry/lessonRegistry";
-
+import { setSEO } from "../../utils/seo";
 import styles from "./Tutorials.module.css";
 
 function TutorialCourse() {
@@ -21,6 +21,31 @@ function TutorialCourse() {
 
   const tutorial =
     lessonRegistry?.[slug]; //lessonRegistry[slug]
+
+  /* Set SEO UseEffect added here */
+  useEffect(() => {
+
+    if (!tutorial) return;
+
+    setSEO({
+      title:
+        tutorial.info.seo?.title ||
+        `${tutorial.info.title} - DevSphere Tutorial`,
+
+      description:
+        tutorial.info.seo?.description ||
+        tutorial.info.description,
+
+      keywords:
+        tutorial.info.seo?.keywords?.join(", ") ||
+        "",
+
+      url: `/tutorials/${slug}`,
+
+    });
+
+  }, [slug, tutorial]);
+  /* upto this set SEO useEffect added on 7 Sept */
 
   if (!tutorial) {
 
