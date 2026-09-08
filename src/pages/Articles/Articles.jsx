@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import articles from "../../data/articlesData";
+import { setSEO } from "../../utils/seo";
 import styles from "./Articles.module.css";
 
 const Articles = () => {
+
+  useEffect(() => {
+      setSEO({
+        title: "Articles - DevSphere",
+        description:
+          "Explore insightful articles on web development, programming, software engineering, technology, and computer science from DevSphere.",
+        keywords:
+          "DevSphere articles, web development articles, programming articles, software engineering, technology articles, computer science articles",
+        url: "/articles",
+      });
+    }, []);
+
   /*
    * Articles are expected to come from articlesData.js.
    *

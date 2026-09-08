@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { setSEO } from "../../utils/seo";
 import styles from "./PrivacyPolicy.module.css";
 
 const PrivacyPolicy = () => {
+
+  useEffect(() => {
+    setSEO({
+      title: "Privacy Policy - DevSphere",
+      description:
+        "Read DevSphere's Privacy Policy to learn how we collect, use, protect, and manage information when you use our website and services.",
+      url: "/privacy-policy",
+    });
+  }, []);
+
   return (
     <main className={styles.privacyPage}>
 

@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { setSEO } from "../../utils/seo";
 import styles from "./Cookies.module.css";
 
 const Cookies = () => {
+
+  useEffect(() => {
+    setSEO({
+      title: "Cookies Policy - DevSphere",
+      description:
+        "Learn how DevSphere uses cookies and similar technologies to support website functionality, remember preferences, maintain sessions, and improve the user experience.",
+      keywords:
+        "DevSphere Cookies Policy, cookie policy, cookies and preferences, website cookies",
+      url: "/cookies-policy",
+    });
+  }, []);
+
   return (
     <main className={styles.cookiesPage}>
 
@@ -53,10 +66,7 @@ const Cookies = () => {
             </h2>
 
             <p>
-              This Cookies Policy describes how DevSphere uses
-              cookies and similar technologies when you visit or
-              interact with our website, services, tutorials,
-              articles, tools, and other features.
+              This Cookies Policy describes how DevSphere uses cookies and similar technologies when you visit or interact with our website, tutorials, courses, articles, games, and other features.
             </p>
 
             <p>
@@ -251,12 +261,48 @@ const Cookies = () => {
 
 
           {/* =====================================
-              8. THIRD-PARTY COOKIES
+              8. Google AdSense and Advertising Cookies
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              8. Third-Party Services
+              8. Google AdSense and Advertising Cookies
+            </h2>
+
+            <p>
+              If DevSphere displays advertisements through Google AdSense or other advertising partners, those services may use cookies and similar technologies to deliver, measure, and improve advertising.
+            </p>
+
+            <p>
+              Third-party vendors, including Google, may use cookies to serve advertisements based on a user's previous visits to DevSphere or other websites. These technologies may be used to help provide relevant advertising, measure advertising performance, prevent fraud, and manage advertising frequency.
+            </p>
+
+            <p>
+              Google's use of advertising cookies may enable Google and its advertising partners to serve advertisements based on a user's visits to DevSphere and/or other websites.
+            </p>
+
+            <p>
+              Users may manage or opt out of personalized advertising through Google's Ads Settings. Users may also be able to manage certain third-party advertising preferences through applicable industry opt-out tools.
+            </p>
+
+            <p>
+              Where legally required, DevSphere will provide appropriate consent mechanisms and disclosures for advertising cookies and similar technologies.
+            </p>
+
+            <p>
+              If DevSphere begins using advertising services that materially change how cookies or similar technologies are used, this Cookies Policy will be updated accordingly.
+            </p>
+
+          </div>
+
+
+          {/* =====================================
+              9. THIRD-PARTY COOKIES
+          ====================================== */}
+          <div className={styles.policySection}>
+
+            <h2>
+              9. Third-Party Services
             </h2>
 
             <p>
@@ -283,12 +329,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              9. LOCAL STORAGE
+              10. LOCAL STORAGE
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              9. Local Storage and Similar Technologies
+              10. Local Storage and Similar Technologies
             </h2>
 
             <p>
@@ -314,12 +360,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              10. MANAGING COOKIES
+              11. MANAGING COOKIES
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              10. Managing Your Cookie Preferences
+              11. Managing Your Cookie Preferences
             </h2>
 
             <p>
@@ -363,12 +409,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              11. DISABLING COOKIES
+              12. DISABLING COOKIES
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              11. What Happens If You Disable Cookies?
+              12. What Happens If You Disable Cookies?
             </h2>
 
             <p>
@@ -392,12 +438,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              12. DATA PROTECTION
+              13. DATA PROTECTION
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              12. Data Protection
+              13. Data Protection
             </h2>
 
             <p>
@@ -416,12 +462,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              13. POLICY UPDATES
+              14. POLICY UPDATES
           ====================================== */}
           <div className={styles.policySection}>
 
             <h2>
-              13. Changes to This Cookies Policy
+              14. Changes to This Cookies Policy
             </h2>
 
             <p>
@@ -440,12 +486,12 @@ const Cookies = () => {
 
 
           {/* =====================================
-              14. CONTACT US
+              15. CONTACT US
           ====================================== */}
           <div className={`${styles.policySection} ${styles.contactSection}`}>
 
             <h2>
-              14. Contact Us
+              15. Contact Us
             </h2>
 
             <p>

@@ -160,7 +160,7 @@ function Navbar() {
 
                   <div className={styles.dropdownMenu}>
 
-                      <Link to="/courses/webdev">Web Development</Link>
+                      <Link to="/courses/devops">DevOps</Link>
                       <Link to="/courses/dsa">DSA</Link>
                       <Link to="/courses/python">Python</Link>
                       <Link to="/courses/machine-learning">Machine Learning</Link>
@@ -184,7 +184,7 @@ function Navbar() {
 
               </div>
 
-              <div className={styles.dropdown}>
+              {/*<div className={styles.dropdown}>
 
                   <span className={styles.dropdownTitle}>Practice ▾</span>
 
@@ -197,9 +197,9 @@ function Navbar() {
 
                   </div>
 
-              </div>
+              </div>*/}
 
-            <Link to="/blogs">Blogs</Link>
+            <Link to="/articles">Articles</Link> {/*<Link to="/blogs">Blogs</Link>*/}
             <Link to="/games">Games</Link>
 
           </nav>
@@ -358,7 +358,7 @@ function Navbar() {
                   mobileAccordion === "courses" ? styles.mobileAccordionPanelOpen : ""
                 }`}
               >
-                <Link to="/courses/webdev" onClick={closeMobileMenu}>Web Development</Link>
+                <Link to="/courses/devops" onClick={closeMobileMenu}>DevOps</Link>
                 <Link to="/courses/dsa" onClick={closeMobileMenu}>DSA</Link>
                 <Link to="/courses/python" onClick={closeMobileMenu}>Python</Link>
                 <Link to="/courses/machine-learning" onClick={closeMobileMenu}>Machine Learning</Link>
@@ -394,7 +394,7 @@ function Navbar() {
             </li>
 
             {/* PRACTICE ACCORDION */}
-            <li className={styles.mobileAccordionItem}>
+            {/*<li className={styles.mobileAccordionItem}>
               <button
                 className={styles.mobileAccordionTrigger}
                 onClick={() => toggleMobileAccordion("practice")}
@@ -419,10 +419,10 @@ function Navbar() {
                 <Link to="/practice/interview" onClick={closeMobileMenu}>Interview Prep</Link>
                 <Link to="/practice/contests" onClick={closeMobileMenu}>Contests</Link>
               </div>
-            </li>
+            </li>*/}
  
             <li>
-              <Link to="/blogs" onClick={closeMobileMenu}>Blogs</Link>
+              <Link to="/articles" onClick={closeMobileMenu}>Articles</Link> {/*<Link to="/blogs" onClick={closeMobileMenu}>Blogs</Link>*/}
             </li>
  
             <li>
@@ -437,14 +437,14 @@ function Navbar() {
         <div className={styles.bottomNavbar}>
 
           <Link to="/courses/dsa">DSA</Link>
-          <Link to="/webdev">Web Dev</Link>
+          <Link to="/courses/oops">OOPs</Link>
           <Link to="/tutorials/python">Python</Link>
           <Link to="/tutorials/javascript">JavaScript</Link>
           <Link to="/tutorials/java">Java</Link>
           <Link to="/tutorials/cpp">C++</Link>
-          <Link to="/ai">AI</Link>
+          <Link to="/courses/ai">AI</Link>
           <Link to="/tutorials/machine-learning">Machine Learning</Link>
-          <Link to="/data-science">Data Science</Link>
+          <Link to="/courses/data-science">Data Science</Link>
           <Link to="/courses/devops">DevOps</Link>
 
         </div>

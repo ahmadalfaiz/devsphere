@@ -232,6 +232,31 @@
 }
 
 /* =========================================================
+   PRIVACY NOTICE
+========================================================= */
+.privacyNote {
+  margin: 16px 4px 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #a6bbd7;
+}
+
+.privacyNote strong {
+  color: #ced5de;
+  font-weight: 600;
+}
+
+.privacyNote a {
+  color: #00d084;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.privacyNote a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
    SEND A MESSAGE — RIGHT SIDE
 ========================================================= */
 .messageCard {

@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaMailBulk, FaLightbulb, FaBug, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import styles from "./Contact.module.css";
+import { setSEO } from "../../utils/seo";
 
 const Contact = () => {
+
+    useEffect(() => {
+      setSEO({
+        title: "Contact Us - DevSphere",
+        description:
+          "Contact DevSphere with your questions, suggestions, feedback, or issue reports.",
+        url: "/contact-us",
+      });
+    }, []);
 
     const [formData, setFormData] = useState({
       name: "",
@@ -179,7 +190,7 @@ const Contact = () => {
 
                   <span className={styles.contactItemText}>
                     Have an idea for a new feature, tutorial,
-                    or tool? Let us know.
+                    course, or article? Let us know.
                   </span>
                 </div>
 
@@ -207,6 +218,16 @@ const Contact = () => {
               </div>
 
             </div>
+
+            {/* Privacy Notice */}
+            <p className={styles.privacyNote}>
+              <strong>We respect your privacy.</strong>{" "}
+              Information submitted through this form is used only to respond
+              to your message and is handled in accordance with our{" "}
+              <Link to="/privacy-policy">
+                Privacy Policy
+              </Link>.
+            </p>
 
           </div>
 

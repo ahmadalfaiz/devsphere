@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import styles from "./Courses.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCode, FaProjectDiagram, FaMicrochip, FaCogs, FaBrain, FaCloud, FaDatabase, FaCubes, FaNetworkWired,} from "react-icons/fa";
+import { setSEO } from "../../utils/seo";
 
 function Courses() {
+
+    useEffect(() => {
+        setSEO({
+          title: "Courses - Master Computer Science From Beginner to Advanced | DevSphere",
+          description:
+            "Explore comprehensive computer science and technology courses on DevSphere, covering programming, software development, data science, AI, databases, and other essential topics.",
+          keywords:
+            "DevSphere courses, computer science courses, programming courses, software development courses, coding courses, technology courses, online courses",
+          url: "/courses",
+        });
+      }, []);
 
     const featuredSubjects = [
 

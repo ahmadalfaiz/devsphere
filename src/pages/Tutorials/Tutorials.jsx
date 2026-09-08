@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import styles from "./Tutorials.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaReact, FaJs, FaPython, FaJava, FaCentos, FaCogs, FaLaptopCode, FaServer, FaLayerGroup, FaBrain, FaCode, FaCloud, FaDatabase } from "react-icons/fa";
+import { setSEO } from "../../utils/seo";
 
 function Tutorials() {
+
+  useEffect(() => {
+        setSEO({
+          title: "Tutorials - Learn Skills That Build Careers | DevSphere",
+          description:
+            "Explore comprehensive programming and web development tutorials on DevSphere, covering popular technologies, frameworks, and tools from beginner to advanced levels.",
+          keywords:
+            "DevSphere tutorials, programming tutorials, web development tutorials, coding tutorials, technology tutorials, developer tutorials",
+          url: "/tutorials",
+        });
+      }, []);
 
   const featuredTutorials = [
 
