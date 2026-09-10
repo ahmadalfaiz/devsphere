@@ -33,6 +33,15 @@ const games = [
     icon: "🧩",
     path: "/games/octordle",
   },
+  {
+    id: "slide",
+    title: "Slide",
+    description: "Slide the tiles into the correct positions and restore the picture.",
+    category: "Sliding Puzzle",
+    difficulty: "Medium",
+    icon: "🖼️",
+    path: "/games/slide",
+  },
 ];
 
 const Games = () => {
