@@ -281,6 +281,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border-radius: 16px;
   background: linear-gradient(
     145deg,
@@ -295,18 +296,26 @@
     background-color 0.25s ease;
 }
 
+.gameIcon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .gameCard:hover .gameIcon {
   transform: scale(1.05) rotate(-2deg);
   border-color: rgba(0, 208, 132, 0.35);
 }
 
-.gameIcon span {
+/*.gameIcon span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
   line-height: 1;
-}
+}*/
 
 /* =========================================================
    GAME CONTENT
@@ -619,9 +628,9 @@
     border-radius: 13px;
   }
 
-  .gameIcon span {
+  /*.gameIcon span {
     font-size: 27px;
-  }
+  }*/
 
   .gameTopRow {
     align-items: flex-start;
@@ -716,6 +725,7 @@
     flex-basis: 52px;
     width: 52px;
     height: 52px;
+    border-radius: 12px;
   }
 
   .gameIcon span {

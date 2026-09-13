@@ -1,0 +1,1485 @@
+/* ==========================================================================
+   Kingdom Game
+   ========================================================================== */
+
+.kingdomPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(0, 208, 132, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(59, 130, 246, 0.06),
+      transparent 28%
+    ),
+    #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.kingdomHeader {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 250, 252, 0.96)
+    );
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.kingdomHeader::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: -220px;
+  right: -120px;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.06);
+  pointer-events: none;
+}
+
+.kingdomHeader::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  bottom: -220px;
+  left: -100px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.04);
+  pointer-events: none;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backLink svg {
+  font-size: 0.78rem;
+}
+
+.backLink:hover {
+  color: #00a86b;
+  transform: translateX(-3px);
+}
+
+.backLink:focus-visible {
+  outline: 3px solid rgba(0, 208, 132, 0.2);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #00a86b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.kingdomTitle {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.kingdomSubtitle {
+  max-width: 700px;
+  margin: 13px 0 0;
+  color: #64748b;
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   Main game section
+   ========================================================================== */
+
+.gameSection {
+  width: 100%;
+  padding: 38px 0 72px;
+}
+
+.gameContainer {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Mode selector
+   ========================================================================== */
+
+.modeSelector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.045),
+    0 2px 6px rgba(15, 23, 42, 0.025);
+}
+
+.modeHeading {
+  min-width: 190px;
+}
+
+.modeTitle {
+  display: block;
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 0.96rem;
+  font-weight: 750;
+}
+
+.modeDescription {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.modeButtons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 9px;
+  width: min(500px, 100%);
+}
+
+.modeButton {
+  min-height: 58px;
+  padding: 9px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #475569;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modeButton:hover {
+  border-color: #b7ead7;
+  background: #f0fdf8;
+  color: #008b5a;
+  transform: translateY(-1px);
+}
+
+.modeButton:focus-visible {
+  outline: 3px solid rgba(0, 208, 132, 0.2);
+  outline-offset: 2px;
+}
+
+.modeButtonLabel {
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.modeButtonMeta {
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.activeMode {
+  border-color: #00c77d;
+  background: linear-gradient(
+    135deg,
+    #ecfdf5,
+    #f0fdf8
+  );
+  color: #008b5a;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 208, 132, 0.08),
+    0 4px 12px rgba(0, 208, 132, 0.08);
+}
+
+.activeMode .modeButtonMeta {
+  color: #00a86b;
+}
+
+/* ==========================================================================
+   Game top bar
+   ========================================================================== */
+
+.gameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.045),
+    0 2px 6px rgba(15, 23, 42, 0.025);
+}
+
+.statGroup {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+  min-width: 0;
+}
+
+.statCard {
+  min-width: 108px;
+  padding: 9px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 11px;
+}
+
+.statLabel {
+  color: #94a3b8;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.statValue {
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
+.newGameButton,
+.bottomNewGameButton,
+.restartMessageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.newGameButton {
+  min-height: 43px;
+  padding: 0 17px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #00c77d;
+  color: #ffffff;
+  box-shadow: 0 5px 14px rgba(0, 199, 125, 0.18);
+}
+
+.newGameButton svg {
+  font-size: 0.78rem;
+}
+
+.newGameButton:hover {
+  background: #00b972;
+  box-shadow: 0 7px 18px rgba(0, 199, 125, 0.23);
+  transform: translateY(-1px);
+}
+
+.newGameButton:active,
+.bottomNewGameButton:active,
+.restartMessageButton:active {
+  transform: translateY(0);
+}
+
+.newGameButton:focus-visible,
+.bottomNewGameButton:focus-visible,
+.restartMessageButton:focus-visible {
+  outline: 3px solid rgba(0, 208, 132, 0.22);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Progress
+   ========================================================================== */
+
+.progressCard {
+  margin-bottom: 14px;
+  padding: 15px 17px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.035);
+}
+
+.progressHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 9px;
+}
+
+.progressHeader > div {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.progressLabel {
+  color: #475569;
+  font-size: 0.77rem;
+  font-weight: 750;
+}
+
+.progressText {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.progressPercentage {
+  color: #00a86b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  background: #e9eef3;
+  border-radius: 999px;
+}
+
+.progressBar {
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #00b972,
+    #00d084
+  );
+  box-shadow: 0 0 9px rgba(0, 208, 132, 0.2);
+  transition: width 0.35s ease;
+}
+
+/* ==========================================================================
+   Status messages
+   ========================================================================== */
+
+.successMessage,
+.gameOverMessage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 15px;
+}
+
+.successMessage {
+  background: #f0fdf8;
+  border: 1px solid #b7ead7;
+  color: #087f55;
+}
+
+.successMessage > svg {
+  flex: 0 0 auto;
+  color: #00a86b;
+  font-size: 1rem;
+}
+
+.successMessage > div,
+.gameOverMessage > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.successMessage strong,
+.gameOverMessage strong {
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.successMessage span,
+.gameOverMessage span {
+  color: #64748b;
+  font-size: 0.77rem;
+  line-height: 1.5;
+}
+
+.gameOverMessage {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.035);
+}
+
+.gameOverMessage strong {
+  color: #0f172a;
+}
+
+.restartMessageButton {
+  min-height: 38px;
+  padding: 0 14px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.77rem;
+}
+
+.restartMessageButton:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Board area
+   ========================================================================== */
+
+.boardArea {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 255, 255, 0.1),
+      transparent 52%
+    ),
+    #dfe5e2;
+  border: 1px solid #d3dbd7;
+  border-radius: 22px;
+  box-shadow:
+    0 20px 45px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/*
+ * The board uses CSS grid so all three game modes share exactly
+ * the same game engine while changing only the number of cells.
+ */
+
+.board {
+  --board-size: 4;
+  --board-gap: 10px;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--board-size), 1fr);
+  grid-template-rows: repeat(var(--board-size), 1fr);
+  gap: var(--board-gap);
+
+  width: min(100%, 610px);
+  aspect-ratio: 1;
+  padding: var(--board-gap);
+
+  background: #c8d0cc;
+  border: 1px solid #b9c3be;
+  border-radius: 18px;
+
+  box-shadow:
+    0 14px 30px rgba(15, 23, 42, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.board4 {
+  --board-size: 4;
+  --board-gap: 11px;
+}
+
+.board5 {
+  --board-size: 5;
+  --board-gap: 9px;
+}
+
+.board6 {
+  --board-size: 6;
+  --board-gap: 8px;
+}
+
+/* ==========================================================================
+   Board cells
+   ========================================================================== */
+
+.cell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  border-radius: 11px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0.04)
+    ),
+    #b9c3be;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.32),
+    inset 0 -2px 3px rgba(71, 85, 105, 0.08);
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.emptyCell {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.035)
+    ),
+    #b9c3be;
+}
+
+.filledCell {
+  background:
+    radial-gradient(
+      circle at 50% 70%,
+      rgba(255, 255, 255, 0.26),
+      transparent 62%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.02)
+    ),
+    #aeb9b3;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    inset 0 -3px 4px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   Building images
+   ========================================================================== */
+
+.buildingImage {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transform: translateZ(0);
+  will-change: transform, opacity, filter;
+
+  filter:
+    drop-shadow(0 7px 5px rgba(15, 23, 42, 0.12))
+    drop-shadow(0 2px 2px rgba(15, 23, 42, 0.08));
+}
+
+.buildingAnimated {
+  animation: buildingAppear 0.18s ease-out;
+}
+
+/*
+ * A subtle pop gives newly spawned/updated buildings some feedback.
+ * It stays intentionally restrained because the game board can change
+ * frequently during normal play.
+ */
+
+@keyframes buildingAppear {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.82) translateZ(0);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(1.035) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* ==========================================================================
+   Controls
+   ========================================================================== */
+
+.controlsHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.desktopControls,
+.mobileControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controlTitle {
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.arrowKeys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.arrowKeys > div {
+  display: flex;
+  gap: 3px;
+}
+
+.arrowKeys kbd {
+  width: 25px;
+  height: 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7dee5;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #64748b;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.mobileControls {
+  display: none;
+}
+
+/* ==========================================================================
+   Instructions
+   ========================================================================== */
+
+.instructions {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.instructionsHeader {
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.instructionsLabel {
+  display: block;
+  margin-bottom: 7px;
+  color: #00a86b;
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.instructionsHeader h2 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.instructionsHeader p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.ruleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ruleCard {
+  position: relative;
+  min-height: 170px;
+  padding: 17px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.03);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ruleCard::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -45px;
+  bottom: -50px;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.045);
+  pointer-events: none;
+}
+
+.ruleCard:hover {
+  border-color: #d2e9e1;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
+
+.ruleNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 25px;
+  margin-bottom: 13px;
+  border-radius: 7px;
+  background: #ecfdf5;
+  color: #00a86b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.ruleCard h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 7px;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.ruleCard p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #64748b;
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Bottom actions
+   ========================================================================== */
+
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.bottomNewGameButton {
+  min-height: 45px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.82rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1);
+}
+
+.bottomNewGameButton svg {
+  font-size: 0.75rem;
+}
+
+.bottomNewGameButton:hover {
+  background: #1e293b;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .headerContent,
+  .gameContainer {
+    width: min(100% - 32px, 760px);
+  }
+
+  .headerContent {
+    padding: 25px 0 36px;
+  }
+
+  .gameSection {
+    padding-top: 28px;
+  }
+
+  .modeSelector {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .modeHeading {
+    min-width: 0;
+  }
+
+  .modeButtons {
+    width: 100%;
+  }
+
+  .ruleGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ruleCard {
+    min-height: 155px;
+  }
+
+  .boardArea {
+    padding: 20px;
+  }
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .kingdomPage {
+    background:
+      radial-gradient(
+        circle at 10% 5%,
+        rgba(0, 208, 132, 0.06),
+        transparent 35%
+      ),
+      #f8fafc;
+  }
+
+  .headerContent,
+  .gameContainer {
+    width: min(100% - 24px, 560px);
+  }
+
+  .headerContent {
+    padding: 20px 0 30px;
+  }
+
+  .backLink {
+    margin-bottom: 22px;
+    font-size: 0.84rem;
+  }
+
+  .kingdomTitle {
+    font-size: clamp(1.85rem, 9vw, 2.45rem);
+  }
+
+  .kingdomSubtitle {
+    margin-top: 10px;
+    font-size: 0.91rem;
+    line-height: 1.65;
+  }
+
+  .gameSection {
+    padding: 20px 0 52px;
+  }
+
+  .modeSelector {
+    margin-bottom: 12px;
+    padding: 13px;
+    border-radius: 15px;
+  }
+
+  .modeTitle {
+    font-size: 0.88rem;
+  }
+
+  .modeDescription {
+    font-size: 0.72rem;
+  }
+
+  .modeButtons {
+    gap: 6px;
+  }
+
+  .modeButton {
+    min-height: 54px;
+    padding: 7px 5px;
+    border-radius: 10px;
+  }
+
+  .modeButtonLabel {
+    font-size: 0.79rem;
+  }
+
+  .modeButtonMeta {
+    font-size: 0.62rem;
+  }
+
+  .gameTopBar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .statGroup {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .statCard {
+    min-width: 0;
+    flex: 1;
+    padding: 8px 9px;
+    border-radius: 9px;
+  }
+
+  .statLabel {
+    font-size: 0.59rem;
+  }
+
+  .statValue {
+    font-size: 0.88rem;
+  }
+
+  .newGameButton {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 9px;
+    font-size: 0.78rem;
+  }
+
+  .progressCard {
+    margin-bottom: 12px;
+    padding: 12px 13px;
+    border-radius: 13px;
+  }
+
+  .progressHeader {
+    margin-bottom: 7px;
+  }
+
+  .progressHeader > div {
+    gap: 6px;
+  }
+
+  .progressLabel {
+    font-size: 0.69rem;
+  }
+
+  .progressText,
+  .progressPercentage {
+    font-size: 0.65rem;
+  }
+
+  .progressTrack {
+    height: 6px;
+  }
+
+  .successMessage,
+  .gameOverMessage {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 13px;
+    border-radius: 13px;
+  }
+
+  .successMessage > svg {
+    margin-top: 2px;
+  }
+
+  .successMessage strong,
+  .gameOverMessage strong {
+    font-size: 0.78rem;
+  }
+
+  .successMessage span,
+  .gameOverMessage span {
+    font-size: 0.69rem;
+  }
+
+  .restartMessageButton {
+    min-height: 34px;
+    padding: 0 11px;
+    font-size: 0.68rem;
+  }
+
+  .boardArea {
+    padding: 10px;
+    border-radius: 17px;
+  }
+
+  .board {
+    --board-gap: 7px;
+
+    width: 100%;
+    padding: var(--board-gap);
+    border-radius: 14px;
+  }
+
+  .board4 {
+    --board-gap: 7px;
+  }
+
+  .board5 {
+    --board-gap: 6px;
+  }
+
+  .board6 {
+    --board-gap: 5px;
+  }
+
+  .cell {
+    border-radius: 8px;
+  }
+
+  .buildingImage {
+    filter:
+      drop-shadow(0 4px 3px rgba(15, 23, 42, 0.11))
+      drop-shadow(0 1px 2px rgba(15, 23, 42, 0.07));
+  }
+
+  .controlsHint {
+    margin-top: 12px;
+    padding: 10px 4px;
+    gap: 0;
+    font-size: 0.7rem;
+  }
+
+  .desktopControls {
+    display: none;
+  }
+
+  .mobileControls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .controlTitle {
+    font-size: 0.65rem;
+  }
+
+  .instructions {
+    margin-top: 25px;
+    padding-top: 25px;
+  }
+
+  .instructionsHeader {
+    margin-bottom: 15px;
+  }
+
+  .instructionsLabel {
+    font-size: 0.63rem;
+  }
+
+  .instructionsHeader h2 {
+    font-size: 1.25rem;
+  }
+
+  .instructionsHeader p {
+    font-size: 0.79rem;
+    line-height: 1.6;
+  }
+
+  .ruleGrid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .ruleCard {
+    min-height: 0;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .ruleNumber {
+    width: 27px;
+    height: 23px;
+    margin-bottom: 10px;
+    font-size: 0.59rem;
+  }
+
+  .ruleCard h3 {
+    font-size: 0.84rem;
+  }
+
+  .ruleCard p {
+    font-size: 0.71rem;
+    line-height: 1.58;
+  }
+
+  .bottomActions {
+    margin-top: 20px;
+  }
+
+  .bottomNewGameButton {
+    width: 100%;
+    min-height: 43px;
+    font-size: 0.76rem;
+  }
+}
+
+/* ==========================================================================
+   Small mobile
+   ========================================================================== */
+
+@media (max-width: 390px) {
+  .headerContent,
+  .gameContainer {
+    width: min(100% - 18px, 560px);
+  }
+
+  .modeButton {
+    min-height: 51px;
+  }
+
+  .modeButtonLabel {
+    font-size: 0.73rem;
+  }
+
+  .modeButtonMeta {
+    font-size: 0.57rem;
+  }
+
+  .boardArea {
+    padding: 7px;
+  }
+
+  .board {
+    --board-gap: 5px;
+  }
+
+  .board4 {
+    --board-gap: 5px;
+  }
+
+  .board5 {
+    --board-gap: 5px;
+  }
+
+  .board6 {
+    --board-gap: 4px;
+  }
+
+  .cell {
+    border-radius: 6px;
+  }
+
+  .statCard {
+    padding: 7px;
+  }
+
+  .statLabel {
+    font-size: 0.55rem;
+  }
+
+  .statValue {
+    font-size: 0.8rem;
+  }
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink,
+  .modeButton,
+  .newGameButton,
+  .bottomNewGameButton,
+  .restartMessageButton,
+  .ruleCard,
+  .progressBar {
+    transition: none;
+  }
+
+  .buildingAnimated {
+    animation: none;
+  }
+}
+
+
+
+
+/* =========================================================
+   KINGDOM TILE ANIMATION SYSTEM
+   ========================================================= */
+
+.tileLayer {
+  position: absolute;
+  inset: var(--board-gap);
+  z-index: 3;
+
+  display: grid;
+  grid-template-columns: repeat(var(--board-size), 1fr);
+  grid-template-rows: repeat(var(--board-size), 1fr);
+  gap: var(--board-gap);
+
+  pointer-events: none;
+}
+
+.tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/*
+ * Normal movement.
+ *
+ * The building starts at its original position and smoothly
+ * travels to the destination cell.
+ *
+ * There is deliberately NO glow here.
+ */
+.tileMoving {
+  animation: kingdomTileSlide
+    170ms
+    cubic-bezier(0.2, 0.78, 0.2, 1)
+    both;
+}
+
+@keyframes kingdomTileSlide {
+  from {
+    transform:
+      translate3d(
+        var(--move-x, 0px),
+        var(--move-y, 0px),
+        0
+      );
+  }
+
+  to {
+    transform:
+      translate3d(0, 0, 0);
+  }
+}
+
+
+/* =========================================================
+   NEW TILE
+   ========================================================= */
+
+/*
+ * Newly spawned building:
+ * subtle scale-in only.
+ *
+ * No golden glow.
+ */
+.tileImageNew {
+  animation:
+    kingdomTileSpawn
+    180ms
+    cubic-bezier(0.2, 0.8, 0.2, 1)
+    both;
+}
+
+@keyframes kingdomTileSpawn {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) translateZ(0);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(1.045) translateZ(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+
+/* =========================================================
+   MERGE ANIMATION
+   ========================================================= */
+
+/*
+ * This animation happens ONLY after two matching buildings
+ * have reached the same destination.
+ *
+ * The new building briefly becomes larger and receives
+ * a warm golden glow.
+ */
+.tileImageMerged {
+  animation:
+    kingdomTileMerge
+    220ms
+    cubic-bezier(0.2, 0.9, 0.25, 1)
+    both;
+}
+
+@keyframes kingdomTileMerge {
+  0% {
+    opacity: 0;
+    transform: scale(0.78) translateZ(0);
+
+    filter:
+      drop-shadow(
+        0 7px 5px rgba(15, 23, 42, 0.12)
+      )
+      drop-shadow(
+        0 2px 2px rgba(15, 23, 42, 0.08)
+      );
+  }
+
+  38% {
+    opacity: 1;
+    transform: scale(1.08) translateZ(0);
+
+    filter:
+      drop-shadow(
+        0 0 4px rgba(255, 193, 7, 0.78)
+      )
+      drop-shadow(
+        0 0 13px rgba(255, 193, 7, 0.58)
+      )
+      drop-shadow(
+        0 0 27px rgba(255, 193, 7, 0.28)
+      )
+      drop-shadow(
+        0 7px 5px rgba(15, 23, 42, 0.12)
+      );
+  }
+
+  68% {
+    opacity: 1;
+    transform: scale(0.98) translateZ(0);
+
+    filter:
+      drop-shadow(
+        0 0 3px rgba(255, 193, 7, 0.65)
+      )
+      drop-shadow(
+        0 0 10px rgba(255, 193, 7, 0.4)
+      )
+      drop-shadow(
+        0 7px 5px rgba(15, 23, 42, 0.12)
+      );
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+
+    filter:
+      drop-shadow(
+        0 7px 5px rgba(15, 23, 42, 0.12)
+      )
+      drop-shadow(
+        0 2px 2px rgba(15, 23, 42, 0.08)
+      );
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tileMoving,
+  .tileImageNew,
+  .tileImageMerged {
+    animation: none;
+  }
+}

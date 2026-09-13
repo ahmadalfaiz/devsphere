@@ -34,6 +34,7 @@ const pages = [
   { url: "/games/wordle", changefreq: "weekly", priority: 0.85,},
   { url: "/games/octordle", changefreq: "weekly", priority: 0.85,},
   { url: "/games/slide", changefreq: "weekly", priority: 0.85,},
+  { url: "/games/kingdom", changefreq: "weekly", priority: 0.85,},
 
   { url: "/contact-us", changefreq: "yearly", priority: 0.85,},
   { url: "/about-us", changefreq: "yearly", priority: 0.85,},
@@ -44,6 +45,7 @@ const pages = [
   { url: "/articles/complete-roadmap-to-crack-product-based-companies", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/why-teenage-students-still-need-to-study-themselves", changefreq: "weekly", priority: 0.85,},
   { url: "/articles/the-confidence-trap-why-understanding-feels-different-from-knowing", changefreq: "weekly", priority: 0.85,},
+  { url: "/articles/pros-and-cons-of-artificial-intelligence-in-todays-changing-world", changefreq: "weekly", priority: 0.85,},
 
   { url: "/privacy-policy", changefreq: "yearly", priority: 0.30,},
   { url: "/terms", changefreq: "yearly", priority: 0.30,},

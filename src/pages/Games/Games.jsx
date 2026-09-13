@@ -5,6 +5,12 @@ import styles from "./Games.module.css";
 import { useEffect } from "react";
 import { setSEO } from "../../utils/seo";
 
+import sudokuIcon from "../../assets/games/icons/sudokuIcon.webp";
+import wordleIcon from "../../assets/games/icons/wordleIcon.webp";
+import octordleIcon from "../../assets/games/icons/octordleIcon.webp";
+import slideIcon from "../../assets/games/icons/slideIcon.webp";
+import kingdomIcon from "../../assets/games/icons/kingdomIcon.webp";
+
 const games = [
   {
     id: "sudoku",
@@ -12,7 +18,7 @@ const games = [
     description: "Fill the grid with numbers from 1 to 9 without repeating them in any row, column, or 3×3 box.",
     category: "Number Puzzle",
     difficulty: "Medium",
-    icon: "🔢",
+    icon: sudokuIcon,
     path: "/games/sudoku",
   },
   {
@@ -21,7 +27,7 @@ const games = [
     description: "Guess the hidden five-letter word.",
     category: "Word Puzzle",
     difficulty: "Medium",
-    icon: "🔤",
+    icon: wordleIcon,
     path: "/games/wordle",
   },
   {
@@ -30,7 +36,7 @@ const games = [
     description: "Solve eight word puzzles simultaneously.",
     category: "Word Puzzle",
     difficulty: "Hard",
-    icon: "🧩",
+    icon: octordleIcon,
     path: "/games/octordle",
   },
   {
@@ -39,8 +45,17 @@ const games = [
     description: "Slide the tiles into the correct positions and restore the picture.",
     category: "Sliding Puzzle",
     difficulty: "Medium",
-    icon: "🖼️",
+    icon: slideIcon,
     path: "/games/slide",
+  },
+  {
+    id: "kingdom",
+    title: "Kingdom",
+    description: "Merge matching buildings, grow your kingdom, and build your way to the highest score.",
+    category: "Merge Puzzle",
+    difficulty: "Medium",
+    icon: kingdomIcon,
+    path: "/games/kingdom",
   },
 ];
 
@@ -131,9 +146,13 @@ const Games = () => {
 
                 {/* Game Icon */}
                 <div className={styles.gameIcon}>
-                  <span aria-hidden="true">
+                  {/*<span aria-hidden="true">
                     {game.icon}
-                  </span>
+                  </span>*/}
+                  <img
+                    src={game.icon}
+                    alt={`${game.title} game icon`}
+                  />
                 </div>
 
 
