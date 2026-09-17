@@ -10,6 +10,7 @@ import wordleIcon from "../../assets/games/icons/wordleIcon.webp";
 import octordleIcon from "../../assets/games/icons/octordleIcon.webp";
 import slideIcon from "../../assets/games/icons/slideIcon.webp";
 import kingdomIcon from "../../assets/games/icons/kingdomIcon.webp";
+import snakeIcon from "../../assets/games/icons/snakeIcon.webp";
 
 const games = [
   {
@@ -56,6 +57,15 @@ const games = [
     difficulty: "Medium",
     icon: kingdomIcon,
     path: "/games/kingdom",
+  },
+  {
+    id: "snake",
+    title: "Snake",
+    description: "Control the snake to eat food and grow longer without hitting the walls or itself.",
+    category: "Arcade Game",
+    difficulty: "Easy",
+    icon: snakeIcon,
+    path: "/games/snake",
   },
 ];
 

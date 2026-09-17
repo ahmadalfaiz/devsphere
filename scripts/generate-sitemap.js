@@ -2,6 +2,7 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import { createWriteStream, existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
 import contentRegistry from "../src/content/contentRegistry.js";
+import articlesData from "../src/data/articlesData.js";
 
 const SITE_URL = "https://devspherehq.com";
 
@@ -35,18 +36,13 @@ const pages = [
   { url: "/games/octordle", changefreq: "weekly", priority: 0.85,},
   { url: "/games/slide", changefreq: "weekly", priority: 0.85,},
   { url: "/games/kingdom", changefreq: "weekly", priority: 0.85,},
+  { url: "/games/snake", changefreq: "weekly", priority: 0.85,},
 
   { url: "/contact-us", changefreq: "yearly", priority: 0.85,},
   { url: "/about-us", changefreq: "yearly", priority: 0.85,},
   { url: "/advertise-with-us", changefreq: "yearly", priority: 0.85,},
   { url: "/articles", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/top-javascript-concepts-every-developer-must-know", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/how-ai-is-changing-modern-web-development", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/complete-roadmap-to-crack-product-based-companies", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/why-teenage-students-still-need-to-study-themselves", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/the-confidence-trap-why-understanding-feels-different-from-knowing", changefreq: "weekly", priority: 0.85,},
-  { url: "/articles/pros-and-cons-of-artificial-intelligence-in-todays-changing-world", changefreq: "weekly", priority: 0.85,},
-
+  
   { url: "/privacy-policy", changefreq: "yearly", priority: 0.30,},
   { url: "/terms", changefreq: "yearly", priority: 0.30,},
   { url: "/cookies", changefreq: "yearly", priority: 0.30,},
@@ -89,6 +85,14 @@ Object.entries(contentRegistry).forEach(
 );
 /* Upto this line newly added 13th Aug */
 
+/* For articles url generation added on 17 sept */
+const articlePages = articlesData.map((article) => ({
+  url: `/articles/${article.slug}`,
+  changefreq: "weekly",
+  priority: 0.90,
+}));
+/* upto this added on 17 Sept */
+
 async function generateSitemap() {
   const distFolder = resolve("dist");
 
@@ -108,6 +112,7 @@ async function generateSitemap() {
   const allPages = [
     ...pages,
     ...lessonPages,
+    ...articlePages,
   ];
   allPages.forEach((page) => {
     sitemap.write({
@@ -135,6 +140,10 @@ async function generateSitemap() {
 
   console.log(
     `📚 Tutorial lessons: ${lessonPages.length}`
+  );
+
+  console.log(
+    `📰 Articles: ${articlePages.length}`
   );
 
   console.log(

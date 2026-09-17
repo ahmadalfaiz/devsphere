@@ -35,6 +35,7 @@ import Wordle from "./pages/Games/components/Wordle";
 import Octordle from "./pages/Games/components/Octordle";
 import Slide from "./pages/Games/components/Slide";
 import Kingdom from "./pages/Games/components/Kingdom";
+import Snake from "./pages/Games/components/Snake";
 
 function App() {
   return (
@@ -74,7 +75,7 @@ function App() {
           <Route path="/games/octordle" element={<Octordle />} />
           <Route path="/games/slide" element={<Slide />} />
           <Route path="/games/kingdom" element={<Kingdom />} />
-
+          <Route path="/games/snake" element={<Snake />} />
         </Route>
 
       </Routes>

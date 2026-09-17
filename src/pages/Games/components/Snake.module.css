@@ -1,0 +1,1765 @@
+/* =========================================================
+   SNAKE PAGE
+========================================================= */
+.snakePage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(235, 117, 117, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 8%,
+      rgba(235, 117, 117, 0.06),
+      transparent 28%
+    ),
+    #f7faf9;
+  color: #17221d;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.snakeHeader {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #eee4e3;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(252, 248, 248, 0.96)
+    );
+}
+
+.snakeHeader::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -300px;
+  right: -120px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(208, 45, 0, 0.08);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.snakeHeader::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  bottom: -220px;
+  left: -100px;
+  border-radius: 50%;
+  background: rgba(246, 156, 59, 0.04);
+  pointer-events: none;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+  
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: #535050;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backLink svg {
+  font-size: 0.78rem;
+}
+
+.backLink:hover {
+  color: #EB7575;
+  transform: translateX(-3px);
+}
+
+.backLink:focus-visible {
+  outline: 3px solid rgba(235, 117, 117, 0.2);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #eed5d5;
+  border-radius: 999px;
+  background: #fbf1ef;
+  color: #EB7575;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.snakeTitle {
+  margin: 0;
+  color: #150e0e;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.snakeSubtitle {
+  max-width: 700px;
+  margin: 13px 0 0;
+  color: #6e6967;
+  font-size: 1.04rem;
+  line-height: 1.75;
+  
+}
+
+/* =========================================================
+   GAME SECTION / CONTAINER
+========================================================= */
+.snakeSection {
+  padding: 34px 0 60px;
+}
+
+.snakeContainer {
+  width: min(920px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   GAME TOP BAR
+========================================================= */
+
+.gameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ebe3e1;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 8px 24px rgba(57, 34, 28, 0.055),
+    0 1px 2px rgba(57, 34, 28, 0.04);
+}
+
+.gameStats {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.statItem {
+  min-width: 72px;
+  padding: 0 14px;
+  text-align: center;
+}
+
+.statItem:first-child {
+  padding-left: 4px;
+}
+
+.statItem:last-child {
+  padding-right: 4px;
+}
+
+.statLabel {
+  display: block;
+  margin-bottom: 3px;
+  color: #817977;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statValue {
+  display: block;
+  color: #251818;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.statDivider {
+  width: 1px;
+  height: 30px;
+  background: #ebe4e3;
+}
+
+.gameActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionButton,
+.newGameButton,
+.overlayButton,
+.bottomNewGame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.actionButton {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid #e8dddc;
+  border-radius: 11px;
+  background: #fbf8f8;
+  color: #574645;
+  font-size: 0.83rem;
+}
+
+.actionButton:hover:not(:disabled) {
+  border-color: #ddc8c8;
+  background: #f8f4f1;
+  color: #EB7575;
+  transform: translateY(-1px);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.newGameButton {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 11px;
+  background: #EB7575;
+  color: #ffffff;
+  font-size: 0.83rem;
+  box-shadow:
+    0 5px 14px rgba(0, 180, 113, 0.18);
+}
+
+.newGameButton:hover {
+  background: #b80c00;
+  transform: translateY(-1px);
+  box-shadow:
+    0 7px 18px rgba(180, 42, 0, 0.24);
+}
+
+.actionButton:focus-visible,
+.newGameButton:focus-visible,
+.overlayButton:focus-visible,
+.bottomNewGame:focus-visible,
+.modeButton:focus-visible {
+  outline: 3px solid rgba(208, 42, 0, 0.22);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   MODE SELECTOR
+========================================================= */
+
+.modeSelector {
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ebe1e1;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 18px rgba(57, 32, 28, 0.035);
+}
+
+.modeHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 0 2px;
+  color: #453533;
+  font-size: 0.79rem;
+  font-weight: 750;
+}
+
+.modeHint {
+  color: #988b8a;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.modeButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.modeButton {
+  min-height: 48px;
+  padding: 7px 10px;
+  border: 1px solid #eae0e0;
+  border-radius: 11px;
+  background: #fbf9f9;
+  color: #726767;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.modeButton span {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.modeButton small {
+  display: block;
+  margin-top: 3px;
+  color: #a49797;
+  font-size: 0.64rem;
+  font-weight: 650;
+}
+
+.modeButton:hover {
+  border-color: #ddc9c9;
+  background: #f9f2f2;
+  color: #8d0000;
+  transform: translateY(-1px);
+}
+
+.modeButtonActive {
+  border-color: rgba(208, 0, 0, 0.5);
+  background:
+    linear-gradient(
+      145deg,
+      #fcefef,
+      #faece7
+    );
+  color: #EB7575;
+  box-shadow:
+    inset 0 0 0 1px rgba(208, 14, 0, 0.08),
+    0 4px 12px rgba(180, 12, 0, 0.08);
+}
+
+.modeButtonActive small {
+  color: #EB7575;
+}
+
+/* =========================================================
+   BOARD AREA
+========================================================= */
+.boardArea {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.snakeBoard {
+  --cell-size: calc(100% / var(--board-size));
+
+  position: relative;
+  width: min(610px, 100%);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  border: 5px solid #d7e5df;
+  border-radius: 22px;
+  background: #e9f3ef;
+  box-shadow:
+    0 20px 45px rgba(28, 57, 45, 0.12),
+    0 5px 14px rgba(28, 57, 45, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+.snakeBoard:focus-visible {
+  box-shadow:
+    0 0 0 4px rgba(0, 208, 132, 0.16),
+    0 20px 45px rgba(28, 57, 45, 0.12);
+}
+
+
+/* =========================================================
+   BOARD GRID
+========================================================= */
+
+.boardGrid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(
+    var(--board-size),
+    1fr
+  );
+  grid-template-rows: repeat(
+    var(--board-size),
+    1fr
+  );
+}
+
+.boardCell {
+  min-width: 0;
+  min-height: 0;
+  border-right: 1px solid rgba(121, 157, 143, 0.13);
+  border-bottom: 1px solid rgba(121, 157, 143, 0.13);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.28),
+      rgba(225, 240, 233, 0.2)
+    );
+}
+
+.boardCell:nth-child(even) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(219, 237, 228, 0.26)
+    );
+}
+
+
+/* =========================================================
+   OBSTACLES
+========================================================= */
+
+.obstacleLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.obstacle {
+  position: absolute;
+  left: calc(
+    var(--obstacle-x) * (100% / var(--board-size))
+  );
+  top: calc(
+    var(--obstacle-y) * (100% / var(--board-size))
+  );
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.obstacle::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(91, 107, 101, 0.18);
+  border-radius: 24%;
+  background:
+    linear-gradient(
+      145deg,
+      #71827b,
+      #4e6058
+    );
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.2),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.13),
+    0 3px 7px rgba(37, 58, 49, 0.14);
+}
+
+
+/* =========================================================
+   FOOD
+========================================================= */
+.food {
+  position: absolute;
+  left: calc(
+    var(--food-x) * (100% / var(--board-size))
+  );
+  top: calc(
+    var(--food-y) * (100% / var(--board-size))
+  );
+  z-index: 5;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: foodAppear 0.28s ease-out;
+}
+
+.food::before {
+  content: "";
+  position: absolute;
+  width: 52%;
+  height: 52%;
+  border-radius: 50%;
+  background: rgba(255, 86, 78, 0.12);
+  box-shadow:
+    0 0 16px rgba(255, 86, 78, 0.22);
+  animation: foodPulse 1.4s ease-in-out infinite;
+}
+
+.foodCore {
+  position: relative;
+  z-index: 1;
+  width: 46%;
+  height: 46%;
+  border-radius: 46% 46% 50% 50%;
+  background:
+    radial-gradient(
+      circle at 32% 25%,
+      #ffffff 0 10%,
+      transparent 11%
+    ),
+    linear-gradient(
+      145deg,
+      #ff756b,
+      #ef3f45
+    );
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.38),
+    inset 0 -3px 5px rgba(150, 23, 29, 0.18),
+    0 3px 8px rgba(213, 51, 58, 0.24);
+  transform: rotate(-8deg);
+}
+
+.foodCore::after {
+  content: "";
+  position: absolute;
+  width: 32%;
+  height: 20%;
+  top: -10%;
+  right: 4%;
+  border-radius: 80% 15% 80% 15%;
+  background: #48a66d;
+  transform: rotate(-18deg);
+}
+
+
+/* =========================================================
+   SNAKE
+========================================================= */
+
+/*.snakeLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.snakeSegment {
+  position: absolute;
+  left: calc(
+    var(--segment-x) * (100% / var(--board-size))
+  );
+  top: calc(
+    var(--segment-y) * (100% / var(--board-size))
+  );
+  width: var(--cell-size);
+  height: var(--cell-size);
+  box-sizing: border-box;
+  padding: 3px;
+  transform: scale(0.91);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.snakeSegment::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 27%;
+}
+
+.snakeBody::before {
+  background:
+    linear-gradient(
+      145deg,
+      #24d995,
+      #00aa70
+    );
+  border: 1px solid rgba(0, 139, 91, 0.18);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.27),
+    inset 0 -3px 5px rgba(0, 99, 65, 0.18),
+    0 3px 6px rgba(0, 145, 91, 0.17);
+}
+
+.snakeBody:nth-child(3n)::before {
+  background:
+    linear-gradient(
+      145deg,
+      #20d48f,
+      #00a96e
+    );
+}
+
+.snakeBody:nth-child(4n)::before {
+  background:
+    linear-gradient(
+      145deg,
+      #31dda0,
+      #00b477
+    );
+}
+
+.snakeHead {
+  z-index: 2;
+  transform: scale(0.94);
+}
+
+.snakeHead::before {
+  border-radius: 31%;
+  background:
+    linear-gradient(
+      145deg,
+      #2de39b,
+      #00a96d
+    );
+  border: 1px solid rgba(0, 132, 84, 0.22);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.34),
+    inset 0 -4px 6px rgba(0, 94, 61, 0.2),
+    0 4px 9px rgba(0, 139, 87, 0.22);
+}
+
+.snakeEye {
+  position: absolute;
+  z-index: 3;
+  width: 13%;
+  height: 13%;
+  min-width: 4px;
+  min-height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(23, 48, 38, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.snakeEye::after {
+  content: "";
+  position: absolute;
+  width: 48%;
+  height: 48%;
+  top: 26%;
+  left: 26%;
+  border-radius: 50%;
+  background: #19352a;
+}
+
+.snakeEyeOne {
+  top: 29%;
+  right: 25%;
+}
+
+.snakeEyeTwo {
+  bottom: 29%;
+  right: 25%;
+}*/
+
+
+/* =========================================================
+   SNAKE
+========================================================= */
+
+.snakeLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.snakeSegment {
+  position: absolute;
+
+  left: calc(
+    var(--segment-x) * (100% / var(--board-size))
+  );
+
+  top: calc(
+    var(--segment-y) * (100% / var(--board-size))
+  );
+
+  width: var(--cell-size);
+  height: var(--cell-size);
+
+  box-sizing: border-box;
+
+  /* Smaller padding = tighter connected body */
+  padding: 1.5px;
+
+  /* Slightly larger than before so neighboring pieces visually connect */
+  transform: scale(0.96);
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.snakeSegment::before {
+  content: "";
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 27%;
+
+  box-sizing: border-box;
+}
+
+.snakeBody::before {
+  background:
+    linear-gradient(
+      120deg,
+      #1f4037 0%,
+      #99f2c8 100%
+    );
+
+  border: 1px solid rgba(0, 126, 82, 0.22);
+
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.30),
+    inset 0 -3px 5px rgba(0, 82, 55, 0.24),
+    0 3px 6px rgba(0, 130, 84, 0.19);
+}
+
+/* Subtle natural variation between body segments */
+.snakeBody:nth-child(3n)::before {
+  background:
+    linear-gradient(
+      120deg,
+      #1f4037 0%,
+      #99f2c8 100%
+    );
+}
+
+.snakeBody:nth-child(4n)::before {
+  background:
+    linear-gradient(
+      120deg,
+      #1f4037 0%,
+      #99f2c8 100%
+    );
+}
+
+/* =========================================================
+   HEAD
+========================================================= */
+
+.snakeHead {
+  z-index: 2;
+
+  /* Head is slightly larger than body */
+  transform: scale(1.00);
+}
+
+.snakeHead::before {
+  /*
+    Different shape from the body:
+    body = compact rounded square
+    head = softer, more rounded form
+  */
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      120deg,
+      #1f4037 00%,
+      /*#0116ba 45%,*/
+      #99f2c8 100%
+    );
+
+  border: 1px solid rgba(0, 125, 80, 0.24);
+
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.36),
+    inset 0 -4px 6px rgba(0, 82, 53, 0.25),
+    0 4px 9px rgba(0, 132, 84, 0.23);
+}
+
+/* =========================================================
+   EYES
+========================================================= */
+
+.snakeEye {
+  position: absolute;
+
+  z-index: 3;
+
+  width: 13%;
+  height: 13%;
+
+  min-width: 4px;
+  min-height: 4px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 1px rgba(23, 48, 38, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.snakeEye::after {
+  content: "";
+
+  position: absolute;
+
+  width: 48%;
+  height: 48%;
+
+  top: 26%;
+  left: 26%;
+
+  border-radius: 50%;
+
+  background: #19352a;
+}
+
+.snakeEyeOne {
+  top: 29%;
+  right: 25%;
+}
+
+.snakeEyeTwo {
+  bottom: 29%;
+  right: 25%;
+}
+
+
+/* =========================================================
+   BOARD STATES
+========================================================= */
+
+.boardPaused .snakeLayer,
+.boardPaused .food,
+.boardPaused .obstacleLayer {
+  filter: saturate(0.85);
+}
+
+.boardGameOver {
+  border-color: #c7e5db;
+}
+
+.boardGameOver .snakeLayer {
+  filter: saturate(0.6);
+}
+
+.boardWon {
+  border-color: #b9e4cf;
+}
+
+
+/* =========================================================
+   BOARD OVERLAY
+========================================================= */
+
+.boardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    rgba(30, 17, 15, 0.48);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: overlayAppear 0.2s ease-out;
+}
+
+.overlayCard {
+  width: min(360px, 100%);
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(252, 248, 247, 0.98)
+    );
+  box-shadow:
+    0 22px 50px rgba(27, 11, 9, 0.2),
+    0 5px 16px rgba(27, 9, 9, 0.12);
+  text-align: center;
+  animation: overlayCardAppear 0.25s ease-out;
+}
+
+.overlayIcon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 13px;
+  border: 1px solid #eed4d4;
+  border-radius: 17px;
+  background:
+    linear-gradient(
+      145deg,
+      #fcefef,
+      #f8e8e2
+    );
+  color: #EB7575;
+  font-size: 1.45rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 5px 13px rgba(208, 14, 0, 0.08);
+}
+
+.overlayCard h2 {
+  margin: 0;
+  color: #1f1414;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.overlayCard p {
+  margin: 8px auto 18px;
+  max-width: 280px;
+  color: #807070;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.overlayButton {
+  min-height: 44px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 11px;
+  background: #EB7575;
+  color: #ffffff;
+  font-size: 0.84rem;
+  box-shadow:
+    0 6px 15px rgba(180, 6, 0, 0.18);
+}
+
+.overlayButton:hover {
+  background: #EB7575;
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 19px rgba(180, 12, 0, 0.25);
+}
+
+
+/* =========================================================
+   FINAL STATS
+========================================================= */
+
+.finalStats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.finalStats > div {
+  padding: 10px 8px;
+  border: 1px solid #ebe0e0;
+  border-radius: 11px;
+  background: #faf7f7;
+}
+
+.finalStats span {
+  display: block;
+  margin-bottom: 3px;
+  color: #998f8f;
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.finalStats strong {
+  display: block;
+  color: #1d1212;
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   GAME STATUS
+========================================================= */
+
+.gameStatus {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #ebe1e1;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.statusItem {
+  min-width: 110px;
+  padding: 2px 18px;
+  text-align: center;
+}
+
+.statusItem + .statusItem {
+  border-left: 1px solid #ece4e4;
+}
+
+.statusLabel {
+  display: block;
+  margin-bottom: 3px;
+  color: #6f6767;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.statusItem strong {
+  display: block;
+  color: #312929;
+  font-size: 0.78rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.statusMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  margin-left: 4px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: #f9efef;
+  color: #EB7575;
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+
+.instructions {
+  margin-top: 34px;
+  padding: 25px;
+  border: 1px solid #ebe1e1;
+  border-radius: 19px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 8px 25px rgba(57, 32, 28, 0.045);
+}
+
+.instructionsHeader {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.instructionsHeader h2 {
+  margin: 0;
+  color: #241818;
+  font-size: 1.18rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.instructionsHeader p {
+  margin: 6px 0 0;
+  color: #796b6b;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.instructionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.instructionCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #ede5e5;
+  border-radius: 13px;
+  background:
+    linear-gradient(
+      145deg,
+      #fdfbfb,
+      #faf7f7
+    );
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.instructionCard:hover {
+  border-color: #e7d4d4;
+  transform: translateY(-2px);
+  box-shadow:
+    0 7px 17px rgba(57, 30, 28, 0.05);
+}
+
+.instructionIcon {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ecdcdc;
+  color: #EB7575;
+  border-radius: 10px;
+  background: #f9f0ef;
+  font-size: 1.05rem;
+}
+
+.instructionCard h3 {
+  margin: 1px 0 4px;
+  color: #443131;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.instructionCard p {
+  margin: 0;
+  color: #897a7a;
+  font-size: 0.71rem;
+  line-height: 1.55;
+}
+
+.rules {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #eee7e7;
+  color: #908281;
+  font-size: 0.68rem;
+}
+
+.rules span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rules strong {
+  color: #635352;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   BOTTOM ACTION
+========================================================= */
+
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bottomNewGame {
+  min-height: 43px;
+  padding: 0 19px;
+  border: 1px solid #e7cdcd;
+  border-radius: 11px;
+  background: #faf0ef;
+  color: #EB7575;
+  font-size: 0.79rem;
+}
+
+.bottomNewGame:hover {
+  border-color: #dbb1ad;
+  background: #f7e6e5;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes foodAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes foodPulse {
+  0%,
+  100% {
+    transform: scale(0.82);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes overlayAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayCardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 760px) {
+  .headerContent {
+    padding-top: 25px;
+    padding-bottom: 29px;
+  }
+
+  .snakeSection {
+    padding-top: 26px;
+  }
+
+  .snakeContainer {
+    width: min(680px, calc(100% - 28px));
+  }
+
+  .gameTopBar {
+    padding: 13px;
+  }
+
+  .statItem {
+    min-width: 66px;
+    padding: 0 10px;
+  }
+
+  .gameActions {
+    gap: 6px;
+  }
+
+  .actionButton,
+  .newGameButton {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+
+  .snakeBoard {
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
+  .instructions {
+    padding: 21px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+  .snakePage {
+    background:
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(208, 3, 0, 0.065),
+        transparent 32%
+      ),
+      #faf7f7;
+  }
+
+  .headerContent {
+    width: min(100% - 28px, 680px);
+    padding: 22px 0 25px;
+  }
+
+  .backLink {
+    margin-bottom: 16px;
+    font-size: 0.82rem;
+  }
+
+  .headerLabel {
+    min-height: 26px;
+    padding: 4px 10px;
+    margin-bottom: 9px;
+    font-size: 0.64rem;
+  }
+
+  .snakeTitle {
+    font-size: 2.15rem;
+  }
+
+  .snakeSubtitle {
+    max-width: 390px;
+    margin-top: 9px;
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .snakeSection {
+    padding: 19px 0 40px;
+  }
+
+  .snakeContainer {
+    width: min(100% - 20px, 680px);
+  }
+
+  .gameTopBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  .gameStats {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .statItem {
+    flex: 1;
+    min-width: 0;
+    padding: 0 8px;
+  }
+
+  .statItem:first-child {
+    padding-left: 3px;
+  }
+
+  .statItem:last-child {
+    padding-right: 3px;
+  }
+
+  .statValue {
+    font-size: 1.05rem;
+  }
+
+  .statLabel {
+    font-size: 0.61rem;
+  }
+
+  .gameActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .actionButton,
+  .newGameButton {
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .modeSelector {
+    padding: 11px;
+    margin-bottom: 13px;
+    border-radius: 14px;
+  }
+
+  .modeHeading {
+    margin-bottom: 8px;
+    font-size: 0.72rem;
+  }
+
+  .modeButtons {
+    gap: 6px;
+  }
+
+  .modeButton {
+    min-height: 44px;
+    padding: 6px 5px;
+    border-radius: 9px;
+  }
+
+  .modeButton span {
+    font-size: 0.74rem;
+  }
+
+  .modeButton small {
+    font-size: 0.58rem;
+  }
+
+  .snakeBoard {
+    width: 100%;
+    border-width: 3px;
+    border-radius: 15px;
+    box-shadow:
+      0 13px 28px rgba(28, 57, 45, 0.1),
+      0 4px 10px rgba(28, 57, 45, 0.05);
+  }
+
+  .snakeSegment {
+    padding: 2px;
+  }
+
+  .obstacle {
+    padding: 3px;
+  }
+
+  .gameStatus {
+    margin-top: 12px;
+    padding: 9px 6px;
+    border-radius: 13px;
+  }
+
+  .statusItem {
+    min-width: 0;
+    flex: 1;
+    padding: 2px 8px;
+  }
+
+  .statusItem + .statusItem {
+    border-left: 1px solid #e4e4e4;
+  }
+
+  .statusLabel {
+    font-size: 0.56rem;
+  }
+
+  .statusItem strong {
+    font-size: 0.7rem;
+  }
+
+  .statusMessage {
+    width: 100%;
+    margin: 8px 0 0;
+    min-height: 29px;
+    font-size: 0.62rem;
+  }
+
+  .instructions {
+    margin-top: 23px;
+    padding: 17px;
+    border-radius: 15px;
+  }
+
+  .instructionsHeader {
+    margin-bottom: 14px;
+  }
+
+  .instructionsHeader h2 {
+    font-size: 1.05rem;
+  }
+
+  .instructionsHeader p {
+    font-size: 0.7rem;
+  }
+
+  .instructionGrid {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .instructionCard {
+    padding: 11px;
+    gap: 10px;
+    border-radius: 11px;
+  }
+
+  .instructionIcon {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 0.92rem;
+  }
+
+  .instructionCard h3 {
+    font-size: 0.75rem;
+  }
+
+  .instructionCard p {
+    font-size: 0.66rem;
+  }
+
+  .rules {
+    gap: 7px 12px;
+    margin-top: 14px;
+    padding-top: 13px;
+    font-size: 0.61rem;
+    line-height: 1.4;
+  }
+
+  .bottomActions {
+    margin-top: 15px;
+  }
+
+  .bottomNewGame {
+    min-height: 40px;
+    padding: 0 17px;
+    font-size: 0.74rem;
+  }
+
+  .boardOverlay {
+    padding: 17px;
+  }
+
+  .overlayCard {
+    padding: 22px 18px 18px;
+    border-radius: 16px;
+  }
+
+  .overlayIcon {
+    width: 51px;
+    height: 51px;
+    margin-bottom: 11px;
+    border-radius: 14px;
+    font-size: 1.25rem;
+  }
+
+  .overlayCard h2 {
+    font-size: 1.25rem;
+  }
+
+  .overlayCard p {
+    margin: 7px auto 15px;
+    font-size: 0.75rem;
+  }
+
+  .overlayButton {
+    min-height: 41px;
+    font-size: 0.76rem;
+  }
+
+  .finalStats {
+    margin-bottom: 15px;
+  }
+
+  .finalStats strong {
+    font-size: 1.05rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .headerContent {
+    width: calc(100% - 22px);
+  }
+
+  .snakeContainer {
+    width: calc(100% - 14px);
+  }
+
+  .snakeTitle {
+    font-size: 1.95rem;
+  }
+
+  .snakeSubtitle {
+    font-size: 0.78rem;
+  }
+
+  .gameTopBar {
+    padding: 10px;
+  }
+
+  .statItem {
+    padding: 0 5px;
+  }
+
+  .statLabel {
+    font-size: 0.56rem;
+  }
+
+  .statValue {
+    font-size: 0.98rem;
+  }
+
+  .actionButton,
+  .newGameButton {
+    min-height: 38px;
+    padding: 0 8px;
+    font-size: 0.72rem;
+  }
+
+  .modeSelector {
+    padding: 9px;
+  }
+
+  .modeButton {
+    min-height: 42px;
+  }
+
+  .modeButton span {
+    font-size: 0.7rem;
+  }
+
+  .modeButton small {
+    font-size: 0.54rem;
+  }
+
+  .snakeBoard {
+    border-radius: 12px;
+  }
+
+  .statusItem {
+    padding: 2px 5px;
+  }
+
+  .statusItem strong {
+    font-size: 0.65rem;
+  }
+
+  .instructions {
+    padding: 14px;
+  }
+
+  .instructionCard {
+    padding: 10px;
+  }
+
+  .instructionCard p {
+    font-size: 0.63rem;
+  }
+
+  .rules {
+    font-size: 0.58rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink,
+  .actionButton,
+  .newGameButton,
+  .overlayButton,
+  .bottomNewGame,
+  .modeButton,
+  .instructionCard {
+    transition: none;
+  }
+
+  .food,
+  .food::before,
+  .boardOverlay,
+  .overlayCard {
+    animation: none;
+  }
+
+  .backLink:hover,
+  .actionButton:hover:not(:disabled),
+  .newGameButton:hover,
+  .overlayButton:hover,
+  .bottomNewGame:hover,
+  .modeButton:hover,
+  .instructionCard:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   HIGH CONTRAST / FOCUS SAFETY
+========================================================= */
+
+@media (prefers-contrast: more) {
+  .snakeBoard {
+    border-color: #82968d;
+  }
+
+  .boardCell {
+    border-color: rgba(50, 75, 64, 0.25);
+  }
+
+  .modeButton,
+  .actionButton,
+  .instructionCard,
+  .gameTopBar,
+  .modeSelector,
+  .gameStatus,
+  .instructions {
+    border-color: #bdccc5;
+  }
+
+  .snakeBody::before,
+  .snakeHead::before {
+    border-color: #006b46;
+  }
+}
