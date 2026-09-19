@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaArrowRight, FaChartBar, FaGlobe, FaUsers, FaCalendarAlt, FaQrcode, FaPaypal, FaCode, FaBookOpen, FaTools, FaServer, FaLock, FaUserSecret, FaChevronRight, FaHandshake, FaLaptopCode,} from "react-icons/fa";
 import { FaCircleInfo,} from "react-icons/fa6";
-
+import myUpiQr from "../../assets/support/my_upi_qr.jpeg";
 import { setSEO } from "../../utils/seo";
 import styles from "./Support.module.css";
 
@@ -342,28 +342,24 @@ function Support() {
 
               <div className={styles.qrPlaceholder}>
                 <div className={styles.qrFrame}>
-                  <FaQrcode />
+                  <img src={myUpiQr} alt="DevSphere UPI payment QR code" className={styles.upiQr} />
                 </div>
 
-                <span>UPI QR Code</span>
-                <small>Payment setup coming soon</small>
+                <span>Scan to support DevSphere</span>
+                <small>Use Google Pay, Phonep, Paytm, or any UPI app</small>
               </div>
 
               <div className={styles.paymentInfo}>
-                <FaLock />
+                <FaQrcode />
                 <span>
-                  Payment details will be securely provided here.
+                  UPI ID: <strong>ahmad484faiz@okhdfcbank</strong>
                 </span>
               </div>
 
-              <button
-                type="button"
-                className={styles.paymentButton}
-                disabled
-              >
+              <a href="upi://pay?pa=ahmad484faiz@okhdfcbank&pn=DevSphere&cu=INR" className={styles.paymentButton} >
                 <FaQrcode />
-                <span>UPI Support</span>
-              </button>
+                <span>Pay via UPI</span>
+              </a>
             </article>
 
             {/* International / PayPal */}

@@ -180,3 +180,47 @@
   }
 
 }
+
+@media(max-width:400px){
+
+  .trendingSection {
+    padding-bottom: 31px;
+  }
+
+  .topContent span{
+    font-size: 0.85rem;
+  }
+
+  .topContent h2 {
+    font-size: 2rem;
+  }
+
+  .topContent p {
+    font-size: 15px;
+  }
+
+  .topContent {
+    margin-bottom: 32px;
+  }
+
+  .imageContainer {
+    height: 190px;
+  }
+
+  .category {
+    padding: 8px 10px;
+  }
+
+  .cardContent h3 {
+    font-size: 1.25rem;
+  }
+
+  .cardContent p {
+    margin-bottom: 21px;
+  }
+
+  .cardContent button {
+    font-size: 0.9rem;
+  }
+
+}

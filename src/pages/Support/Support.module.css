@@ -800,7 +800,7 @@
 }
 
 /* =========================================================
-   QR PLACEHOLDER
+   UPI QR CODE
    ========================================================= */
 
 .qrPlaceholder {
@@ -821,17 +821,27 @@
 }
 
 .qrFrame {
-  width: 88px;
-  height: 88px;
+  width: 190px;
+  height: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5px;
   border: 1px solid #dce4ef;
   border-radius: 10px;
   background: #ffffff;
   color: #9aa7b8;
   font-size: 2.35rem;
   box-shadow: 0 5px 16px rgba(15, 23, 42, 0.04);
+}
+
+.upiQr {
+  display: block;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .qrPlaceholder > span {
@@ -923,12 +933,13 @@
   margin-top: 17px;
   border: 1px solid #d9e0e9;
   border-radius: 10px;
-  background: #f2f4f7;
-  color: #98a2b3;
+  background: var(--support-blue);
+  color: #f7faff;
   font-family: inherit;
   font-size: 0.82rem;
   font-weight: 750;
-  cursor: not-allowed;
+  cursor: hand;
+  text-decoration: none;
 }
 
 .paymentButton svg {
@@ -2063,5 +2074,17 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .qrFrame {
+    width: 175px;
+    height: 175px;
+  }
+
+  .upiQr {
+    width: 165px;
+    height: 165px;
   }
 }

@@ -3218,3 +3218,921 @@
   background: #374151;
   margin: 2rem 0;
 }
+
+/* Mobile and Tablet responsiveness added on 19 sept*/
+/* =========================================================
+   FINAL RESPONSIVE OVERRIDES
+   Tutorial Lesson Page
+========================================================= */
+
+/* =========================================================
+   TABLET
+   769px - 1200px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+
+  .lessonPage {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 16px;
+    padding: 20px 20px 50px;
+  }
+
+  .lessonSidebar {
+    width: 240px;
+  }
+
+  .lessonContent {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .lessonHero {
+    padding: 30px;
+  }
+
+  .lessonHero h1 {
+    font-size: 2.5rem;
+  }
+
+  .lessonArticle {
+    padding: 22px;
+    min-width: 0;
+  }
+
+  .lessonArticle,
+  .lessonHero,
+  .progressSection,
+  .lessonExtras,
+  .lessonFooter {
+    max-width: 100%;
+  }
+
+  .lessonSection {
+    min-width: 0;
+  }
+
+  .comparison {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+  .codeBlock {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .codeBlock pre {
+    max-width: 100%;
+    overflow-x: auto !important;
+  }
+
+  .table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .video {
+    height: 380px;
+  }
+
+  .lessonFooterGrid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .lessonPage {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 16px 16px 40px;
+    overflow-x: hidden;
+  }
+
+  .leftColumn {
+    min-width: 0;
+  }
+
+  .lessonContent {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE SIDEBAR
+  ----------------------------------------- */
+
+  .lessonSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(280px, 86vw);
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0 20px 20px 0;
+    padding: 10px;
+    z-index: 1000;
+
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .lessonSidebar.sidebarOpen {
+    transform: translateX(0) !important;
+    left: 0;
+  }
+
+  .lessonNav {
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+
+  .closeSidebar {
+    margin-bottom: 5px;
+  }
+
+
+  /* -----------------------------------------
+     SIDEBAR OVERLAY
+  ----------------------------------------- */
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 999;
+  }
+
+
+  /* -----------------------------------------
+     BREADCRUMB
+  ----------------------------------------- */
+
+  .breadcrumbWrapper {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .mobileMenuBtn {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .breadcrumb {
+    min-width: 0;
+    flex: 1;
+    gap: 7px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     HERO
+  ----------------------------------------- */
+
+  .lessonHero {
+    width: 100%;
+    min-width: 0;
+    padding: 22px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .lessonBadge {
+    padding: 7px 13px;
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+  }
+
+  .lessonHero h1 {
+    font-size: 1.9rem;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .lessonHero p {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     LESSON META
+  ----------------------------------------- */
+
+  .lessonMeta {
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 0.88rem;
+  }
+
+  .metaRow {
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .metaItem {
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
+
+  .statusBadge {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+
+  .lessonHeroTags {
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .heroTag {
+    padding: 6px 11px;
+    font-size: 0.8rem;
+  }
+
+
+  /* -----------------------------------------
+     ARTICLE
+  ----------------------------------------- */
+
+  .lessonArticle {
+    width: 100%;
+    min-width: 0;
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .lessonSections,
+  .lessonSection {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .lessonArticle h2 {
+    font-size: 1.55rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .lessonSection h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .paragraph {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     QUOTE / NOTE / TIP / WARNING
+  ----------------------------------------- */
+
+  .quote,
+  .note,
+  .tip,
+  .warning,
+  .example,
+  .outputBlock {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .quote {
+    padding: 0.9rem 1rem;
+  }
+
+  .note,
+  .tip,
+  .warning {
+    padding: 0.9rem 1rem;
+  }
+
+  .example {
+    padding: 0.9rem;
+  }
+
+
+  /* -----------------------------------------
+     LISTS
+  ----------------------------------------- */
+
+  .pointsList,
+  .orderedList {
+    width: 100%;
+  }
+
+  .pointsList li,
+  .orderedList li {
+    padding: 10px 12px 10px 42px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .pointsList li::before,
+  .orderedList li::before {
+    left: 10px;
+  }
+
+
+  /* -----------------------------------------
+     CODE BLOCKS
+  ----------------------------------------- */
+
+  .codeBlock {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .codeBlock pre {
+    max-width: 100%;
+    overflow-x: auto !important;
+    white-space: pre !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .copyBtn {
+    top: 8px;
+    right: 8px;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+
+
+  /* -----------------------------------------
+     TABLES
+  ----------------------------------------- */
+
+  .table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
+
+
+  /* -----------------------------------------
+     COMPARISON
+  ----------------------------------------- */
+
+  .comparison {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .comparison > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     FLOW
+  ----------------------------------------- */
+
+  .flow {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flow > div {
+    flex: 0 0 auto;
+  }
+
+
+  /* -----------------------------------------
+     TREE
+  ----------------------------------------- */
+
+  .tree {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+  }
+
+
+  /* -----------------------------------------
+     CARDS
+  ----------------------------------------- */
+
+  .cardsGrid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .card {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     IMAGE
+  ----------------------------------------- */
+
+  .imageContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  .lessonImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .imageCaption {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+
+  /* -----------------------------------------
+     VIDEO
+  ----------------------------------------- */
+
+  .video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 1.2rem 0;
+  }
+
+
+  /* -----------------------------------------
+     STRUCTURE / EXPLANATION / CONCLUSION
+  ----------------------------------------- */
+
+  .structureBox,
+  .explanationBox,
+  .conclusionBox,
+  .roadmapBox {
+    padding: 16px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .structureBox pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+
+  /* -----------------------------------------
+     PROGRESS
+  ----------------------------------------- */
+
+  .progressSection {
+    width: 100%;
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+  }
+
+  .progressHeader {
+    font-size: 0.9rem;
+  }
+
+
+  /* -----------------------------------------
+     LESSON NAVIGATION
+  ----------------------------------------- */
+
+  .lessonControls {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navButton,
+  .completeButton {
+    width: 100%;
+    padding: 12px 18px;
+    text-align: center;
+  }
+
+
+  /* -----------------------------------------
+     EXTRA CARDS
+  ----------------------------------------- */
+
+  .lessonExtras {
+    width: 100%;
+    margin-top: 30px;
+    gap: 16px;
+  }
+
+  .extraCard {
+    padding: 18px;
+    border-radius: 16px;
+    min-width: 0;
+  }
+
+  .extraCard h3 {
+    font-size: 1.1rem;
+  }
+
+  .tagContainer {
+    gap: 7px;
+  }
+
+  .tag {
+    padding: 7px 11px;
+    font-size: 0.85rem;
+  }
+
+  .extraLink {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* -----------------------------------------
+     FOOTER
+  ----------------------------------------- */
+
+  .lessonFooter {
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 18px;
+  }
+
+  .lessonFooterTitle {
+    font-size: 1.4rem;
+    line-height: 1.35;
+  }
+
+  .lessonFooterSubtitle {
+    font-size: 0.92rem;
+  }
+
+  .lessonFooterGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .footerCard {
+    padding: 18px;
+    border-radius: 16px;
+    min-width: 0;
+  }
+
+  .footerCard h3 {
+    font-size: 1.05rem;
+  }
+
+  .footerCard p {
+    font-size: 0.92rem;
+  }
+
+  .helpfulButtons {
+    flex-wrap: wrap;
+  }
+
+  .suggestionFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .submitFeedbackButton {
+    align-self: stretch;
+  }
+
+
+  /* -----------------------------------------
+     RESOURCE PANEL
+  ----------------------------------------- */
+
+  .resourcePanel {
+    width: min(320px, 88vw);
+    left: calc(-1 * min(320px, 88vw));
+    padding: 20px;
+  }
+
+  .resourcePanelOpen {
+    left: 0;
+  }
+
+
+  /* -----------------------------------------
+     REPORT MODAL
+  ----------------------------------------- */
+
+  .modalOverlay {
+    padding: 12px;
+  }
+
+  .reportModal {
+    width: 100%;
+    max-width: 520px;
+    max-height: 92vh;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .reportModalHeader {
+    padding: 8px 10px;
+    padding-right: 32px;
+  }
+
+  .reportModal h2 {
+    font-size: 1.3rem;
+  }
+
+  .reportModalBody {
+    padding: 7px 10px;
+  }
+
+  .reportModalFooter {
+    padding: 12px 10px;
+  }
+
+  .modalButtons {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .cancelButton,
+  .reportModalFooter .footerButton {
+    flex: 1;
+  }
+
+  .otherIssueContainer {
+    margin-top: 14px;
+  }
+
+
+  /* -----------------------------------------
+     RIGHT PANEL
+  ----------------------------------------- */
+
+  .rightPanel {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   Redmi Note 11 / ~360px - 400px
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .lessonPage {
+    padding: 12px 12px 32px;
+  }
+
+  .breadcrumbWrapper {
+    gap: 7px;
+  }
+
+  .mobileMenuBtn {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .breadcrumb {
+    font-size: 0.76rem;
+    gap: 5px;
+  }
+
+
+  /* HERO */
+
+  .lessonHero {
+    padding: 18px 15px;
+    border-radius: 18px;
+  }
+
+  .lessonHero h1 {
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .lessonBadge {
+    padding: 6px 11px;
+    font-size: 0.78rem;
+  }
+
+
+  /* META */
+
+  .lessonMeta {
+    gap: 10px;
+  }
+
+  .metaRow {
+    gap: 6px;
+  }
+
+  .metaItem {
+    font-size: 0.82rem;
+  }
+
+  .statusBadge {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+
+  .lessonHeroTags {
+    gap: 6px;
+  }
+
+  .heroTag {
+    padding: 5px 9px;
+    font-size: 0.75rem;
+  }
+
+
+  /* ARTICLE */
+
+  .lessonArticle {
+    padding: 15px;
+    border-radius: 18px;
+  }
+
+  .lessonArticle h2 {
+    font-size: 1.35rem;
+  }
+
+  .lessonSection h3 {
+    font-size: 1.15rem;
+  }
+
+  .paragraph {
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+
+  /* CODE */
+
+  .codeBlock pre {
+    font-size: 0.8rem !important;
+  }
+
+  .copyBtn {
+    padding: 6px 9px;
+    font-size: 0.75rem;
+  }
+
+
+  /* TABLE */
+
+  .table th,
+  .table td {
+    padding: 0.65rem;
+    font-size: 0.85rem;
+  }
+
+
+  /* LISTS */
+
+  .pointsList li,
+  .orderedList li {
+    padding-left: 38px;
+    font-size: 0.92rem;
+  }
+
+
+  /* PROGRESS */
+
+  .progressSection {
+    padding: 15px;
+  }
+
+
+  /* NAVIGATION */
+
+  .navButton,
+  .completeButton {
+    padding: 11px 14px;
+    font-size: 0.9rem;
+  }
+
+
+  /* EXTRA CARDS */
+
+  .extraCard {
+    padding: 15px;
+  }
+
+
+  /* FOOTER */
+
+  .lessonFooterTitle {
+    font-size: 1.25rem;
+  }
+
+  .footerCard {
+    padding: 15px;
+  }
+
+  .footerButton,
+  .footerButtonSecondary {
+    padding: 9px 15px;
+    font-size: 0.88rem;
+  }
+
+
+  /* RESOURCE PANEL */
+
+  .resourcePanel {
+    width: 90vw;
+    left: -90vw;
+    padding: 18px;
+  }
+
+  .resourcePanelOpen {
+    left: 0;
+  }
+
+
+  /* REPORT MODAL */
+
+  .reportModal {
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .reportModal h2 {
+    font-size: 1.2rem;
+  }
+
+  .radioOption {
+    padding: 10px 11px;
+    gap: 7px;
+  }
+
+  .radioOption span {
+    font-size: 0.86rem;
+  }
+
+}

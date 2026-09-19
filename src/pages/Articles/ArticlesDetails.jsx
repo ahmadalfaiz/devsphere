@@ -3,6 +3,7 @@ import articlesData from "../../data/articlesData";
 import styles from "./Articles.module.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+//import { authors } from "../../data/authors";
 
 const ArticlesDetails = () => {
   const { slug } = useParams();
@@ -59,6 +60,8 @@ const ArticlesDetails = () => {
           </p>
 
           <div className={styles.articleDetailsMeta}>
+            <span>{article.author}</span> {/* <span>{authors.faiz.name}</span> -authors.js file se aise lenge*/}
+            <span>•</span>
             <span>{article.date}</span>
             <span>•</span>
             <span>{article.readTime}</span>
@@ -66,7 +69,7 @@ const ArticlesDetails = () => {
 
         </header>
 
-        <div className={styles.articleContent}>
+        <div className={styles.articlesContent}>
 
           <p className={styles.articleIntroduction}>
             {article.content.introduction}

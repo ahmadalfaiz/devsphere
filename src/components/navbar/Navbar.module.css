@@ -593,6 +593,10 @@
     display:none;
   }
 
+  .loginBtn{
+    display: none;
+  }
+
   .loginBtn,
   .registerBtn{
     padding:8px 14px;
@@ -627,5 +631,52 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Small mobile screens — 360px to 400px */
+@media(max-width:400px){
+
+  .topNavbar{
+    padding:0 12px;
+    gap:8px;
+  }
+
+  .leftSection{
+    gap:8px;
+  }
+
+  .hamburger{
+    width:34px;
+    height:34px;
+  }
+
+  .logo span{
+    font-size:1.5rem;
+  }
+
+  .rightSection{
+    gap:6px;
+  }
+
+  .authButtons{
+    gap:6px;
+  }
+
+  .registerBtn{
+    padding:7px 11px;
+    font-size:0.8rem;
+  }
+
+  .themeBtn{
+    /*width:34px;
+    height:34px;
+    font-size:0.9rem;*/
+    display: none;
+  }
+
+  .bottomNavbar{
+    padding:0 12px;
+    gap:25px;
   }
 }

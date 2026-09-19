@@ -146,3 +146,42 @@
   }
 
 }
+
+@media(max-width:400px){
+
+  .topContent span{
+    font-size: 0.85rem;
+  }
+
+  .topContent h2 {
+    font-size: 2rem;
+  }
+
+  .topContent p {
+    font-size: 15px;
+  }
+
+  .topContent {
+    margin-bottom: 32px;
+  }
+
+  .categoryCard {
+    padding: 20px 22px;
+  }
+
+  .icon {
+    width: 65px; height: 65px;
+    font-size: 2rem;
+    border-radius: 17px;
+    margin-bottom: 20px;
+  }
+
+  .categoryCard h3 {
+    font-size: 1.2rem;
+  }
+
+  .categoryCard p {
+    font-size: 0.9rem;
+  }
+
+}

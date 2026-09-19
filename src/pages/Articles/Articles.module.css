@@ -263,6 +263,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
 }
 
@@ -641,9 +642,9 @@
   color: #fafafa;
 }
 
-.articleContent {
+.articlesContent {
   padding-top: 45px;
-  color: #ffffff
+  color: #ffffff;
 }
 
 .articleIntroduction {
@@ -798,5 +799,9 @@
   /* Disable zoom on touch devices */
   .articleDetailsImageWrapper:hover .articleDetailsImage {
     transform: none;
+  }
+
+  .articlesContent {
+    padding-left: 2px; padding-right: 2px;
   }
 }

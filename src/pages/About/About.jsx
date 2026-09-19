@@ -13,6 +13,7 @@ import {
   FaTools,
   FaUserGraduate,
 } from "react-icons/fa";
+import founderImage from "../../assets/images/faiz-ahmad.jpeg";
 import styles from "./About.module.css";
 import { setSEO } from "../../utils/seo";
 
@@ -410,7 +411,10 @@ function About() {
         <div className={styles.founderCard}>
           <div className={styles.founderVisual}>
             <div className={styles.founderIcon}>
-              <FaUserGraduate aria-hidden="true" />
+              <img
+                src={founderImage}
+                alt="Faiz Ahmad, Founder & Creator of DevSphere"
+              />{/*<FaUserGraduate aria-hidden="true" />*/}
             </div>
           </div>
 
@@ -438,7 +442,7 @@ function About() {
 
             <div className={styles.founderInfo}>
               <strong>
-                Faiz al-Ahmad
+                Faiz Ahmad
               </strong>
 
               <span>

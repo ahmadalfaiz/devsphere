@@ -135,3 +135,40 @@
   }
 
 }
+
+@media(max-width:400px){
+
+  .topContent span {
+    font-size: 0.85rem;
+  }
+  
+  .topContent h2{
+    font-size:2rem;
+  }
+
+  .topContent p {
+    font-size: 15px;
+  }
+
+  .topContent {
+    margin-bottom: 32px;
+  }
+
+  .featuresSection {
+    padding-top: 2px;
+    padding-bottom: 40px;
+  }
+
+  .featureCard {
+    padding: 20px 20px;
+  }
+
+  .featureCard h3 {
+    font-size: 1.2rem;
+  }
+
+  .featureCard p {
+    font-size: 0.95rem;
+  }
+
+}

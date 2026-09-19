@@ -213,3 +213,28 @@
   }
 
 }
+
+@media(max-width:400px){
+
+  .ctaCard {
+    padding: 40px 30px;
+  }
+  
+  .ctaCard span{
+    font-size: 0.85rem;
+  }
+
+  .ctaCard h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .ctaCard p {
+    margin-bottom: 30px;
+  }
+
+  .primaryBtn, .secondaryBtn {
+    padding: 16px 28px;
+  }
+
+}
