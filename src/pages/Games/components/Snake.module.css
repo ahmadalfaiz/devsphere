@@ -214,6 +214,49 @@
   gap: 8px;
 }
 
+.musicButton {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #EB7575;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  z-index: 50;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.musicButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #b80c00;
+  transform: translateY(-1px);
+}
+
+.musicButton:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.musicButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.musicButton svg {
+  width: 16px;
+  height: 16px;
+}
+
 .actionButton,
 .newGameButton,
 .overlayButton,
@@ -573,6 +616,233 @@
 
 
 /* =========================================================
+   SPECIAL FOODS
+========================================================= */
+
+.specialFood {
+  animation:
+    foodAppear 0.28s ease-out,
+    specialFoodFloat 1.2s ease-in-out infinite;
+}
+
+/* GOLDEN */
+.goldenFood::before {
+  width: 68%;
+  height: 68%;
+
+  background: rgba(255, 196, 54, 0.18);
+
+  box-shadow:
+    0 0 18px rgba(255, 190, 45, 0.38);
+
+  animation:
+    specialFoodGlow 1s ease-in-out infinite;
+}
+
+.goldenFood .foodCore {
+  width: 52%;
+  height: 52%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 32% 25%,
+      #fff9d8 0 12%,
+      transparent 13%
+    ),
+    linear-gradient(
+      145deg,
+      #ffe27a,
+      #f5a623
+    );
+
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.55),
+    inset 0 -3px 5px rgba(166, 103, 8, 0.22),
+    0 3px 10px rgba(235, 166, 25, 0.35);
+
+  transform: none;
+}
+
+.goldenFood .foodCore::after {
+  content: "★";
+  position: absolute;
+
+  width: auto;
+  height: auto;
+
+  top: 50%;
+  right: auto;
+
+  left: 50%;
+
+  border-radius: 0;
+
+  background: none;
+
+  color: #fff7cf;
+
+  font-size: 58%;
+
+  line-height: 1;
+
+  transform:
+    translate(-50%, -52%);
+}
+
+
+/* SPEED */
+.speedFood::before {
+  width: 68%;
+  height: 68%;
+  background: rgba(255, 193, 7, 0.15);
+  box-shadow:
+    0 0 18px rgba(255, 193, 7, 0.32);
+  animation:
+    specialFoodGlow 0.7s ease-in-out infinite;
+}
+
+.speedFood .foodCore {
+  width: 52%;
+  height: 52%;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff176,
+      #ff9800
+    );
+
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 5px rgba(177, 92, 0, 0.2),
+    0 3px 10px rgba(255, 152, 0, 0.32);
+
+  transform: none;
+}
+
+.speedFood .foodCore::after {
+  content: "⚡";
+
+  position: absolute;
+
+  width: auto;
+  height: auto;
+
+  top: 50%;
+  left: 50%;
+
+  right: auto;
+
+  border-radius: 0;
+
+  background: none;
+
+  color: #fffbea;
+
+  font-size: 62%;
+
+  line-height: 1;
+
+  transform:
+    translate(-50%, -52%);
+}
+
+
+/* SLOW */
+.slowFood::before {
+  width: 68%;
+  height: 68%;
+
+  background: rgba(82, 182, 255, 0.13);
+
+  box-shadow:
+    0 0 18px rgba(82, 182, 255, 0.3);
+
+  animation:
+    specialFoodGlow 1.5s ease-in-out infinite;
+}
+
+.slowFood .foodCore {
+  width: 52%;
+  height: 52%;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #9be7ff,
+      #318fd4
+    );
+
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 5px rgba(25, 83, 126, 0.2),
+    0 3px 10px rgba(49, 143, 212, 0.3);
+
+  transform: none;
+}
+
+.slowFood .foodCore::after {
+  content: "⏳";
+
+  position: absolute;
+
+  width: auto;
+  height: auto;
+
+  top: 50%;
+  left: 50%;
+
+  right: auto;
+
+  border-radius: 0;
+
+  background: none;
+
+  color: #effaff;
+
+  font-size: 56%;
+
+  line-height: 1;
+
+  transform:
+    translate(-50%, -52%);
+}
+
+
+/* SPECIAL FOOD ANIMATIONS */
+
+@keyframes specialFoodGlow {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes specialFoodFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* =========================================================
    SNAKE
 ========================================================= */
 
@@ -730,7 +1000,10 @@
   transform: scale(0.96);
 
   transform-origin: center;
-  will-change: transform;
+  transition:
+    left 90ms ease-out,
+    top 90ms ease-out;
+  will-change: left, top;
 }
 
 /* =========================================================
@@ -792,22 +1065,55 @@
 .snakeHead {
   z-index: 2;
 
-  /* Head is slightly larger than body */
-  transform: scale(1.00);
+  /* Slightly larger than the body */
+  transform:
+    scale(1.06)
+    rotate(var(--head-rotation, 0deg));
+
+  transform-origin: center;
+  filter:
+    drop-shadow(0 4px 6px rgba(0, 112, 72, 0.18));
 }
 
 .snakeHead::before {
   /*
-    Different shape from the body:
-    body = compact rounded square
-    head = softer, more rounded form
+    Soft triangular / snake-like head.
+
+    - Wide rear edge connects naturally with the body.
+    - Top and bottom edges have subtle waves.
+    - Front is blunt rather than sharply pointed.
+    - Rotates with the snake direction.
   */
-  border-radius: 50%;
+  border-radius: 0;
+  clip-path: polygon(
+    /* Rear edge - straight */
+    0% 22%,
+    0% 78%,
+
+    /* Lower side */
+    15% 86%,
+    35% 88%,
+    55% 91%,
+    73% 82%,
+    86% 70%,
+    94% 60%,
+
+    /* Blunt front */
+    98% 50%,
+    94% 40%,
+    86% 30%,
+    73% 18%,
+
+    /* Upper side */
+    55% 10%,
+    35% 12%,
+    15% 14%
+  );
 
   background:
     linear-gradient(
       120deg,
-      #1f4037 00%,
+      #1f4037 00%, #3f8f70 48%,
       /*#0116ba 45%,*/
       #99f2c8 100%
     );
@@ -1421,7 +1727,21 @@
   .gameActions {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40px 1fr 1fr;
+    gap: 8px;
+  }
+
+  .musicButton {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 9px;
+    font-size: 15px;
+  }
+
+  .musicButton svg {
+    width: 15px;
+    height: 15px;
   }
 
   .actionButton,
@@ -1655,6 +1975,19 @@
     font-size: 0.72rem;
   }
 
+  .musicButton {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .musicButton svg {
+    width: 14px;
+    height: 14px;
+  }
+
   .modeSelector {
     padding: 9px;
   }
@@ -1706,7 +2039,7 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .backLink,
+  .backLink, .musicButton,
   .actionButton,
   .newGameButton,
   .overlayButton,
@@ -1724,7 +2057,7 @@
   }
 
   .backLink:hover,
-  .actionButton:hover:not(:disabled),
+  .actionButton:hover:not(:disabled), .musicButton:active,
   .newGameButton:hover,
   .overlayButton:hover,
   .bottomNewGame:hover,

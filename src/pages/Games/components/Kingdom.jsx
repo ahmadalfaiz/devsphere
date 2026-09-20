@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaArrowRotateRight, FaCrown } from "react-icons/fa6";
+import { FaArrowLeft, FaArrowRotateRight, FaCrown, FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import { setSEO } from "../../../utils/seo";
+import kingdomSong from "../../../assets/games/kingdom/kingdomsong.mp3";
+import mergeSound from "../../../assets/games/kingdom/soundmerge.mp3";
 import styles from "./Kingdom.module.css";
 
 import k1 from "../../../assets/games/kingdom/k1.webp";
@@ -388,6 +390,118 @@ function Kingdom() {
 
   const currentMode = GAME_MODES[mode];
 
+/* 20 sept 2026 added this line */
+  const musicRef = useRef(null);
+const mergeSoundRef = useRef(null);
+const musicStartedRef = useRef(false);
+
+const [musicEnabled, setMusicEnabled] = useState(() => {
+  const stored = localStorage.getItem(
+    "devsphere-kingdom-music"
+  );
+
+  return stored !== "false";
+}); 
+
+useEffect(() => {
+  const music = new Audio(kingdomSong);
+  const merge = new Audio(mergeSound);
+
+  music.loop = true;
+  music.volume = 0.2;
+
+  merge.volume = 0.55;
+
+  musicRef.current = music;
+  mergeSoundRef.current = merge;
+
+  return () => {
+    music.pause();
+    music.currentTime = 0;
+
+    merge.pause();
+    merge.currentTime = 0;
+
+    musicRef.current = null;
+    mergeSoundRef.current = null;
+  };
+}, []);
+
+const startMusic = useCallback(() => {
+  if (
+    !musicEnabled ||
+    !musicRef.current ||
+    musicStartedRef.current
+  ) {
+    return;
+  }
+
+  musicRef.current
+    .play()
+    .then(() => {
+      musicStartedRef.current = true;
+    })
+    .catch(() => {
+      // Browser may block playback until another user interaction.
+    });
+}, [musicEnabled]);
+
+
+const toggleMusic = useCallback(() => {
+  if (!musicRef.current) {
+    return;
+  }
+
+  if (musicEnabled) {
+    musicRef.current.pause();
+    musicRef.current.currentTime = 0;
+
+    musicStartedRef.current = false;
+
+    setMusicEnabled(false);
+
+    localStorage.setItem(
+      "devsphere-kingdom-music",
+      "false"
+    );
+
+    return;
+  }
+
+  musicRef.current
+    .play()
+    .then(() => {
+      musicStartedRef.current = true;
+
+      setMusicEnabled(true);
+
+      localStorage.setItem(
+        "devsphere-kingdom-music",
+        "true"
+      );
+    })
+    .catch(() => {
+      /*
+       * Playback was blocked or failed.
+       * Keep the speaker state OFF because
+       * the music is not actually playing.
+       */
+      musicStartedRef.current = false;
+
+      setMusicEnabled(false);
+
+      localStorage.setItem(
+        "devsphere-kingdom-music",
+        "false"
+      );
+    });
+}, [musicEnabled]);
+
+
+/* upto this line is is added just 20 sept */
+
+
+
   useEffect(() => {
     const storedBest =
       Number(
@@ -448,6 +562,9 @@ function Kingdom() {
 
   const handleMove = useCallback(
     (direction) => {
+      
+      startMusic(); //this line is just added 20 sept
+
       if (gameOver || moveLockRef.current) {
         return;
       }
@@ -471,6 +588,19 @@ function Kingdom() {
       }
 
       moveLockRef.current = true;
+
+
+/* this line is added just on 20 sept */
+if (result.mergedResultIds.length > 0) {
+  if (mergeSoundRef.current) {
+    mergeSoundRef.current.currentTime = 0;
+
+    mergeSoundRef.current
+      .play()
+      .catch(() => {});
+  }
+} /* upto this line is added on 20 sept */
+
 
       const sequence =
         animationSequenceRef.current + 1;
@@ -621,6 +751,7 @@ function Kingdom() {
       tiles,
       score,
       bestScore,
+      startMusic, //this line is just added on 20 sept
     ]
   );
 
@@ -851,14 +982,40 @@ function Kingdom() {
               </div>
             </div>
 
-            <button
-              type="button"
-              className={styles.newGameButton}
-              onClick={startNewGame}
-            >
-              <FaArrowRotateRight />
-              New Game
-            </button>
+            {/* this button is added on 20 sept */}
+            <div className={styles.gameActions}>
+              <button
+                type="button"
+                className={styles.musicButton}
+                onClick={toggleMusic}
+                aria-label={
+                  musicEnabled
+                    ? "Turn music off"
+                    : "Turn music on"
+                }
+                title={
+                  musicEnabled
+                    ? "Turn music off"
+                    : "Turn music on"
+                }
+              >
+                {musicEnabled ? (
+                  <FaVolumeHigh />
+                ) : (
+                  <FaVolumeXmark />
+                )}
+              </button>
+              {/* upto this line it is added on 20 sept */}
+            
+              <button
+                type="button"
+                className={styles.newGameButton}
+                onClick={startNewGame}
+              >
+                <FaArrowRotateRight />
+                New Game
+              </button>
+            </div>
           </div>
 
           <div className={styles.progressCard}>

@@ -301,6 +301,62 @@
   font-variant-numeric: tabular-nums;
 }
 
+.gameActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.musicButton {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #00b972;
+  background-color: #00d084;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+  /*color: rgba(255, 255, 255, 0.82);*/
+  z-index: 50;
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  flex-shrink: 0;
+}
+
+.musicButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #00b972;
+
+  /*transform: translateY(-1px);*/
+}
+
+.musicButton:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.musicButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.musicButton svg {
+  width: 16px;
+  height: 16px;
+}
+
 .newGameButton,
 .bottomNewGameButton,
 .restartMessageButton {
@@ -1031,9 +1087,32 @@
     font-size: 0.88rem;
   }
 
-  .newGameButton {
+  /* Music + New Game */
+  .gameActions {
     width: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .musicButton {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 9px;
+    font-size: 15px;
+  }
+
+  .musicButton svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .newGameButton {
+    width: auto;
+    min-width: 0;
     min-height: 40px;
+    flex: 1;
     border-radius: 9px;
     font-size: 0.78rem;
   }
@@ -1265,6 +1344,20 @@
 
   .statValue {
     font-size: 0.8rem;
+  }
+
+  .gameActions {
+    gap: 7px;
+  }
+
+  .musicButton {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .newGameButton {
+    min-height: 38px;
   }
 }
 

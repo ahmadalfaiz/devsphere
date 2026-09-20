@@ -1,14 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaArrowLeft,
-  FaPause,
-  FaPlay,
-  FaRotateRight, FaStaffSnake, FaHandPointUp
-} from "react-icons/fa6";
+import { FaArrowLeft, FaPause, FaPlay, FaRotateRight, FaStaffSnake, FaHandPointUp, FaVolumeHigh, FaVolumeXmark, } from "react-icons/fa6";
 import { IoIosDesktop } from "react-icons/io";
 import { FaAppleAlt } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
+import snakeSong from "../../../assets/games/kingdom/snakesong.mp3";
+import mergeSound from "../../../assets/games/kingdom/soundmerge.mp3";
 import { setSEO } from "../../../utils/seo";
 import styles from "./Snake.module.css";
 
@@ -66,6 +63,20 @@ const MAX_OBSTACLES = 18;
 const OBSTACLE_STEP = 8;
 const STORAGE_PREFIX = "devsphere-snake-best-";
 
+const FOOD_TYPES = {
+  NORMAL: "normal",
+  GOLDEN: "golden",
+  SPEED: "speed",
+  SLOW: "slow",
+};
+
+const SPECIAL_FOOD_CHANCE = 0.16;
+
+const FOOD_EFFECT_DURATION = 5000;
+
+const SPEED_FOOD_MULTIPLIER = 0.72;
+const SLOW_FOOD_MULTIPLIER = 1.35;
+
 /* =========================================================
    GAME HELPERS
 ========================================================= */
@@ -114,8 +125,47 @@ const getRandomEmptyPosition = (size, snake, obstacles = []) => {
   ];
 };
 
-const createFood = (size, snake, obstacles) =>
-  getRandomEmptyPosition(size, snake, obstacles);
+/*const createFood = (size, snake, obstacles) =>
+  getRandomEmptyPosition(size, snake, obstacles);*/ //isko replace krne bola hai abhi neeche like function se
+const getRandomFoodType = () => {
+  const roll = Math.random();
+
+  if (roll >= SPECIAL_FOOD_CHANCE) {
+    return FOOD_TYPES.NORMAL;
+  }
+
+  if (roll < 0.08) {
+    return FOOD_TYPES.GOLDEN;
+  }
+
+  if (roll < 0.12) {
+    return FOOD_TYPES.SPEED;
+  }
+
+  return FOOD_TYPES.SLOW;
+};
+
+const createFood = (
+  size,
+  snake,
+  obstacles = [],
+  forceType = null
+) => {
+  const position = getRandomEmptyPosition(
+    size,
+    snake,
+    obstacles
+  );
+
+  if (!position) {
+    return null;
+  }
+
+  return {
+    ...position,
+    type: forceType || getRandomFoodType(),
+  };
+}; //upto this line reaplace kiye hai upar wale const ko -21 sept.
 
 const getSpeedForScore = (mode, score) => {
   const reduction = score * mode.speedStep;
@@ -125,6 +175,39 @@ const getSpeedForScore = (mode, score) => {
     mode.startingSpeed - reduction
   );
 };
+
+/* yeh 21 sept ko add kr rhe hain Effective speed helper */
+const getEffectiveSpeed = (
+  mode,
+  score,
+  effect
+) => {
+  const baseSpeed = getSpeedForScore(
+    mode,
+    score
+  );
+
+  if (
+    !effect ||
+    effect.expiresAt <= Date.now()
+  ) {
+    return baseSpeed;
+  }
+
+  if (effect.type === FOOD_TYPES.SPEED) {
+    return Math.max(
+      35,
+      baseSpeed * SPEED_FOOD_MULTIPLIER
+    );
+  }
+
+  if (effect.type === FOOD_TYPES.SLOW) {
+    return baseSpeed * SLOW_FOOD_MULTIPLIER;
+  }
+
+  return baseSpeed;
+};
+/* upto this line Effective speed helper is added on 21 sept */
 
 const getObstacleCountForScore = (score) => {
   if (score < 12) return 0;
@@ -210,7 +293,7 @@ function Snake() {
     createFood(
       GAME_MODES.easy.size,
       createInitialSnake(GAME_MODES.easy.size),
-      []
+      [], FOOD_TYPES.NORMAL
     )
   );
 
@@ -238,9 +321,35 @@ function Snake() {
 
   const touchStartRef = useRef(null);
 
+  const [foodEffect, setFoodEffect] = useState(null);
+  const foodEffectRef = useRef(null);
+  const foodEffectTimerRef = useRef(null);
+
+
   /* =========================================================
      SYNCHRONIZE GAME REFS
   ========================================================= */
+
+  /* this line added on 20 sept just now */
+  const [musicEnabled, setMusicEnabled] = useState(() => {
+    if (typeof window === "undefined") {
+      return true;
+    }
+
+    try {
+      const savedPreference =
+        window.localStorage.getItem("devsphere-snake-music");
+
+      return savedPreference !== "false";
+    } catch {
+      return true;
+    }
+  });
+
+  const musicRef = useRef(null);
+  const mergeSoundRef = useRef(null);
+  const musicStartedRef = useRef(false);
+  /* upto this line it is added 20 sept */
 
   useEffect(() => {
     snakeRef.current = snake;
@@ -258,6 +367,31 @@ function Snake() {
     scoreRef.current = score;
   }, [score]);
 
+  /* this line added on 20 sept just now */
+  useEffect(() => {
+    const music = new Audio(snakeSong);
+    const merge = new Audio(mergeSound);
+
+    music.loop = true;
+    music.volume = 0.2;
+    merge.volume = 0.55;
+
+    musicRef.current = music;
+    mergeSoundRef.current = merge;
+
+    return () => {
+      music.pause();
+      music.currentTime = 0;
+
+      merge.pause();
+      merge.currentTime = 0;
+
+      musicRef.current = null;
+      mergeSoundRef.current = null;
+    };
+  }, []);
+  /* upto this line it is added on 20 sept */
+
   /* =========================================================
      CLEAR GAME TIMER
   ========================================================= */
@@ -269,20 +403,101 @@ function Snake() {
     }
   }, []);
 
+  //isko 21 sept ko add kr rhe hain
+  const clearFoodEffect = useCallback(() => {
+    if (foodEffectTimerRef.current) {
+      window.clearTimeout(
+        foodEffectTimerRef.current
+      );
+
+      foodEffectTimerRef.current = null;
+    }
+
+    foodEffectRef.current = null;
+    setFoodEffect(null);
+  }, []);
+  //upto this line add kiya hai
+
   /* =========================================================
      START NEW GAME
   ========================================================= */
 
+  /* this line added on 20 sept just now */
+  const startMusic = useCallback(() => {
+    if (
+      !musicEnabled ||
+      !musicRef.current ||
+      musicStartedRef.current
+    ) {
+      return;
+    }
+
+    musicRef.current
+      .play()
+      .then(() => {
+        musicStartedRef.current = true;
+      })
+      .catch(() => {});
+  }, [musicEnabled]);
+
+
+  const toggleMusic = useCallback(() => {
+    if (!musicRef.current) {
+      return;
+    }
+
+    if (musicEnabled) {
+      musicRef.current.pause();
+      musicRef.current.currentTime = 0;
+
+      musicStartedRef.current = false;
+
+      setMusicEnabled(false);
+
+      localStorage.setItem(
+        "devsphere-snake-music",
+        "false"
+      );
+
+      return;
+    }
+
+    musicRef.current
+      .play()
+      .then(() => {
+        musicStartedRef.current = true;
+
+        setMusicEnabled(true);
+
+        localStorage.setItem(
+          "devsphere-snake-music",
+          "true"
+        );
+      })
+      .catch(() => {
+        musicStartedRef.current = false;
+
+        setMusicEnabled(false);
+
+        localStorage.setItem(
+          "devsphere-snake-music",
+          "false"
+        );
+      });
+  }, [musicEnabled]);
+  /* upto this line it is added on 20 sept */
+
   const startNewGame = useCallback(
     (selectedMode = mode) => {
-      clearGameTimer();
+      clearGameTimer(); clearFoodEffect();
+      startMusic(); //this line is just added on 20 sept
 
       const selectedConfig = GAME_MODES[selectedMode];
       const initialSnake = createInitialSnake(selectedConfig.size);
       const initialFood = createFood(
         selectedConfig.size,
         initialSnake,
-        []
+        [], FOOD_TYPES.NORMAL
       );
 
       directionRef.current = INITIAL_DIRECTION;
@@ -304,8 +519,44 @@ function Snake() {
       setGameOver(false);
       setWon(false);
     },
-    [clearGameTimer, mode]
+    [clearGameTimer, clearFoodEffect, mode, startMusic,]
   );
+
+  /* ye line abhi 21 sept ko add kr rhe hain */
+  const applyFoodEffect = useCallback(
+    (foodType) => {
+      if (
+        foodType !== FOOD_TYPES.SPEED &&
+        foodType !== FOOD_TYPES.SLOW
+      ) {
+        return;
+      }
+
+      if (foodEffectTimerRef.current) {
+        window.clearTimeout(
+          foodEffectTimerRef.current
+        );
+      }
+
+      const effect = {
+        type: foodType,
+        expiresAt:
+          Date.now() + FOOD_EFFECT_DURATION,
+      };
+
+      foodEffectRef.current = effect;
+      setFoodEffect(effect);
+
+      foodEffectTimerRef.current =
+        window.setTimeout(() => {
+          foodEffectRef.current = null;
+          setFoodEffect(null);
+          foodEffectTimerRef.current = null;
+        }, FOOD_EFFECT_DURATION);
+    },
+    []
+  );
+  //upto this line it is added on 21 sept
 
   /* =========================================================
      CHANGE MODE
@@ -352,6 +603,19 @@ function Snake() {
   const moveSnake = useCallback(() => {
     if (gameOver || paused || !gameStarted) {
       return;
+    }
+
+    startMusic();
+
+    const activeEffect =
+      foodEffectRef.current;
+
+    if (
+      activeEffect &&
+      activeEffect.expiresAt <= Date.now()
+    ) {
+      foodEffectRef.current = null;
+      setFoodEffect(null);
     }
 
     const currentSnake = snakeRef.current;
@@ -424,7 +688,26 @@ function Snake() {
     let nextObstacles = currentObstacles;
 
     if (isEating) {
-      nextScore += 1;
+      //nextScore += 1;
+      const foodType =
+        currentFood?.type ||
+        FOOD_TYPES.NORMAL;
+
+      if (foodType === FOOD_TYPES.GOLDEN) {
+        nextScore += 5;
+      } else {
+        nextScore += 1;
+      }
+
+      applyFoodEffect(foodType);
+
+      if (mergeSoundRef.current) {
+        mergeSoundRef.current.currentTime = 0;
+
+        mergeSoundRef.current
+          .play()
+          .catch(() => {});
+      }
 
       const desiredObstacleCount =
         currentMode.obstacleStart === Infinity
@@ -466,9 +749,15 @@ function Snake() {
       return;
     }
 
-    const nextSpeed = getSpeedForScore(
+    /*const nextSpeed = getSpeedForScore(
       currentMode,
       nextScore
+    );*/
+
+    const nextSpeed = getEffectiveSpeed(
+      currentMode,
+      nextScore,
+      foodEffectRef.current
     );
 
     gameTimerRef.current = window.setTimeout(
@@ -483,6 +772,8 @@ function Snake() {
     gameStarted,
     paused,
     updateBestScore,
+    startMusic,
+    applyFoodEffect,
   ]);
 
   /* =========================================================
@@ -504,7 +795,11 @@ function Snake() {
 
     gameTimerRef.current = window.setTimeout(
       moveSnake,
-      getSpeedForScore(currentMode, score)
+      getEffectiveSpeed(
+        currentMode,
+        score,
+        foodEffectRef.current
+      )
     );
 
     return clearGameTimer;
@@ -517,6 +812,7 @@ function Snake() {
     paused,
     score,
     won,
+    foodEffect,
   ]);
 
   /* =========================================================
@@ -526,8 +822,9 @@ function Snake() {
   useEffect(() => {
     return () => {
       clearGameTimer();
+      clearFoodEffect();
     };
-  }, [clearGameTimer]);
+  }, [clearGameTimer, clearFoodEffect]);
 
   /* =========================================================
      CHANGE DIRECTION
@@ -662,9 +959,10 @@ function Snake() {
           currentMode.obstacleStart - score
         );
 
-  const currentSpeed = getSpeedForScore(
+  const currentSpeed = getEffectiveSpeed(
     currentMode,
-    score
+    score,
+    foodEffect
   );
 
   const directionLabel =
@@ -765,6 +1063,28 @@ function Snake() {
             </div>
 
             <div className={styles.gameActions}>
+              <button
+                type="button"
+                className={styles.musicButton}
+                onClick={toggleMusic}
+                aria-label={
+                  musicEnabled
+                    ? "Turn music off"
+                    : "Turn music on"
+                }
+                title={
+                  musicEnabled
+                    ? "Turn music off"
+                    : "Turn music on"
+                }
+              >
+                {musicEnabled ? (
+                  <FaVolumeHigh aria-hidden="true" />
+                ) : (
+                  <FaVolumeXmark aria-hidden="true" />
+                )}
+              </button>
+              
               <button
                 type="button"
                 className={styles.actionButton}
@@ -916,12 +1236,32 @@ function Snake() {
 
               {food && (
                 <div
-                  className={styles.food}
+                  className={`${styles.food} ${
+                    food.type !== FOOD_TYPES.NORMAL
+                      ? styles.specialFood
+                      : ""
+                  } ${
+                    food.type === FOOD_TYPES.GOLDEN
+                      ? styles.goldenFood
+                      : food.type === FOOD_TYPES.SPEED
+                        ? styles.speedFood
+                        : food.type === FOOD_TYPES.SLOW
+                          ? styles.slowFood
+                          : ""
+                  }`}
                   style={{
                     "--food-x": food.x,
                     "--food-y": food.y,
                   }}
-                  aria-label="Food"
+                  aria-label={
+                    food.type === FOOD_TYPES.GOLDEN
+                      ? "Golden food"
+                      : food.type === FOOD_TYPES.SPEED
+                        ? "Speed food"
+                        : food.type === FOOD_TYPES.SLOW
+                          ? "Slow food"
+                          : "Food"
+                  }
                 >
                   <span
                     className={styles.foodCore}
@@ -940,7 +1280,7 @@ function Snake() {
               >
                 {snake.map((segment, index) => (
                   <div
-                    key={`${segment.x}-${segment.y}-${index}`}
+                    key={`${segment.x}-${segment.y}-${index}`} -- key={`${segment.x}-${segment.y}-${index}`}
                     className={`${styles.snakeSegment} ${
                       index === 0
                         ? styles.snakeHead
@@ -975,7 +1315,7 @@ function Snake() {
 
     return (
       <div
-        key={`${segment.x}-${segment.y}-${index}`}
+        key={index}
         className={`${styles.snakeSegment} ${
           isHead
             ? styles.snakeHead
@@ -984,6 +1324,16 @@ function Snake() {
         style={{
           "--segment-x": segment.x,
           "--segment-y": segment.y,
+          ...(isHead && {
+            "--head-rotation":
+              direction === "right"
+                ? "0deg"
+                : direction === "down"
+                  ? "90deg"
+                  : direction === "left"
+                    ? "180deg"
+                    : "-90deg",
+          }),
         }}
       >
         {isHead && (
@@ -1135,6 +1485,22 @@ function Snake() {
               <strong>{directionLabel}</strong>
             </div>
 
+            {/* ye part abhi 21 sept ko add kr rhe hain */}
+            {foodEffect && (
+              <div className={styles.statusItem}>
+                <span className={styles.statusLabel}>
+                  Effect
+                </span>
+
+                <strong>
+                  {foodEffect.type === FOOD_TYPES.SPEED
+                    ? "⚡ Speed"
+                    : "⏳ Slow"}
+                </strong>
+              </div>
+            )}
+            {/* yhan tk add kiye hain 21 sept ko */}
+
             <div className={styles.statusItem}>
               <span className={styles.statusLabel}>
                 Speed
@@ -1222,8 +1588,8 @@ function Snake() {
                 <div>
                   <h3>Eat & Grow</h3>
                   <p>
-                    Each food gives you one point and adds
-                    another segment.
+                    Eat food to grow longer. Golden food gives
+                    you bonus points.
                   </p>
                 </div>
               </div>
@@ -1239,8 +1605,8 @@ function Snake() {
                 <div>
                   <h3>Stay Sharp</h3>
                   <p>
-                    Your snake gets faster as your score
-                    increases.
+                    Your snake gets faster as your score increases,
+                    while special foods can temporarily change its speed.
                   </p>
                 </div>
               </div>

@@ -621,6 +621,87 @@ fetchData().then((data) => {
       ]
     }
   },
+
+  {
+    id: 9,
+    slug: "programming-languages-behind-popular-social-media-platforms",
+    title: "One App, Five Languages: The Secret Polyglot Life of Your Favorite Social Media Apps",
+    description:
+      "A look at the real programming languages running behind Instagram, Facebook, X, WhatsApp and Discord, and why none of them stuck to just one.",
+    category: "Programming Languages",
+    date: "September 22, 2026",
+    readTime: "12 min read",
+    author: "Faiz Ahmad",
+    image: "https://images.pexels.com/photos/4114787/pexels-photo-4114787.jpeg",
+    imageAlt: "Code on a screen representing multiple programming languages",
+
+    content: {
+      introduction:
+        "Open Instagram, and it feels like one seamless thing, a feed, a story, a DM, all flowing together like it was built in a single afternoon by a single mind in a single language. It wasn't. Behind almost every major social platform you use is a patchwork of programming languages, each one brought in to solve a problem the others couldn't, speed, scale, real-time delivery, machine learning, or just getting something shipped fast enough to beat a competitor to market. This is one of the more interesting things students learning to code rarely get told: there is no the language for building a huge platform. There's a language for the part that talks to millions of users at once, a different one for the part that runs the recommendation engine, and often a third for the part that was written a decade ago and nobody's brave enough to rewrite yet. Here's what's actually running under the apps on your home screen.",
+
+      sections: [
+        {
+          heading: "1. Instagram: Python Doing Far More Than Anyone Expected",
+          paragraphs: [
+            "Python has a reputation as a beginner language, simple, readable, forgiving. Which makes it a little surprising that it sits at the core of a platform serving over two billion people. Instagram was built from day one as a Python and Django application, and remarkably, it still is, one of the largest Django deployments anywhere in the world runs the majority of Instagram's backend logic.",
+            "Python's appeal here isn't raw speed, it's how fast engineers can build and change features with it. But speed of development and speed of execution are different problems, so where performance actually matters, the parts handling billions of interactions with almost no room for delay, Instagram leans on C++ and Cython to squeeze out the performance Python alone can't deliver. On the interface side, the web app runs on React and the mobile app blends in React Native, while the data layer splits duties too, PostgreSQL holds structured data like profiles and comments, and Cassandra takes on the sheer volume of real-time data behind the feed and direct messages.",
+            "It's a good early lesson in engineering: you don't need one perfect language. You need the right language in the right place, and the discipline to know which is which."
+          ]
+        },
+
+        {
+          heading: "2. Facebook: The Language They Had to Invent Themselves",
+          paragraphs: [
+            "Facebook tells one of the more unusual stories in this list, because the company outgrew its own programming language and built a replacement rather than switching to something already on the market.",
+            "It started, like a huge number of early-2000s web platforms, on PHP, a scripting language that made it easy to get a dynamic website running quickly. But as Facebook's user base exploded, PHP's limitations around performance and scale became impossible to ignore. Instead of abandoning PHP entirely, Facebook's engineers built Hack, their own PHP-derived language, and paired it with HHVM, a custom virtual machine that compiles that code down toward C++-level performance. The result is a strange but effective hybrid, developer-facing code that still looks and feels like PHP, running at a speed PHP was never originally capable of.",
+            "Underneath that layer, C++ powers the genuinely high-performance backend services that can't afford any translation overhead at all. And on the interface side, Facebook didn't just use a frontend framework, it created one. React, now one of the most widely used tools in web development anywhere, including on Instagram's own web app, was born inside Facebook to solve Facebook's own interface problems."
+          ]
+        },
+
+        {
+          heading: "3. X (formerly Twitter): A Famous Rewrite Born From Failure",
+          paragraphs: [
+            "Few platforms have been as publicly honest about their tech-stack scars as Twitter. In its earliest days, the platform ran on Ruby on Rails, a framework beloved for how quickly it lets developers build features. The problem was that Ruby on Rails, in that era, simply could not handle Twitter's traffic. Outages and the infamous fail whale error page became so common they turned into a running joke among users.",
+            "The fix was one of tech's most cited rewrites: Twitter moved its most critical backend services to Scala and Java, languages built to run efficiently on the Java Virtual Machine and handle far higher concurrent load than Ruby was ever designed for. The frontend still runs on React, and Python shows up heavily in the data and analytics side of the business. It's a useful cautionary tale for any student building their first real project: the language that gets you to launch day fastest isn't always the one that gets you through year three."
+          ]
+        },
+
+        {
+          heading: "4. WhatsApp: A Nearly Unbelievable Story About Doing More With Less",
+          paragraphs: [
+            "If there's one story in this entire list that sounds made up, it's WhatsApp's. At its peak as an independent company, WhatsApp was reportedly running well over 900 million users on a backend engineering team of only a few dozen people, and the language that made it possible was Erlang.",
+            "Erlang isn't a mainstream language most students will encounter early in their learning, but it was built decades ago by Ericsson specifically for telecom systems that needed to run reliably, handle massive numbers of simultaneous connections, and never really go down. Those are, almost exactly, the requirements of a global messaging app. WhatsApp's backend runs on Erlang's BEAM virtual machine, using an open-source XMPP server called ejabberd, historically deployed on FreeBSD rather than the Linux most companies default to.",
+            "It's proof that the obvious popular language isn't always the right tool, sometimes a niche, decades-old language built for an entirely different industry turns out to be exactly what a new problem needs."
+          ]
+        },
+
+        {
+          heading: "5. Discord: A Genuinely Polyglot Engineering Culture",
+          paragraphs: [
+            "Discord doesn't lean on one language so much as it deliberately spreads its problems across several, choosing each for what it's specifically good at. Real-time messaging, the feature Discord is built around, runs largely on Elixir, a modern language built on the same battle-tested Erlang virtual machine that powers WhatsApp, a deliberate echo of the handle massive concurrency reliably problem showing up again in a different app.",
+            "Around that core, Discord's REST APIs commonly run on Python, performance-critical pieces like image resizing were rewritten in Go and C++, and parts of the Discord Store and other performance-sensitive systems run on Rust, a language prized for combining near-C++ speed with much stronger safety guarantees. The web app runs on React with Redux, the desktop client wraps that in Electron, and the mobile apps go fully native with Swift on iOS and Kotlin on Android.",
+            "Discord is arguably the clearest real-world example of polyglot engineering done on purpose, not from historical accident, but as an active strategy, using each language exactly where its particular strengths matter most."
+          ]
+        },
+
+        {
+          heading: "6. The Pattern Underneath All of These Stories",
+          paragraphs: [
+            "Line these platforms up next to each other and a clear pattern emerges. Nobody picked one language and stuck with it forever. Every single one of these companies started with whatever let them build and prove their idea fastest, and then, once real users and real scale arrived, they made hard, sometimes expensive decisions to bring in different languages for the specific jobs that needed them.",
+            "Python and Ruby show up early because they optimize for developer speed. C++, Go, and Rust show up later because they optimize for execution speed. Erlang and Elixir show up wherever massive, reliable concurrency is the actual problem, chat and messaging, again and again. And React shows up almost everywhere on the frontend, because once Facebook solved the build fast, changing interfaces problem well enough, the rest of the industry simply adopted the solution."
+          ]
+        },
+
+        {
+          heading: "7. What This Means If You're Learning to Code",
+          paragraphs: [
+            "For anyone learning to program, especially with the hope of eventually building something people actually use, the real takeaway isn't learn Python or learn Rust. It's this: the language is a tool chosen for a job, not an identity to commit to. Every platform in this article proves that the smartest engineering teams in the world regularly outgrow their first choice, bring in new tools without shame, and keep whatever still works even if it's twenty years old and a little unfashionable.",
+            "The question worth asking isn't which language is best. It's what is this specific problem actually asking for, and that question, more than any single language on a resume, is what separates a functioning app from one that quietly falls over the moment it becomes popular."
+          ]
+        }
+      ]
+    }
+  },
 ];
 
 export default articlesData;
