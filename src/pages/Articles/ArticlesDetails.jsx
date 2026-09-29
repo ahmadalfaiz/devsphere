@@ -1,8 +1,10 @@
 import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import articlesData from "../../data/articlesData";
 import styles from "./Articles.module.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { setSEO } from "../../utils/seo";
 //import { authors } from "../../data/authors";
 
 const ArticlesDetails = () => {
@@ -11,6 +13,16 @@ const ArticlesDetails = () => {
   const article = articlesData.find(
     (item) => item.slug === slug
   );
+
+  useEffect(() => {
+    if (!article) return;
+
+    setSEO({
+      title: `${article.title} | DevSphere`,
+      description: article.description,
+      url: `/articles/${article.slug}`,
+    });
+  }, [article]);
 
   if (!article) {
     return (

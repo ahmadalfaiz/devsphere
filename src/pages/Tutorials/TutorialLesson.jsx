@@ -25,6 +25,7 @@ function TutorialLesson() {
         title: "Tutorial Not Found - DevSphere",
         description: "The requested DevSphere tutorial could not be found.",
         url: `/tutorials/${slug || ""}`,
+        robots: "noindex, follow",
       });
 
       return;
@@ -39,10 +40,18 @@ function TutorialLesson() {
         title: "Lesson Not Found - DevSphere",
         description: "The requested DevSphere lesson could not be found.",
         url: `/tutorials/${slug}/${lessonSlug || ""}`,
+        robots: "noindex, follow",
       });
 
       return;
     }
+
+    const lessonContent =
+      contentRegistry?.[slug]?.[lessonSlug];
+
+    const hasLessonContent =
+      Array.isArray(lessonContent?.content) &&
+      lessonContent.content.length > 0;
 
     setSEO({
       title:
@@ -58,10 +67,13 @@ function TutorialLesson() {
         currentLesson.seo?.keywords ||
         [...new Set([
           currentLesson.title,
-          ...(currentLesson.tags || [])
-        ])],
+          ...(currentLesson.tags || []),
+        ]),],
 
       url: `/tutorials/${slug}/${lessonSlug}`,
+      robots: hasLessonContent
+        ? "index, follow"
+        : "noindex, follow",
     });
   }, [slug, lessonSlug]);
   /* up to this */

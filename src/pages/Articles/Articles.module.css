@@ -787,6 +787,10 @@
   ARTICLE DETAILS IMAGE - MOBILE
 ========================================================= */
 @media (max-width: 600px) {
+  .articleDetailsMeta {
+    font-size: 14px;
+  }
+
   .articleDetailsImageWrapper {
     margin: 0px 0 25px;
     border-radius: 13px;
