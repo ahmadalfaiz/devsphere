@@ -5,13 +5,17 @@ import styles from "./Articles.module.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { setSEO } from "../../utils/seo";
-//import { authors } from "../../data/authors";
+import { authors } from "../../data/authors";
 
 const ArticlesDetails = () => {
   const { slug } = useParams();
 
   const article = articlesData.find(
     (item) => item.slug === slug
+  );
+
+  const articleAuthor = Object.values(authors).find(
+    (author) => author.name === article.author
   );
 
   useEffect(() => {
@@ -71,11 +75,33 @@ const ArticlesDetails = () => {
             {article.description}
           </p>
 
-          <div className={styles.articleDetailsMeta}>
-            <span>{article.author}</span> {/* <span>{authors.faiz.name}</span> -authors.js file se aise lenge*/}
+          {/*<div className={styles.articleDetailsMeta}>
+            <span>{article.author}</span>  <span>{authors.faiz.name}</span> -authors.js file se aise lenge
             <span>•</span>
             <span>{article.date}</span>
             <span>•</span>
+            <span>{article.readTime}</span>
+          </div>*/}
+
+          <div className={styles.articleDetailsMeta}>
+            <div className={styles.articleAuthor}>
+              <Link
+                to={`/authors/${articleAuthor?.slug || ""}`}
+                className={styles.articleAuthorLink}
+              >
+                <img
+                  src={articleAuthor?.avatar}
+                  alt={article.author}
+                  className={styles.articleAuthorAvatar}
+                />
+                <span>{article.author}</span>
+              </Link>
+            </div>
+
+            <span className={styles.articleMetaSeparator}>•</span>
+            <span>{article.date}</span>
+
+            <span className={styles.articleMetaSeparator}>•</span>
             <span>{article.readTime}</span>
           </div>
 

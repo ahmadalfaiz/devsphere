@@ -24,6 +24,8 @@ import ArticlesDetails from "./pages/Articles/ArticlesDetails";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import Advertise from "./pages/Advertise/Advertise";
+import Authors from "./pages/Authors/Authors";
+import AuthorsDetails from "./pages/Authors/AuthorsDetails";
 import Support from "./pages/Support/Support";
 import PrivacyPolicy from "./pages/Privacy/PrivacyPolicy";
 import Terms from "./pages/Terms/Terms";
@@ -64,6 +66,8 @@ function App() {
           <Route path="/contact-us" element={<Contact />}/>
           <Route path="/about-us" element={<About />}/>
           <Route path="/advertise-with-us" element={<Advertise />}/>
+          <Route path="/authors" element={<Authors />}/>
+          <Route path="/authors/:slug" element={<AuthorsDetails />}/>
           <Route path="/support-devsphere" element={<Support />}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
           <Route path="/terms-of-service" element={<Terms />} />

@@ -6,12 +6,22 @@
 
 //const authors = {
 
+import faizAhmadImage from "../assets/images/faiz-ahmad.jpeg";
+
 export const authors = {
   faiz: {
+    slug: "faiz-ahmad",
     name: "Faiz Ahmad",
-    avatar: "/authors/faiz.png",
-    twitter: "",
-    github: ""
+    role: "Founder & Developer",
+    bio: "Faiz Ahmad is the founder and developer of DevSphere, where he creates practical and in-depth learning resources for developers and students. His work focuses on programming, web development, software engineering, and computer science.",
+    avatar: faizAhmadImage,
+    social: {
+      github: "https://github.com/ahmadalfaiz",
+      linkedin: "https://www.linkedin.com/in/faiz-ahmad-865613270/",
+      instagram: "https://www.instagram.com/faiz_al_ahmad484/",
+      twitter: "",
+      website: "https://ahmadalfaiz.github.io/portfolio/Portfolio.html"
+    }
   }
 
   // Add more authors here as DevSphere grows:

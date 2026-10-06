@@ -1,0 +1,1052 @@
+/* =========================================================
+   AUTHORS PAGE
+========================================================= */
+
+.authorsPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(0, 208, 132, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(0, 208, 132, 0.07),
+      transparent 30%
+    ),
+    #050b1a;
+  color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.authorsHero {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 80px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.heroGlow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -220px;
+  right: 5%;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.13);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  max-width: 760px;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #00d084;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.heroContent h1 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.heroContent h1 span {
+  color: #00d084;
+}
+
+.heroContent p {
+  max-width: 680px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   AUTHORS SECTION
+========================================================= */
+
+.authorsSection {
+  padding: 75px 0 110px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.sectionLabel {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.authorCount {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 208, 132, 0.2);
+  border-radius: 999px;
+  background: rgba(0, 208, 132, 0.06);
+  color: #00d084;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   AUTHOR GRID
+========================================================= */
+
+.authorsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+/* =========================================================
+   AUTHOR CARD
+========================================================= */
+
+.authorCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 30px;
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    ),
+    rgba(8, 15, 30, 0.82);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.authorCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 208, 132, 0.28);
+  box-shadow:
+    0 28px 65px rgba(0, 0, 0, 0.3),
+    0 0 45px rgba(0, 208, 132, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cardGlow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -130px;
+  right: -100px;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.1);
+  filter: blur(65px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =========================================================
+   AUTHOR IDENTITY
+========================================================= */
+
+.authorCardTop {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  padding: 3px;
+  border: 1px solid rgba(0, 208, 132, 0.35);
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.08);
+  box-shadow:
+    0 0 0 5px rgba(0, 208, 132, 0.035),
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.authorAvatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorIdentity {
+  min-width: 0;
+}
+
+.authorIdentity h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.authorIdentity p {
+  margin: 0;
+  color: #00d084;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* =========================================================
+   BIO
+========================================================= */
+
+.authorBio {
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.authorStats {
+  display: flex;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.stat strong {
+  color: #ffffff;
+  font-size: 19px;
+}
+
+.stat span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.authorCardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.socialLink {
+  color: rgba(255, 255, 255, 0.58);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  color: #00d084;
+}
+
+.profileButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 10px 15px;
+  border: 1px solid rgba(0, 208, 132, 0.25);
+  border-radius: 10px;
+  background: rgba(0, 208, 132, 0.07);
+  color: #00d084;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profileButton span {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.profileButton:hover {
+  background: rgba(0, 208, 132, 0.13);
+  border-color: rgba(0, 208, 132, 0.42);
+}
+
+.profileButton:hover span {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .authorsHero {
+    padding: 80px 0 65px;
+  }
+
+  .authorsSection {
+    padding: 60px 0 85px;
+  }
+
+  .authorsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .authorCard {
+    max-width: 760px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .authorsHero {
+    padding: 65px 0 55px;
+  }
+
+  .heroContent h1 {
+    font-size: 42px;
+  }
+
+  .heroContent p {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .authorsSection {
+    padding: 50px 0 70px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 25px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 25px;
+  }
+
+  .authorCard {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .authorCardTop {
+    gap: 15px;
+  }
+
+  .avatarWrapper {
+    width: 72px;
+    height: 72px;
+  }
+
+  .authorIdentity h3 {
+    font-size: 20px;
+  }
+
+  .authorIdentity p {
+    font-size: 13px;
+  }
+
+  .authorBio {
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .authorCardBottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .profileButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .heroContent h1 {
+    font-size: 36px;
+  }
+
+  .authorCardTop {
+    align-items: flex-start;
+  }
+
+  .avatarWrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .authorIdentity h3 {
+    font-size: 18px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ARTICLES DETAILS PROFILE PAGE
+========================================================= */
+/* =========================================================
+   AUTHOR PROFILE PAGE
+========================================================= */
+
+.authorProfileHero {
+  position: relative;
+  overflow: hidden;
+  padding: 35px 0 85px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.profileHeroGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: -280px;
+  left: 8%;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.13);
+  filter: blur(110px);
+  pointer-events: none;
+}
+
+.profileHeroGlowSecondary {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: 5%;
+  bottom: -220px;
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.07);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* =========================================================
+   BACK LINK
+========================================================= */
+
+.backToAuthors {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+  z-index: 1;
+}
+
+.backToAuthors:hover {
+  color: #00d084;
+  transform: translateX(-3px);
+}
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.authorProfileCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  padding: 48px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.015)
+    ),
+    rgba(8, 15, 30, 0.3);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  z-index: 1;
+}
+
+.profileAvatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 190px;
+  height: 190px;
+  padding: 5px;
+  border: 1px solid rgba(0, 208, 132, 0.38);
+  border-radius: 50%;
+  background: rgba(0, 208, 132, 0.08);
+  box-shadow:
+    0 0 0 10px rgba(0, 208, 132, 0.035),
+    0 20px 55px rgba(0, 0, 0, 0.3);
+}
+
+.profileAvatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  min-width: 0;
+  max-width: 760px;
+}
+
+.profileEyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #00d084;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.profileInfo h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(40px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.profileRole {
+  margin: 10px 0 0;
+  color: #00d084;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.profileBio {
+  max-width: 720px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.profileMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 27px;
+}
+
+.profileStat {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.profileStat strong {
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.profileStat span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.profileDivider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.profileMetaText {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+}
+
+.profileSocials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.profileSocialLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.profileSocialLink:hover {
+  border-color: rgba(0, 208, 132, 0.3);
+  background: rgba(0, 208, 132, 0.07);
+  color: #00d084;
+}
+
+/* =========================================================
+   AUTHOR ARTICLES SECTION
+========================================================= */
+
+.authorArticlesSection {
+  padding: 80px 0 110px;
+}
+
+.authorArticlesHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.authorArticlesHeader h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.authorArticlesHeader p {
+  max-width: 650px;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.authorArticleCount {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 208, 132, 0.2);
+  border-radius: 999px;
+  background: rgba(0, 208, 132, 0.06);
+  color: #00d084;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   ARTICLE GRID
+========================================================= */
+
+.authorArticlesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* =========================================================
+   ARTICLE CARD
+========================================================= */
+
+.authorArticleCard {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 18px;
+  background: rgba(8, 15, 30, 0.78);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.authorArticleCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 208, 132, 0.24);
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.28),
+    0 0 35px rgba(0, 208, 132, 0.045);
+}
+
+.authorArticleImageLink {
+  display: block;
+  text-decoration: none;
+}
+
+.authorArticleImageWrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #0b111c;
+}
+
+.authorArticleImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.authorArticleCard:hover .authorArticleImage {
+  transform: scale(1.035);
+}
+
+.articleCategoryBadge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  background: rgba(52, 62, 88, 0.82);
+  color: #00d084;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+.authorArticleContent {
+  padding: 21px;
+}
+
+.authorArticleMeta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.authorArticleContent h3 {
+  margin: 11px 0 0;
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.authorArticleContent h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.authorArticleContent h3 a:hover {
+  color: #00d084;
+}
+
+.authorArticleContent > p {
+  display: -webkit-box;
+  margin: 11px 0 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.57);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.readArticleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  color: #00d084;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.readArticleLink span {
+  transition: transform 0.2s ease;
+}
+
+.readArticleLink:hover span {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   NO ARTICLES
+========================================================= */
+
+.noArticles {
+  padding: 55px 25px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 18px;
+  background: rgba(8, 15, 30, 0.65);
+  text-align: center;
+}
+
+.noArticles h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.noArticles p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+/* =========================================================
+   AUTHOR NOT FOUND
+========================================================= */
+
+.authorNotFound {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.notFoundContent {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.notFoundContent h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 42px;
+}
+
+.notFoundContent p {
+  margin: 15px auto 28px;
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.notFoundContent .profileButton {
+  display: inline-flex;
+}
+
+/* =========================================================
+   PROFILE TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .authorProfileHero {
+    padding: 30px 0 65px;
+  }
+
+  .authorProfileCard {
+    gap: 35px;
+    padding: 35px;
+  }
+
+  .profileAvatarWrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profileBio {
+    font-size: 16px;
+  }
+
+  .authorArticlesSection {
+    padding: 65px 0 85px;
+  }
+
+  .authorArticlesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   PROFILE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .authorProfileHero {
+    padding: 25px 0 50px;
+  }
+
+  .backToAuthors {
+    margin-bottom: 24px;
+  }
+
+  .authorProfileCard {
+    align-items: center;
+    flex-direction: column;
+    gap: 28px;
+    padding: 30px 22px;
+    border-radius: 21px;
+    text-align: center;
+  }
+
+  .profileAvatarWrapper {
+    width: 135px;
+    height: 135px;
+  }
+
+  .profileInfo {
+    width: 100%;
+  }
+
+  .profileInfo h1 {
+    font-size: 38px;
+  }
+
+  .profileRole {
+    font-size: 15px;
+  }
+
+  .profileBio {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .profileMeta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .profileSocials {
+    justify-content: center;
+  }
+
+  .authorArticlesSection {
+    padding: 50px 0 70px;
+  }
+
+  .authorArticlesHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .authorArticlesHeader h2 {
+    font-size: 27px;
+  }
+
+  .authorArticlesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .authorArticleCard {
+    border-radius: 16px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .profileInfo h1 {
+    font-size: 34px;
+  }
+
+  .profileAvatarWrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .authorProfileCard {
+    padding: 26px 18px;
+  }
+}
