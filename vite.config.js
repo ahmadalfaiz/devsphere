@@ -27,7 +27,15 @@ export default defineConfig({
           '**/*.{js,css,html,ico,png,svg,webp,woff2}'
         ],
 
-        navigateFallbackDenylist: [/^\/ads\.txt$/],
+        navigateFallbackDenylist: [
+          /^\/ads\.txt$/,
+          /^\/robots\.txt$/,
+          /^\/humans\.txt$/,
+          /^\/sitemap\.xml$/,
+          /^\/bing-verification\.xml$/,
+          /^\/browserconfig\.xml$/,
+          /^\/site\.webmanifest$/,
+        ],
       },
     }),
   ],
