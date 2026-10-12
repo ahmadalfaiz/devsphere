@@ -26,6 +26,8 @@ export default defineConfig({
         globPatterns: [
           '**/*.{js,css,html,ico,png,svg,webp,woff2}'
         ],
+
+        navigateFallbackDenylist: [/^\/ads\.txt$/],
       },
     }),
   ],
