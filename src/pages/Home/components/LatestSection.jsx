@@ -37,7 +37,7 @@ function LatestSection() {
     }
 
   ];*/
-  const articles = articlesData.slice(0, 3);
+  const articles = articlesData.slice(9, 12);
 
   return (
 

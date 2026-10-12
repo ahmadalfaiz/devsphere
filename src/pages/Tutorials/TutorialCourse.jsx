@@ -25,7 +25,16 @@ function TutorialCourse() {
   /* Set SEO UseEffect added here */
   useEffect(() => {
 
-    if (!tutorial) return;
+    if (!tutorial) {
+      setSEO({
+        title: "Tutorial Not Found - DevSphere",
+        description: "The requested DevSphere tutorial could not be found.",
+        url: `/tutorials/${slug || ""}`,
+        robots: "noindex, follow",
+      });
+
+      return;
+    }
 
     setSEO({
       title:

@@ -17,6 +17,7 @@ import Courses from "./pages/Courses/Courses";
 import CourseDetails from "./pages/Courses/CourseDetails";
 
 import NotFound from "./pages/Errors/NotFound";
+import Search from "./pages/Search/Search";
 
 import Articles from "./pages/Articles/Articles";
 import ArticlesDetails from "./pages/Articles/ArticlesDetails";
@@ -59,6 +60,7 @@ function App() {
           <Route path="courses/:slug" element={<CourseDetails />}/>
 
           <Route path="*" element={<NotFound />} />
+          <Route path="search" element={<Search />} />
 
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:slug" element={<ArticlesDetails />}/>

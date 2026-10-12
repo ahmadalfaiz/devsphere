@@ -42,6 +42,8 @@ const pages = [
   { url: "/about-us", changefreq: "yearly", priority: 0.85,},
   { url: "/advertise-with-us", changefreq: "yearly", priority: 0.85,},
   { url: "/articles", changefreq: "weekly", priority: 0.85,},
+  { url: "/authors", changefreq: "weekly", priority: 0.85,},
+  { url: "/authors/faiz-ahmad", changefreq: "weekly", priority: 0.85,},
   
   { url: "/privacy-policy", changefreq: "yearly", priority: 0.30,},
   { url: "/terms", changefreq: "yearly", priority: 0.30,},

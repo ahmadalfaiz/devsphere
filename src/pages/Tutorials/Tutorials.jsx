@@ -189,6 +189,19 @@ function Tutorials() {
 
     const navigate = useNavigate();
 
+    const [searchQuery, setSearchQuery] = useState("");
+    const handleSearch = (event) => {
+      event.preventDefault();
+
+      const query = searchQuery.trim();
+
+      if (!query) return;
+
+      navigate(
+        `/search?q=${encodeURIComponent(query)}&scope=tutorials`
+      );
+    };
+
   return (
 
     <main className={styles.tutorialsPage}>
@@ -215,14 +228,17 @@ function Tutorials() {
             through structured tutorials.
           </p>
 
-          <div className={styles.searchBox}>
+          <form className={styles.searchBox} onSubmit={handleSearch}>
 
             <input
               type="text"
               placeholder="Search tutorials..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              aria-label="Search tutorials"
             />
 
-          </div>
+          </form>
 
         </div>
 

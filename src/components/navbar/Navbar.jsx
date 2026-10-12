@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import AuthModal from "../auth/AuthModal";
@@ -12,6 +12,11 @@ function Navbar() {
   /* new states here for mobile responsiveness of navbar items */
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState(null);
+  /* up to this point */
+
+  /* Search functionality added from here */
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   /* up to this point */
 
   useEffect(() => {
@@ -106,6 +111,18 @@ function Navbar() {
     setMobileAccordion(null);
   };
 
+  /* Search functionality added from here */
+  const handleSearch = (e) => {
+    console.log("Search form submitted");
+    e.preventDefault();
+
+    const query = searchQuery.trim();
+
+    if (!query) return;
+
+    navigate(`/search?q=${encodeURIComponent(query)}`);
+  }; /* up to this point */
+
   return (
     <header className={styles.header}>
 
@@ -141,12 +158,15 @@ function Navbar() {
 
           {/* SEARCH BAR */}
 
-          <div className={styles.searchBox}>
+          <form className={styles.searchBox} onSubmit={handleSearch}>
             <input
-              type="text"
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tutorials, courses, articles..."
+              aria-label="Search DevSphere"
             />
-          </div>
+          </form>
 
           {/* MAIN NAVIGATION */}
 

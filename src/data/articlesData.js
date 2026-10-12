@@ -919,6 +919,108 @@ fetchData().then((data) => {
       ]
     }
   },
+
+  {
+    id: 13,
+    slug: "what-happens-when-you-type-a-website-address-and-press-enter",
+    title: "The Two Seconds You Never Notice: What Really Happens When You Type a Website Address and Press Enter",
+    description:
+      "A step-by-step walk through DNS, TCP, TLS, HTTP, servers and browser rendering, from keypress to finished page.",
+    category: "Frontend",
+    date: "October 5, 2026",
+    readTime: "8 min read",
+    author: "Faiz Ahmad",
+    image: "https://images.pexels.com/photos/6961857/pexels-photo-6961857.png?auto=compress&cs=tinysrgb&h=650&w=940",
+    imageAlt: "Web browser and network connections representing how a website loads",
+
+    content: {
+      introduction:
+        "You've done it ten thousand times. You type an address, press Enter, and a page appears. It feels so instant and so ordinary that it barely registers as an event. But in the roughly two seconds between your keypress and the finished page, your request travels through a chain of systems that spans continents, talks to machines you'll never see, and makes dozens of small decisions on your behalf. Software engineers love this question so much that it became a classic interview prompt: what happens when you type a URL into a browser and press Enter? It's popular for a good reason. There is almost no better way to understand how the internet fits together, because nearly every layer of modern computing shows up somewhere in the answer. Let's walk through it, one step at a time.",
+
+      sections: [
+        {
+          heading: "1. Step 1: Your Browser Checks Its Own Memory First",
+          paragraphs: [
+            "Before anything touches the network, your browser asks itself a lazy but smart question: do I already know this?",
+            "It checks whether it has a cached copy of the page, and whether it has recently looked up the address of this website. Computers are far more efficient when they avoid repeating work, so a huge amount of everyday browsing never travels very far at all. If the answer is already sitting in memory, the browser can skip several of the steps below entirely.",
+            "The first lesson of web performance shows up right here: the fastest request is the one you never have to make."
+          ]
+        },
+
+        {
+          heading: "2. Step 2: Turning a Name into an Address (DNS)",
+          paragraphs: [
+            "Humans like names. Computers need numbers. Behind every website name is an IP address, a numeric label that tells the network where that server actually lives. The system that translates one into the other is called DNS, the Domain Name System, and it's often described as the phone book of the internet.",
+            "Your browser asks your operating system, which asks a resolver (usually run by your internet provider or a public service). If that resolver doesn't know, it works its way up a hierarchy: first the root servers, then the servers responsible for the domain's ending (like .com), then the servers that are officially responsible for that particular website. Each answer narrows the search until finally someone hands back the address.",
+            "All of this normally takes a few milliseconds to a few dozen milliseconds, and the result gets cached along the way so the next lookup is faster. It's remarkable how much hidden cooperation is needed just to answer the question where is this website?"
+          ]
+        },
+
+        {
+          heading: "3. Step 3: Knocking on the Door (TCP and the Handshake)",
+          paragraphs: [
+            "Now your browser knows where the server is, but it can't just start shouting data at it. The two machines first need to agree that a conversation is happening and that both sides are ready.",
+            "The classic way to do this is a short exchange called the TCP handshake. Your computer says hello, the server acknowledges and says hello back, and your computer confirms. Three small messages, and a reliable connection is established. It's the networking equivalent of a polite hi, can you hear me? yes, can you hear me? yes.",
+            "This step is a good reminder of something that surprises many beginners: distance matters. Signals travel through fiber at a significant fraction of the speed of light, which is fast, but not instant. Every round trip between you and a server on the other side of the planet costs real, measurable time. That's why companies spend enormous effort placing servers physically closer to their users."
+          ]
+        },
+
+        {
+          heading: "4. Step 4: Locking the Conversation (TLS Encryption)",
+          paragraphs: [
+            "If the address starts with https, and nowadays almost everything does, the browser and server next set up an encrypted channel using TLS.",
+            "During this exchange, the server proves its identity with a digital certificate issued by a trusted authority, and the two sides agree on secret keys that only they know. From that point onward, anyone watching the traffic in between, on a café Wi-Fi network or anywhere else along the route, sees only scrambled data.",
+            "This is the little padlock in your address bar doing its quiet work. It's easy to forget how recently secure connections were considered an optional extra. Today, the web assumes you shouldn't have to trust every network your data passes through."
+          ]
+        },
+
+        {
+          heading: "5. Step 5: The Actual Question (the HTTP Request)",
+          paragraphs: [
+            "Finally, after all that preparation, your browser asks the thing you actually wanted: please send me this page.",
+            "It sends an HTTP request containing the page it wants, along with some details about itself, like what languages it prefers and what kinds of content it can handle, plus any cookies the website previously stored. It's a surprisingly short message for everything that went into making it possible."
+          ]
+        },
+
+        {
+          heading: "6. Step 6: Behind the Scenes at the Server",
+          paragraphs: [
+            "Here's where the story becomes less visible, because you can't see any of it. But a lot happens.",
+            "For a large website, your request almost never goes straight to one machine. It first lands on infrastructure designed to absorb enormous traffic: a content delivery network that might answer immediately if it has a saved copy nearby, or a load balancer that picks one of many identical servers to handle your request, spreading the work so no single machine gets overwhelmed.",
+            "If the page needs to be built fresh, the chosen server runs application code. That code might check whether you're logged in, ask a database for your information, call other internal services, and assemble everything into a response. A single page on a big platform can involve conversations between many different systems, all happening in the fraction of a second the server has to reply before you start noticing the delay.",
+            "When the response is ready, it travels back along the same kind of path, carrying the page's HTML along with a status code that tells your browser how things went. You've probably met the famous ones: 200 means success, 404 means the page couldn't be found, 500 means the server itself had a problem."
+          ]
+        },
+
+        {
+          heading: "7. Step 7: Your Browser Becomes a Builder",
+          paragraphs: [
+            "The data arriving isn't the finished page. It's a set of instructions, and now your browser has to turn them into something you can see.",
+            "It reads the HTML and builds a tree-shaped model of the page's structure, called the DOM. As it reads, it discovers more things it needs: stylesheets, scripts, fonts, images. Each one triggers its own requests, which is why a single page load is really dozens or hundreds of small conversations happening in parallel.",
+            "The stylesheets get turned into their own model describing how everything should look. The browser then combines structure and style to calculate layout, working out the exact size and position of every element. Finally, it paints pixels onto the screen. JavaScript can run alongside all this, changing the page, fetching more data, and responding to your clicks.",
+            "What you experience as the page loaded is actually a pipeline of overlapping stages, which is why a good page can start showing useful content long before every last image has arrived."
+          ]
+        },
+
+        {
+          heading: "8. Why This Matters If You Build Things",
+          paragraphs: [
+            "For someone learning to code, this walkthrough isn't trivia. It's a map of where problems hide.",
+            "When a site feels slow, the cause could be any stage: a slow DNS lookup, a server far from its users, a bloated database query, an oversized image, a script that blocks rendering. Developers who understand the whole journey can look at a slow page and ask the right question, rather than guessing. Is this a network problem, a server problem, or a browser problem? That one skill, knowing where to look, separates people who fix performance issues from people who just worry about them.",
+            "It also explains why so much of modern web engineering revolves around the same few ideas: caching to avoid repeated work, placing content closer to users, sending less data, and doing independent tasks in parallel."
+          ]
+        },
+
+        {
+          heading: "9. The Bottom Line",
+          paragraphs: [
+            "The next time a page loads before you've even finished blinking, remember what just happened. A name was translated into an address by a global system of cooperating servers. Two computers agreed to talk, proved who they were to each other, and locked their conversation. A request crossed the planet, was routed to the right machine, answered by code that queried databases, and returned. Then your browser assembled instructions into pixels.",
+            "All of that, in about two seconds, thousands of times a day, mostly without a single thing going wrong. The internet isn't magic. It's something arguably more impressive: an enormous number of small, well-designed systems agreeing to cooperate."
+          ]
+        }
+      ]
+    }
+  },
 ];
 
 export default articlesData;

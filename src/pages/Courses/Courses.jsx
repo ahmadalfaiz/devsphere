@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Courses.module.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FaCode, FaProjectDiagram, FaMicrochip, FaCogs, FaBrain, FaCloud, FaDatabase, FaCubes, FaNetworkWired,} from "react-icons/fa";
 import { setSEO } from "../../utils/seo";
 
@@ -182,6 +181,16 @@ function Courses() {
         useState(null);
 
     const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState("");
+    const handleSearch = (event) => {
+        event.preventDefault();
+
+        const query = searchQuery.trim();
+
+        if (!query) return;
+
+        navigate(`/search?q=${encodeURIComponent(query)}&scope=courses`);
+    };
   
 
   return (
@@ -210,14 +219,17 @@ function Courses() {
                     and real-world careers.
                 </p>
 
-                <div className={styles.searchBox}>
+                <form className={styles.searchBox} onSubmit={handleSearch}>
 
                     <input
-                        type="text"
+                        type="search"
                         placeholder="Search courses..."
+                        value={searchQuery}
+                        onChange={(event) => setSearchQuery(event.target.value)}
+                        aria-label="Search courses"
                     />
 
-                </div>
+                </form>
 
             </div>
 
